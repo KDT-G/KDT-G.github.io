@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="枫亦的个人博客">
+<meta name="description" content="温故而知新">
+<meta name="theme-color" content="#000">
+<title>关于博客园内嵌入bilibili视频(转) | 枫亦的博客</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1588127275334">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/media/css/pisces.css">
+
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/androidstudio.css"
+  rel="stylesheet">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  <meta name="description" content="关于博客园内嵌入bilibili视频(转)" />
+  <meta name="keywords" content="有趣的编程知识" />
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="pisces">
+  <header class="header  ">
+    <div class="blog-header box-shadow-wrapper bg-color " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>枫亦的博客</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">精于心，简于形</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/archives/" target="_self">
+                  <i class="fa fa-archive"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout pisces ">
+      <div class="section-layout-wrapper">
+        
+
+<div class="sidebar">
+  
+    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
+      
+        <div class="post-list-sidebar">
+          <div class="sidebar-title">
+            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
+            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
+          </div>
+        </div>
+      
+      <div class="sidebar-body pisces" id="sidebar_body">
+        
+          
+            <div class="post-side-meta" id="post_side_meta">
+              
+<div class="sidebar-wrapper box-shadow-wrapper bg-color">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">枫亦</p>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">14</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">8</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+    
+      <div class="sidebar-item" style="border-top: 1px dotted #ccc; margin-top: 10px;">
+      </div>
+    
+  
+  
+
+  
+
+
+</div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E5%8E%9F%E7%90%86">一、原理</a></li>
+<li><a href="#%E4%BA%8C-%E8%8E%B7%E5%8F%96aid%E5%92%8Ccid">二、获取aid和cid</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80">方法一</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E6%8E%A8%E8%8D%90">方法二(推荐)</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D">三、移动端适配</a></li>
+<li><a href="#%E5%9B%9B-%E5%B5%8C%E5%85%A5%E6%96%B9%E6%B3%95">四、嵌入方法</a></li>
+<li><a href="#%E4%BA%94-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E">五、参数说明</a></li>
+<li><a href="#%E5%85%AD-%E7%A4%BA%E4%BE%8B">六、示例</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
+          
+        
+      </div>
+    </div>
+  
+</div>
+<script>
+  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
+  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
+  const SLIDE_UP_IN = 'slide-up-in';
+
+  let sidebar = document.querySelector('#sidebar'),
+  tocSideBar = document.querySelector('#tocSideBar'),
+  metaSideBar = document.querySelector('#metaSideBar'),
+  postToc = document.querySelector('#post_toc'),
+  postSiteMeta = document.querySelector('#post_side_meta'),
+  sidebarTitle = document.querySelector('.sidebar-title'),
+  sidebarBody = document.querySelector('#sidebar_body');
+
+  tocSideBar && tocSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  metaSideBar && metaSideBar.addEventListener('click', (e) => {
+    toggleSidebar(e);
+  });
+
+  function toggleSidebar(e) {
+    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
+    if (currentTitle == e.srcElement) {
+      return ;
+    }
+    let current, showElement, hideElement;
+    if (e.srcElement == metaSideBar) {
+      showElement = postSiteMeta;
+      hideElement = postToc;
+    } else if (e.srcElement == tocSideBar){
+      showElement = postToc;
+      hideElement = postSiteMeta;
+    }
+    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
+    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
+
+    window.Velocity(hideElement, 'stop');
+    window.Velocity(hideElement, 'transition.slideUpOut', {
+      display: 'none',
+      duration: 200,
+      complete: function () {
+        window.Velocity(showElement, 'transition.slideDownIn', {
+          duration: 200
+        });
+      }
+    })
+    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
+    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
+  }
+
+  postToc && postToc.addEventListener('transitionend', function() {
+    this.classList.remove(SLIDE_UP_IN);
+  });
+
+  if (sidebarBody) {
+    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
+      let hasFix = false;
+      let scrollEl = document.querySelector('.main-continer');
+      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
+      window.addEventListener('scroll', function(e) {
+        if (document.scrollingElement.scrollTop >= limitTop) {
+          if (!hasFix) {
+            sidebar.classList.add('sidebar-fixed');
+            hasFix = true;
+          }
+        } else {
+          if (hasFix) {
+            sidebar.classList.remove('sidebar-fixed');
+            hasFix = false;
+          }
+        }
+      });
+    }
+  }
+  
+</script>
+        <div class="section-box box-shadow-wrapper">
+          <div class="section bg-color post post-page">
+            <header class="post-header">
+  <h1 class="post-title">
+    <a class="post-title-link" href="https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/">
+      关于博客园内嵌入bilibili视频(转)
+    </a>
+  </h1>
+  <div class="post-meta">
+    
+    <span class="meta-item pc-show">
+      <i class="fa fa-calendar-o"></i>
+      <span>发布于</span>
+      <span>2020-04-29</span>
+      <span class="post-meta-divider pc-show">|</span>
+    </span>
+    
+    <span class="meta-item">
+      <i class="fa fa-folder-o"></i>
+      <span class="pc-show">分类于</span>
+      
+      
+      <a href="https://kdt-g.github.io/tag/T7mykyUdq/">
+        <span>有趣的编程知识</span>
+      </a>
+      
+      
+    </span>
+    <span class="post-meta-divider">|</span>
+    
+    <span class="meta-item">
+      <i class="fa fa-clock-o"></i>
+      <span>5分钟</span>
+    </span>
+    <span class="meta-item">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-file-word-o"></i>
+      <span>1154<span class="pc-show">字数</span></span>
+    </span>
+    
+    
+    
+    <span id="/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/" data-flag-title="关于博客园内嵌入bilibili视频(转)" class="meta-item pc-show leancloud_visitors">
+      <span class="post-meta-divider">|</span>
+      <i class="fa fa-eye"></i>
+      <span>浏览量：<span class="leancloud-visitors-count"></span></span>
+    </span>
+    
+  </div>
+</header>
+            <div class="post-body next-md-body" id="post_body">
+              <h2 id="一-原理">一、原理</h2>
+<p>使用iframe标签，更改其中src对应bilibili视频的aid和cid，组装新的HTML源码，即可在文章内嵌入bilibili视频。</p>
+<h2 id="二-获取aid和cid">二、获取aid和cid</h2>
+<p>aid为视频的av号，但是每个av号下不一定只有1p，所以B站用cid来管理视频的真正id，那么也可以说如果视频只有1p，那么cid就无用了，我测试直接填1也是可以的。</p>
+<p>这里介绍两种获取aid和cid的方法：</p>
+<h3 id="方法一">方法一</h3>
+<p>先观察视频的URL</p>
+<pre><code>https:``//www.bilibili.com/video/av84267566?from=search&amp;seid=13400362594908841480
+</code></pre>
+<p>其中84267566就是av号。</p>
+<p>或者直接点右键——查看网页源代码——ctrl+f——搜索'aid='、‘cid=’ 就可以了。</p>
+<h3 id="方法二推荐">方法二(推荐)</h3>
+<p>我们在转发视频的时候直接可以看到嵌入代码</p>
+<figure data-type="image" tabindex="1"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206150838006-392318847.png" alt="" loading="lazy"></figure>
+<p>这是官方准备的嵌入代码，可以直接拿来用，但是显示效果不是很理想，样式不是我们希望的，需要调整一下。</p>
+<pre><code>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=84267566&amp;cid=145147963&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;
+</code></pre>
+<p>从嵌入代码中我们直接得到了aid和cid</p>
+<p>我们重新设置一下功能、大小、样式，得到可用的HTML代码</p>
+<pre><code>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=84267566&amp;amp;cid=145147963&amp;amp;page=1&quot; frameborder=&quot;no&quot; scrolling=&quot;no&quot; width=&quot;95%&quot; height=&quot;600&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</code></pre>
+<p>以后插入需要的bilibili视频只需要改变上面的aid和cid就可以了！</p>
+<h2 id="三-移动端适配">三、移动端适配</h2>
+<p>**<a href="https://www.cnblogs.com/experdot/">ExperDot</a>**大佬提出移动端出现不适配的问题，我当时其实并没有考虑移动端的问题，固定了播放器的高度造成了这个问题。</p>
+<figure data-type="image" tabindex="2"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200217230556219-1666126249.png" alt="" loading="lazy"></figure>
+<p>大佬已经给出了解决方案</p>
+<pre><code>&lt;div style=&quot;position: relative; padding: 30% 45%;&quot;&gt;
+&lt;iframe style=&quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&quot; src=&quot;https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&quot; frameborder=&quot;no&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<p>可以用这个代码作为样板，以后只需要改变src的id好就可以了！</p>
+<p>再次感谢大佬**<a href="https://www.cnblogs.com/experdot/">ExperDot</a>**的帮助！</p>
+<h2 id="四-嵌入方法">四、嵌入方法</h2>
+<p>选择tinyMCE编辑器，这是博客园默认的编辑器，选择编辑html原代码，插入上面的代码即可。</p>
+<figure data-type="image" tabindex="3"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206151748141-1744878901.png" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206153114389-1534665027.png" alt="img" loading="lazy"></figure>
+<h2 id="五-参数说明">五、参数说明</h2>
+<p>本来这篇博客是我的游戏之作，但没想到捧场的朋友这么多，我看到评论区有朋友讲清晰度的问题，我这里再说一下几个参数。</p>
+<pre><code>https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aid</td>
+<td>视频ID 就是B站的 avxxxx 后面的数字</td>
+</tr>
+<tr>
+<td>cid</td>
+<td>应该是客户端id, clientId 的缩写(推测的, 不一定准确) 经过测试, 这个字段不填也没关系</td>
+</tr>
+<tr>
+<td>page</td>
+<td>第几个视频, 起始下标为 1 (默认值也是为1) 就是B站视频, 选集里的, 第几个视频</td>
+</tr>
+<tr>
+<td>as_wide</td>
+<td>是否宽屏 1: 宽屏, 0: 小屏</td>
+</tr>
+<tr>
+<td>high_quality</td>
+<td>是否高清 1: 高清, 0: 最低视频质量(默认) 如视频有 360p 720p 1080p 三种, 默认或者 high_quality=0 是最低 360p high_quality=1 是最高1080p</td>
+</tr>
+<tr>
+<td>danmaku</td>
+<td>是否开启弹幕 1: 开启(默认), 0: 关闭</td>
+</tr>
+</tbody>
+</table>
+<p>所以只要设置<strong>high_quality=1</strong>就能开启最高画质了。</p>
+<p>B站官方并没有给出文档说明.....但我发现论坛上有一些相关的讨论</p>
+<p><a href="http://link.acg.tv/forum.php?mod=viewthread&amp;tid=22308&amp;highlight=%E6%92%AD%E6%94%BE%E5%99%A8%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%A8%E5%93%AA%E9%87%8C%E5%91%A2"><strong>相关链接</strong></a></p>
+<p>经测试high_quality参数可以正常使用，此参数控制外链播放器的默认清晰度：<br>
+=1时默认清晰度是最高非大会员清晰度，例如：<br>
+（1）原视频清晰度有360P、480P、720P，外链播放器默认为最高的720P，<br>
+（2）原视频清晰度有360P、480P、720P、1080P，外链播放器默认为最高的1080P，<br>
+（3）原视频清晰度有360P、480P、720P、1080P、1080P+，外链播放器默认为1080P，<br>
+选择其他清晰度会打开原视频页面，</p>
+<p>=其他数值或没有此参数时默认清晰度是360P，选择其他清晰度会打开原视频页面。</p>
+<h2 id="六-示例">六、示例</h2>
+<p>这里给出2020拜年祭的《万古生香》</p>
+<p>万古千秋，代代有玲珑气象！<br>
+风云史往，页页赋秀骨生香！</p>
+<pre><code>&lt;div style=&quot;position: relative; padding: 30% 45%;&quot;&gt;
+&lt;iframe style=&quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&quot; src=&quot;https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&quot; frameborder=&quot;no&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?cid=145147963&aid=84267566&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no"></iframe>
+</div>
+<hr>
+<p>转自博客园：<a href="https://www.cnblogs.com/wkfvawl/p/12268980.html">https://www.cnblogs.com/wkfvawl/p/12268980.html<a></p>
+
+            </div>
+            <div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      枫亦
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/" title="关于博客园内嵌入bilibili视频(转)">https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+  <div class="tags">
+    
+      <a href="https://kdt-g.github.io/tag/T7mykyUdq/"># 有趣的编程知识</a>
+    
+  </div>
+  <div class="nav">
+    <div class="nav-prev">
+      
+    </div>
+    <div class="nav-next">
+      
+        <a class="nav-pc-next" title="12分钟上手CSS【看懂封面就理解CSS】" href="https://kdt-g.github.io/post/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/">12分钟上手CSS【看懂封面就理解CSS】</a>
+        <a class="nav-mobile-next" title="12分钟上手CSS【看懂封面就理解CSS】" href="https://kdt-g.github.io/post/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
+      
+    </div>
+  </div>
+</div>
+            
+  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
+<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+
+<style>
+  .v .veditor {
+    min-height: 10rem;
+    background-image: url('');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: none;
+  }
+
+  .v .vwrap {
+    border: 1px solid #000 !important;
+  }
+
+  .v .vbtn {
+    padding: .4rem 1.2rem !important;
+    border-color: #fff !important;
+    background-color: #49b1f5 !important;
+    color: #fff !important;
+    font-size: .7rem !important;
+  }
+
+  .v .vcards .vcard .vh .vmeta .vat {
+    padding: 0 .8rem !important;
+    border: 1px solid #00c4b6 !important;
+    border-radius: 5px !important;
+    color: #00c4b6 !important;
+  }
+</style>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: 'aiaz9SotuI0it1stLpstx3sA-gzGzoHsz',
+    appKey: 'JPSyyGJOhMa2NBwr672A8zO8',
+    avatar: 'wavatar',
+    placeholder: '请输入评论...',
+    pageSize: '',
+    lang: 'zh-cn',
+    visitor: 'true' === 'true',
+    highlight: 'true' === 'true',
+    avatarForce: 'true' === 'false',
+  });
+</script>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="#" target="_blank">Gridea</a> | ©  2019-2020 Theme By <a href="https://kdt-g.github.io/" target="_blank">枫亦</a>
+    </div>
+    <div class="poweredby">
+      
+    </div>
+  </footer>
+  
+  
+  <div class="pisces back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+    <span class="scrollpercent">
+      <span id="back_to_top_text">0</span>%
+    </span>
+    
+  </div>
+  
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'true'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target","_blank");
+      }
+    })
+  }
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+</script>
+    <div class="light-box" id="light_box"></div>
+<script>
+  let imgs = document.querySelectorAll('.post-body img');
+  let lightBox = document.querySelector('#light_box');
+  lightBox.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+  })
+  lightBox.addEventListener('mousewheel', (e) => {
+    e.preventDefault()
+  })
+  let width = window.innerWidth * 0.8;
+  lightBox.onclick = () => {
+    let img = lightBox.querySelector('img');
+    lightBox.style = '';
+    img && img.remove();
+  }
+  imgs.forEach(item => {
+    item.onclick = function (e) {
+      let lightImg = document.createElement('img');
+      lightImg.src = this.src;
+      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
+      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
+      lightImg.onclick = function () {
+        lightBox.style = '';
+        this.remove();
+      }
+      lightBox.append(lightImg);
+    }
+  })
+</script>
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        console.log('复制操作频率过高');
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 500
+  });
+</script>
+
+<!-- <div class="search-mask" id="search_mask">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input type="text" placeholder="搜索">
+      </div>
+      <i class="fa fa-times-circle"></i>
+    </div>
+    <div class="result">
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/"" data-c="
+          &lt;h2 id=&#34;一-原理&#34;&gt;一、原理&lt;/h2&gt;
+&lt;p&gt;使用iframe标签，更改其中src对应bilibili视频的aid和cid，组装新的HTML源码，即可在文章内嵌入bilibili视频。&lt;/p&gt;
+&lt;h2 id=&#34;二-获取aid和cid&#34;&gt;二、获取aid和cid&lt;/h2&gt;
+&lt;p&gt;aid为视频的av号，但是每个av号下不一定只有1p，所以B站用cid来管理视频的真正id，那么也可以说如果视频只有1p，那么cid就无用了，我测试直接填1也是可以的。&lt;/p&gt;
+&lt;p&gt;这里介绍两种获取aid和cid的方法：&lt;/p&gt;
+&lt;h3 id=&#34;方法一&#34;&gt;方法一&lt;/h3&gt;
+&lt;p&gt;先观察视频的URL&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https:``//www.bilibili.com/video/av84267566?from=search&amp;amp;seid=13400362594908841480
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其中84267566就是av号。&lt;/p&gt;
+&lt;p&gt;或者直接点右键——查看网页源代码——ctrl+f——搜索&#39;aid=&#39;、‘cid=’ 就可以了。&lt;/p&gt;
+&lt;h3 id=&#34;方法二推荐&#34;&gt;方法二(推荐)&lt;/h3&gt;
+&lt;p&gt;我们在转发视频的时候直接可以看到嵌入代码&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206150838006-392318847.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;这是官方准备的嵌入代码，可以直接拿来用，但是显示效果不是很理想，样式不是我们希望的，需要调整一下。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;//player.bilibili.com/player.html?aid=84267566&amp;amp;cid=145147963&amp;amp;page=1&amp;quot; scrolling=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot; frameborder=&amp;quot;no&amp;quot; framespacing=&amp;quot;0&amp;quot; allowfullscreen=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从嵌入代码中我们直接得到了aid和cid&lt;/p&gt;
+&lt;p&gt;我们重新设置一下功能、大小、样式，得到可用的HTML代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;//player.bilibili.com/player.html?aid=84267566&amp;amp;amp;cid=145147963&amp;amp;amp;page=1&amp;quot; frameborder=&amp;quot;no&amp;quot; scrolling=&amp;quot;no&amp;quot; width=&amp;quot;95%&amp;quot; height=&amp;quot;600&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以后插入需要的bilibili视频只需要改变上面的aid和cid就可以了！&lt;/p&gt;
+&lt;h2 id=&#34;三-移动端适配&#34;&gt;三、移动端适配&lt;/h2&gt;
+&lt;p&gt;**&lt;a href=&#34;https://www.cnblogs.com/experdot/&#34;&gt;ExperDot&lt;/a&gt;**大佬提出移动端出现不适配的问题，我当时其实并没有考虑移动端的问题，固定了播放器的高度造成了这个问题。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200217230556219-1666126249.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;大佬已经给出了解决方案&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;position: relative; padding: 30% 45%;&amp;quot;&amp;gt;
+&amp;lt;iframe style=&amp;quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&amp;quot; src=&amp;quot;https://player.bilibili.com/player.html?cid=145147963&amp;amp;aid=84267566&amp;amp;page=1&amp;amp;as_wide=1&amp;amp;high_quality=1&amp;amp;danmaku=0&amp;quot; frameborder=&amp;quot;no&amp;quot; scrolling=&amp;quot;no&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以用这个代码作为样板，以后只需要改变src的id好就可以了！&lt;/p&gt;
+&lt;p&gt;再次感谢大佬**&lt;a href=&#34;https://www.cnblogs.com/experdot/&#34;&gt;ExperDot&lt;/a&gt;**的帮助！&lt;/p&gt;
+&lt;h2 id=&#34;四-嵌入方法&#34;&gt;四、嵌入方法&lt;/h2&gt;
+&lt;p&gt;选择tinyMCE编辑器，这是博客园默认的编辑器，选择编辑html原代码，插入上面的代码即可。&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206151748141-1744878901.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;4&#34;&gt;&lt;img src=&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206153114389-1534665027.png&#34; alt=&#34;img&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;五-参数说明&#34;&gt;五、参数说明&lt;/h2&gt;
+&lt;p&gt;本来这篇博客是我的游戏之作，但没想到捧场的朋友这么多，我看到评论区有朋友讲清晰度的问题，我这里再说一下几个参数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://player.bilibili.com/player.html?cid=145147963&amp;amp;aid=84267566&amp;amp;page=1&amp;amp;as_wide=1&amp;amp;high_quality=1&amp;amp;danmaku=0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;key&lt;/th&gt;
+&lt;th&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;aid&lt;/td&gt;
+&lt;td&gt;视频ID 就是B站的 avxxxx 后面的数字&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;cid&lt;/td&gt;
+&lt;td&gt;应该是客户端id, clientId 的缩写(推测的, 不一定准确) 经过测试, 这个字段不填也没关系&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;page&lt;/td&gt;
+&lt;td&gt;第几个视频, 起始下标为 1 (默认值也是为1) 就是B站视频, 选集里的, 第几个视频&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;as_wide&lt;/td&gt;
+&lt;td&gt;是否宽屏 1: 宽屏, 0: 小屏&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;high_quality&lt;/td&gt;
+&lt;td&gt;是否高清 1: 高清, 0: 最低视频质量(默认) 如视频有 360p 720p 1080p 三种, 默认或者 high_quality=0 是最低 360p high_quality=1 是最高1080p&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;danmaku&lt;/td&gt;
+&lt;td&gt;是否开启弹幕 1: 开启(默认), 0: 关闭&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;所以只要设置&lt;strong&gt;high_quality=1&lt;/strong&gt;就能开启最高画质了。&lt;/p&gt;
+&lt;p&gt;B站官方并没有给出文档说明.....但我发现论坛上有一些相关的讨论&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://link.acg.tv/forum.php?mod=viewthread&amp;amp;tid=22308&amp;amp;highlight=%E6%92%AD%E6%94%BE%E5%99%A8%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%A8%E5%93%AA%E9%87%8C%E5%91%A2&#34;&gt;&lt;strong&gt;相关链接&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;经测试high_quality参数可以正常使用，此参数控制外链播放器的默认清晰度：&lt;br&gt;
+=1时默认清晰度是最高非大会员清晰度，例如：&lt;br&gt;
+（1）原视频清晰度有360P、480P、720P，外链播放器默认为最高的720P，&lt;br&gt;
+（2）原视频清晰度有360P、480P、720P、1080P，外链播放器默认为最高的1080P，&lt;br&gt;
+（3）原视频清晰度有360P、480P、720P、1080P、1080P+，外链播放器默认为1080P，&lt;br&gt;
+选择其他清晰度会打开原视频页面，&lt;/p&gt;
+&lt;p&gt;=其他数值或没有此参数时默认清晰度是360P，选择其他清晰度会打开原视频页面。&lt;/p&gt;
+&lt;h2 id=&#34;六-示例&#34;&gt;六、示例&lt;/h2&gt;
+&lt;p&gt;这里给出2020拜年祭的《万古生香》&lt;/p&gt;
+&lt;p&gt;万古千秋，代代有玲珑气象！&lt;br&gt;
+风云史往，页页赋秀骨生香！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;position: relative; padding: 30% 45%;&amp;quot;&amp;gt;
+&amp;lt;iframe style=&amp;quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&amp;quot; src=&amp;quot;https://player.bilibili.com/player.html?cid=145147963&amp;amp;aid=84267566&amp;amp;page=1&amp;amp;as_wide=1&amp;amp;high_quality=1&amp;amp;danmaku=0&amp;quot; frameborder=&amp;quot;no&amp;quot; scrolling=&amp;quot;no&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;div style=&#34;position: relative; padding: 30% 45%;&#34;&gt;
+&lt;iframe style=&#34;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&#34; src=&#34;https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&#34; frameborder=&#34;no&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;转自博客园：&lt;a href=&#34;https://www.cnblogs.com/wkfvawl/p/12268980.html&#34;&gt;https://www.cnblogs.com/wkfvawl/p/12268980.html&lt;a&gt;&lt;/p&gt;
+">关于博客园内嵌入bilibili视频(转)</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/"" data-c="
+          &lt;div style=&#34;position: relative; padding: 30% 45%;&#34;&gt;
+&lt;iframe style=&#34;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&#34; src=&#34;https://player.bilibili.com/player.html?aid=86238906&amp;bvid=BV1X7411x7ao&amp;cid=147396296&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&#34; frameborder=&#34;no&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+">12分钟上手CSS【看懂封面就理解CSS】</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/1/"" data-c="
+          &lt;div style=&#34;position: relative; padding: 30% 45%;&#34;&gt;
+&lt;iframe style=&#34;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&#34; src=&#34;https://player.bilibili.com/player.html?aid=85460523&amp;bvid=BV137411z7KM&amp;cid=146081137&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&#34; frameborder=&#34;no&#34; scrolling=&#34;no&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;">老说的API到底是什么??</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/ctuo-zhan-fang-fa/"" data-c="
+          &lt;p&gt;例如要给StringBuilder加一个拓展方法，在一个静态类中，写一个公开的静态方法，参数列表中加上 (this+空格+StringBuilder S ,参数1，参数2，····· )&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;public static  void Add(this StringBuilder S,int a, string b,int c,***){}
+&lt;/code&gt;&lt;/pre&gt;
+">c#拓展方法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/shi-me-shi-yin-shi-lei-xing/"" data-c="
+          &lt;p&gt;C#隐式类型是.net4.0推出的新功能特性，我们先了解一下什么是隐式类型？&lt;br&gt;
+当程序中使用了隐式类型，那么这个变量不需要指定其数据类型，由操作系统自动判断其数据类型，但它绝对不会进行装箱和拆箱的操作。&lt;br&gt;
+以前我们在定义变量的时间，必须要指定变量的数据类型，隐式类型变量是用var关键字来表示的，当使用了var关键字定义的变量就不需要指定其数据类型。例：var flag1=2;var flag2=&amp;quot;张三&amp;quot;;var flag3=true;以上定义隐式类型变量都是正确的，但是使用了隐式类型变量需要注意如下几点：1、使用var作为定义隐式类型的关键字，var其实也是javascript定义变量的语法；2、定义隐式类型时，必须为它赋值，例var str=“test”；3、赋值后，变量的值可以修改，但是值的数据类型是不可更改的；4、隐式类型具体是什么类型，是初始化的值，由编译器自动判断。&lt;/p&gt;
+">什么是隐式类型</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/aspnet-mvc-htmlhelper-yong-fa-da-quan/"" data-c="
+          &lt;p&gt;HTML扩展类的所有方法都有2个参数：&lt;br&gt;
+以textbox为例子&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;public static string TextBox( this HtmlHelper htmlHelper, string name, Object value, IDictionary&amp;lt;string, Object&amp;gt; htmlAttributes )
+public static string TextBox( this HtmlHelper htmlHelper, string name, Object value, Object htmlAttributes )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这2个参数代表这个html标签的属性集合。使用方法如下。&lt;/p&gt;
+&lt;p&gt;1.ActionLink&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;)%&amp;gt;
+
+//带有QueryString的写法
+
+&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new { page=1 },null)%&amp;gt;
+
+&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, new { page=1 })%&amp;gt;有其它Html属性的写法&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new { id=&amp;quot;link1&amp;quot; })%&amp;gt;
+
+&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;,null, new { id=&amp;quot;link1&amp;quot; })%&amp;gt;
+
+//QueryString与Html属性同时存在
+
+&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new { page = 1 }, new { id = &amp;quot;link1&amp;quot; })%&amp;gt;&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot; , new { page = 1 }, new { id = &amp;quot;link1&amp;quot; })%&amp;gt; 
+
+//生成结果为：
+
+&amp;lt; a href=&amp;quot;/&amp;quot;&amp;gt; 这是一个连接 &amp;lt; /a &amp;gt; 
+
+//带有QueryString的写法
+
+&amp;lt; a href=&amp;quot;/?page=1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;
+
+&amp;lt; a href=&amp;quot;/?page=1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;
+
+//有其它Html属性的写法
+
+&amp;lt; a href=&amp;quot;/?Length=4&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;
+
+&amp;lt; a href=&amp;quot;/&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;
+
+//QueryString与Html属性同时存在
+
+&amp;lt; a href=&amp;quot;/?page=1&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;
+
+&amp;lt; a href=&amp;quot;/?page=1&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;RouteLink&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;跟ActionLink在功能上一样。
+&amp;lt;%=Html.RouteLink(&amp;quot;关于&amp;quot;, &amp;quot;about&amp;quot;, new { })%&amp;gt;
+带QueryString
+&amp;lt;%=Html.RouteLink(&amp;quot;关于&amp;quot;, &amp;quot;about&amp;quot;, new { page = 1 })%&amp;gt;
+&amp;lt;%=Html.RouteLink(&amp;quot;关于&amp;quot;, &amp;quot;about&amp;quot;, new { page = 1 }, new { id = &amp;quot;link1&amp;quot; })%&amp;gt;
+ 
+生成结果：
+&amp;lt;a href=&amp;quot;/about&amp;quot;&amp;gt;关于&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;/about?page=1&amp;quot;&amp;gt;关于&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;/about?page=1&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;关于&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Form 2种方法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%using(Html.BeginForm(&amp;quot;index&amp;quot;,&amp;quot;home&amp;quot;,FormMethod.Post)){%&amp;gt;
+&amp;lt;%} %&amp;gt;
+ 
+&amp;lt;%Html.BeginForm(&amp;quot;index&amp;quot;, &amp;quot;home&amp;quot;, FormMethod.Post);//注意这里没有=输出%&amp;gt;
+&amp;lt;%Html.EndForm(); %&amp;gt;
+    
+ //生成结果：
+&amp;lt;form action=&amp;quot;/home/index&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;TextBox , Hidden ,&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%=Html.TextBox(&amp;quot;input1&amp;quot;) %&amp;gt;
+&amp;lt;%=Html.TextBox(&amp;quot;input2&amp;quot;,Model.CategoryName,new{ @style = &amp;quot;width:300px;&amp;quot; }) %&amp;gt;
+&amp;lt;%=Html.TextBox(&amp;quot;input3&amp;quot;, ViewData[&amp;quot;Name&amp;quot;],new{ @style = &amp;quot;width:300px;&amp;quot; }) %&amp;gt;
+&amp;lt;%=Html.TextBoxFor(a =&amp;gt; a.CategoryName, new { @style = &amp;quot;width:300px;&amp;quot; })%&amp;gt;
+ 
+//生成结果：
+ 
+&amp;lt;input id=&amp;quot;input1&amp;quot; name=&amp;quot;input1&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;
+&amp;lt;input id=&amp;quot;input2&amp;quot; name=&amp;quot;input2&amp;quot; style=&amp;quot;width:300px;&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;Beverages&amp;quot; /&amp;gt;
+&amp;lt;input id=&amp;quot;input3&amp;quot; name=&amp;quot;input3&amp;quot; style=&amp;quot;width:300px;&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;
+&amp;lt;input id=&amp;quot;CategoryName&amp;quot; name=&amp;quot;CategoryName&amp;quot; style=&amp;quot;width:300px;&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;Beverages&amp;quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;TextArea&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%=Html.TextArea(&amp;quot;input5&amp;quot;, Model.CategoryName, 3, 9,null)%&amp;gt;
+&amp;lt;%=Html.TextAreaFor(a =&amp;gt; a.CategoryName, 3, 3, null)%&amp;gt;
+ 
+//生成结果：
+&amp;lt;textarea cols=&amp;quot;9&amp;quot; id=&amp;quot;input5&amp;quot; name=&amp;quot;input5&amp;quot; rows=&amp;quot;3&amp;quot;&amp;gt;Beverages&amp;lt;/textarea&amp;gt;
+&amp;lt;textarea cols=&amp;quot;3&amp;quot; id=&amp;quot;CategoryName&amp;quot; name=&amp;quot;CategoryName&amp;quot; rows=&amp;quot;3&amp;quot;&amp;gt;Beverages&amp;lt;/textarea&amp;gt;
+ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;CheckBox&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%=Html.CheckBox(&amp;quot;chk1&amp;quot;,true) %&amp;gt;
+&amp;lt;%=Html.CheckBox(&amp;quot;chk1&amp;quot;, new { @class=&amp;quot;checkBox&amp;quot;}) %&amp;gt;
+&amp;lt;%=Html.CheckBoxFor(a =&amp;gt;a.IsVaild, new { @class = &amp;quot;checkBox&amp;quot; })%&amp;gt;
+ 
+//生成结果：
+ 
+&amp;lt;input checked=&amp;quot;checked&amp;quot; id=&amp;quot;chk1&amp;quot; name=&amp;quot;chk1&amp;quot; type=&amp;quot;checkbox&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;input name=&amp;quot;chk1&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+ 
+&amp;lt;input class=&amp;quot;checkBox&amp;quot; id=&amp;quot;chk1&amp;quot; name=&amp;quot;chk1&amp;quot; type=&amp;quot;checkbox&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;input name=&amp;quot;chk1&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+ 
+&amp;lt;input checked=&amp;quot;checked&amp;quot; class=&amp;quot;checkBox&amp;quot; id=&amp;quot;IsVaild&amp;quot; name=&amp;quot;IsVaild&amp;quot; type=&amp;quot;checkbox&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;input name=&amp;quot;IsVaild&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;
+ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;7&#34;&gt;
+&lt;li&gt;ListBox&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%=Html.ListBox(&amp;quot;lstBox1&amp;quot;,(SelectList)ViewData[&amp;quot;Categories&amp;quot;])%&amp;gt;
+&amp;lt;%=Html.ListBoxFor(a =&amp;gt; a.CategoryName, (SelectList)ViewData[&amp;quot;Categories&amp;quot;])%&amp;gt;
+ 
+//生成结果：
+&amp;lt;select id=&amp;quot;lstBox1&amp;quot; multiple=&amp;quot;multiple&amp;quot; name=&amp;quot;lstBox1&amp;quot;&amp;gt;
+&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;
+&amp;lt;option selected=&amp;quot;selected&amp;quot; value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;
+&amp;lt;/select&amp;gt;
+&amp;lt;select id=&amp;quot;CategoryName&amp;quot; multiple=&amp;quot;multiple&amp;quot; name=&amp;quot;CategoryName&amp;quot;&amp;gt;
+&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;
+&amp;lt;/select&amp;gt;
+ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;8&#34;&gt;
+&lt;li&gt;DropDownList&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;&amp;lt;%= Html.DropDownList(&amp;quot;ddl1&amp;quot;, (SelectList)ViewData[&amp;quot;Categories&amp;quot;],  &amp;quot;--Select One--&amp;quot;)%&amp;gt;
+&amp;lt;%=Html.DropDownListFor(a =&amp;gt; a.CategoryName, (SelectList)ViewData[&amp;quot;Categories&amp;quot;], &amp;quot;--Select One--&amp;quot;, new { @class = &amp;quot;dropdownlist&amp;quot; })%&amp;gt;
+ 
+//生成结果：
+&amp;lt;select id=&amp;quot;ddl1&amp;quot; name=&amp;quot;ddl1&amp;quot;&amp;gt;
+&amp;lt;option value=&amp;quot;&amp;quot;&amp;gt;--Select One--&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;
+&amp;lt;option selected=&amp;quot;selected&amp;quot; value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;
+&amp;lt;/select&amp;gt;
+&amp;lt;select class=&amp;quot;dropdownlist&amp;quot; id=&amp;quot;CategoryName&amp;quot; name=&amp;quot;CategoryName&amp;quot;&amp;gt;
+&amp;lt;option value=&amp;quot;&amp;quot;&amp;gt;--Select One--&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;
+&amp;lt;/select&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;9&#34;&gt;
+&lt;li&gt;Partial 视图模板&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;//webform里叫自定义控件。功能都是为了复用。但使用上自定义控件真的很难用好。
+&amp;lt;% Html.RenderPartial(&amp;quot;DinnerForm&amp;quot;); %&amp;gt;  看清楚了没有等号的。
+ 
+&lt;/code&gt;&lt;/pre&gt;
+">ASP.NET MVC HtmlHelper用法大全 </a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/shu-ju-ku-she-ji-ji-chong-fan-shi/"" data-c="
+          &lt;h2 id=&#34;数据库的设计&#34;&gt;数据库的设计:&lt;/h2&gt;
+&lt;h3 id=&#34;1多表之间的关系&#34;&gt;1.多表之间的关系&lt;/h3&gt;
+&lt;h4 id=&#34;1分类&#34;&gt;1.分类&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1)一对一(了解)&lt;br&gt;
+如:人和身份证&lt;br&gt;
+分析:一个人只有一个身份证，一个身份证也只能对一个人&lt;br&gt;
+2).一对多(多对一)&lt;br&gt;
+如:部门和员工&lt;br&gt;
+分析:一个部门有多个员工，一个员工只能对应一个部门3).多对多&lt;br&gt;
+如:学生和课程&lt;br&gt;
+分析:一个学生可以选择很多门课程，一个课程也可以被多个学生选择&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;2实现关系&#34;&gt;2.实现关系&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1)一对多(多对一)  部门(主键叫部门ID)和员工(外键部门ID)&lt;br&gt;
+实现方式:在多的一方建立外键，执向一的一方的主键2).多对多关系   学生(ID)和课程(ID)&lt;br&gt;
+实现方式:多对多关系实现需要借助第三张表，中间表至少包含两个字段&lt;br&gt;
+这两个字段作为第三张表的外键，分别指向两张表的主键&lt;br&gt;
+3).一对一  人和身份证&lt;br&gt;
+实现方式:可以在任意一方添加唯一外键指向另一方的主键&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;2数据库设计的范式&#34;&gt;2.数据库设计的范式&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，&lt;br&gt;
+各种范式呈递次规范，越高的范式数据库冗余越小。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;目前关系数据库有六种范式&#34;&gt;目前关系数据库有六种范式&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、&lt;br&gt;
+巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;第一范式1nf&#34;&gt;第一范式（1NF):&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;第二范式2nf&#34;&gt;第二范式(2NF)：&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在1NF的基础上，非码属性必须完全依赖于码（在1NF基础上消除非主属性对主码的部分函数依赖）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;几个概念&#34;&gt;几个概念:&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.函数依赖:A--&amp;gt;B  如果通过A属性(属性组)的值，可以确定唯一的B属性的值，则称B依赖于A&lt;/p&gt;
+&lt;p&gt;​                     学号--&amp;gt;姓名   （学号，课程名）--&amp;gt;分数&lt;/p&gt;
+&lt;p&gt;2.完全函数依赖：A---&amp;gt;B 如果A是一个属性组，则B属性值的确定需要依赖于A属性组中的所有属性&lt;/p&gt;
+&lt;p&gt;​                    学号，课程名---&amp;gt;分数  完全依赖&lt;/p&gt;
+&lt;p&gt;3.部分函数依赖：A--&amp;gt;B  如果A是一个属性组，则B属性的值确定需要依赖于A属性组中某一些值即可。&lt;/p&gt;
+&lt;p&gt;​                        例如：学号，课程名--&amp;gt;姓名&lt;/p&gt;
+&lt;p&gt;4.传递函数依赖，A--&amp;gt;B  B--&amp;gt;C 如果通过A属性(属性组)的值，可以确定唯一的B属性的值，在通过B属性(属性组)的值&lt;/p&gt;
+&lt;p&gt;​     可以确定唯一的C属性，则称，C传递函数依赖于A&lt;br&gt;
+​               学号--&amp;gt;系名--&amp;gt;系主任&lt;/p&gt;
+&lt;p&gt;5.码:如果在一张表中，一个属性或属性组，被其他属性所完全依赖，则称这个属性（属性组）为该表的码。&lt;/p&gt;
+&lt;p&gt;​				例如:本表的码为（学号，课程名）&lt;br&gt;
+​                 主属性：码属性组中的所有属性  学号 课程名&lt;br&gt;
+​                 非主属性:除码属性组之外的所有属性&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;第三范式3nf&#34;&gt;第三范式(3NF)：&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖） 偶数&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;资料链接&#34;&gt;资料链接：&lt;/h2&gt;
+&lt;p&gt;https://baike.so.com/doc/4367825-4573590.html&lt;/p&gt;
+">数据库设计-几种范式</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/shi-me-shi-sqlstructured-query-language-jie-gou-hua-cha-xun-yu-yan/"" data-c="
+          &lt;p&gt;定义了操作所有关系型数据库的规则，每一种数据库操作的方式存&lt;br&gt;
+在不一样的地方，称为方言  Sql server&lt;/p&gt;
+">什么是sqlStructured Query  Language结构化查询语言</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/sql-tong-yong-yu-fa/"" data-c="
+          &lt;p&gt;1.SQL语句可以单行或多行书写，以分号结束&lt;br&gt;
+2.可以使用空格或缩进来增强语句的可读性&lt;br&gt;
+3.MySQL数据库的SQL语句不区分大小写，关键字建议使用大写&lt;br&gt;
+4.MySQL 注释  单行--&lt;br&gt;
+多行注释  /*   */&lt;br&gt;
+注释内容  #(mysql  特有)&lt;br&gt;
+5.SQL分类&lt;br&gt;
+DDL：Data Definition Language  定义&lt;br&gt;
+定义数据库对象:数据库，表，列 Create drop  alter&lt;br&gt;
+DCL：Data Control Language&lt;br&gt;
+数据库控制语言&lt;br&gt;
+访问权限和安全级别，REMOVE  Grank&lt;br&gt;
+DML：Data Manipulation Language&lt;br&gt;
+数据库操作语言:&lt;br&gt;
+数据库中的表进行增删改： insert   delete  update&lt;br&gt;
+DQL:Data Query Language&lt;br&gt;
+数据库查询语言  Select  where等&lt;/p&gt;
+">Sql通用语法</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong/"" data-c="
+          &lt;p&gt;JavaScript window.onload 事件和 jQuery ready 函数之间的主要区别是，前者除了要等待 DOM 被创建还要等到包括大型图片、音频、视频在内的所有外部资源都完全加载。如果加载图片和媒体内容花费了大量时间，用户就会感受到定义在 window.onload 事件上的代码在执行时有明显的延迟。&lt;br&gt;
+另一方面，jQuery ready() 函数只需对 DOM 树的等待，而无需对图像或外部资源加载的等待，从而执行起来更快。使用 jQuery $(document).ready() 的另一个优势是你可以在网页里多次使用它，浏览器会按它们在 HTML 页面里出现的顺序执行它们，相反对于 onload 技术而言，只能在单一函数里使用。鉴于这个好处，用 jQuery ready() 函数比用 JavaScript window.onload 事件要更好些。&lt;/p&gt;
+">JavaScript的window.onload事件和jQuery的ready函数有何不同 </a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/get-he-post/"" data-c="
+          &lt;p&gt;GET在浏览器回退时是无害的，而POST会再次提交请求。&lt;/p&gt;
+&lt;p&gt;GET产生的URL地址可以被Bookmark，而POST不可以。&lt;/p&gt;
+&lt;p&gt;GET请求会被浏览器主动cache，而POST不会，除非手动设置。&lt;/p&gt;
+&lt;p&gt;GET请求只能进行url编码，而POST支持多种编码方式。&lt;/p&gt;
+&lt;p&gt;GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。&lt;/p&gt;
+&lt;p&gt;GET请求在URL中传送的参数是有长度限制的，而POST么有。&lt;/p&gt;
+&lt;p&gt;对参数的数据类型，GET只接受ASCII字符，而POST没有限制。&lt;/p&gt;
+&lt;p&gt;GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。&lt;/p&gt;
+&lt;p&gt;GET参数通过URL传递，POST放在Request body中。&lt;/p&gt;
+&lt;p&gt;详细链接：https://www.cnblogs.com/logsharing/p/8448446.html&lt;/p&gt;
+">get和post</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/svn-jie-chu-ban-ben-kong-zhi/"" data-c="
+          &lt;p&gt;一个项目如果提交到SVN之后，就会在文件夹左下方出现绿色或红色的圆形图标，如果想把该项目引入到另一个项目中去，会发现不能被识别出来，这时候要解除版本控制，解除方法挺诡异的：&lt;br&gt;
+在要解除版本控制的文件夹右键TortoiseSVN–&amp;gt;Export–&amp;gt;选择同一个文件夹（目标文件夹一定要和你右击的文件夹是同一个文件夹），这时就会出现“是否解除版本控制”的对话框。&lt;/p&gt;
+">svn解除版本控制</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/shi-xian-qian-duan-dian-ji-an-niu-zi-dong-fu-zhi-jian-tie-ban-gong-neng/"" data-c="
+          &lt;p&gt;【目录】&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;明确需求&lt;/li&gt;
+&lt;li&gt;html分析
+&lt;ul&gt;
+&lt;li&gt;代码实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;css分析&lt;/li&gt;
+&lt;li&gt;js分析
+&lt;ul&gt;
+&lt;li&gt;代码实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;只要是文本，长按选中就可以复制，但是需求来了挡也挡不住：&lt;/p&gt;
+&lt;h2 id=&#34;明确需求&#34;&gt;明确需求&lt;/h2&gt;
+&lt;p&gt;为了提升用户体验，点击【复制】按钮就自动复制到剪贴板，那么就需要前端实现这种功能了。&lt;/p&gt;
+&lt;p&gt;首先明确了需求就先看一下最终图片：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://user-gold-cdn.xitu.io/2018/5/7/163392f99478483e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;h2 id=&#34;html分析&#34;&gt;html分析&lt;/h2&gt;
+&lt;p&gt;左边是一个input的文本框，只读，右边是一个按钮。&lt;/p&gt;
+&lt;h3 id=&#34;代码实现&#34;&gt;代码实现：&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;&amp;lt;!--左边是一个input输入框，要求只读，而且里面的内容通过url?后面的code传入--&amp;gt;
+&amp;lt;input type=&amp;quot;text&amp;quot; value=&amp;quot;AJS4EFS&amp;quot; readonly id=&amp;quot;textAreas&amp;quot;/&amp;gt;
+&amp;lt;!--右边是一个按钮--&amp;gt;
+&amp;lt;a href=&amp;quot;javascript:;&amp;quot; class=&amp;quot;cuteShareBtn&amp;quot; id=&amp;quot;copy&amp;quot;&amp;gt;复制&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;css分析&#34;&gt;css分析&lt;/h2&gt;
+&lt;p&gt;这种东西就跳过吧，不是重点。&lt;/p&gt;
+&lt;h2 id=&#34;js分析&#34;&gt;js分析&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;点击按钮获取input对象&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果使用的jquery，那么直接$(&amp;quot;#textArea&amp;quot;).select()选中的就是这个input对象&lt;/li&gt;
+&lt;li&gt;如果使用的zepto，上面的方法是获取到的zepto对象是不支持原生select()方法的，那么就使用原生的办法 &lt;code&gt;var obj = document.getElementById(&amp;quot;textAreas&amp;quot;);&lt;/code&gt; &lt;code&gt;obj.select();&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;​	2.然后复制到剪贴板&lt;/p&gt;
+&lt;p&gt;两行？看起来是不是很简单？哈哈~那你就错了，这里面是有坑的。 第一目前没有一个很完美的方法可以兼容各个浏览器和移动端，引用插件也是一样的。 查了半天最好的办法就是使用 &lt;strong&gt;document.execCommand(&amp;quot;Copy&amp;quot;)&lt;/strong&gt; 兼容性是不错的：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://user-gold-cdn.xitu.io/2018/5/7/163392f994522bd0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;3&#34;&gt;&lt;img src=&#34;https://user-gold-cdn.xitu.io/2018/5/7/163392f9946584e9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;手机安卓支持到4.1、各种浏览器是可以的，&lt;strong&gt;但是唯独ios是不支持的&lt;/strong&gt;，来给我把刀，ios你这玩意你限制是干什么？是要保护手机安全还是咋的。 所以只是&lt;strong&gt;pc端&lt;/strong&gt; 使用那么就下面几行代码就可以搞定了：&lt;/p&gt;
+&lt;h3 id=&#34;代码实现-2&#34;&gt;代码实现&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//复制按钮事件绑定
+$(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){
+  //获取input对象
+  var obj = document.getElementById(&amp;quot;textAreas&amp;quot;);
+  //选择当前对象
+  obj.select(); 
+  try{
+    //进行复制到剪切板
+    if(document.execCommand(&amp;quot;Copy&amp;quot;,&amp;quot;false&amp;quot;,null)){
+      //如果复制成功
+      alert(&amp;quot;复制成功！&amp;quot;);  
+    }else{
+      //如果复制失败
+      alert(&amp;quot;复制失败！&amp;quot;);
+    }
+  }catch(err){
+    //如果报错
+    alert(&amp;quot;复制错误！&amp;quot;)
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;那如果是&lt;strong&gt;移动端&lt;/strong&gt; 的话，就要兼容IOS，但是依然在iPhone5的10.2的系统中，依然显示复制失败，由于用户使用率较低，兼容就做到这里，那些用户你们就自己手动复制吧。 下面的两种方法都可以进行复制，因为核心代码就那么几行，先来简单的：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){
+  //获取input对象
+  var obj = document.getElementById(&amp;quot;textAreas&amp;quot;);
+  //如果是ios端
+  if(isiOSDevice){
+    // 获取元素内容是否可编辑和是否只读
+    var editable = obj.contentEditable;
+    var readOnly = obj.readOnly;
+
+    // 将对象变成可编辑的
+    obj.contentEditable = true;
+    obj.readOnly = false;
+
+    // 创建一个Range对象，Range 对象表示文档的连续范围区域，如用户在浏览器窗口中用鼠标拖动选中的区域
+    var range = document.createRange();
+   //获取obj的内容作为选中的范围
+    range.selectNodeContents(obj);
+    
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    obj.setSelectionRange(0, 999999);  //选择范围，确保全选
+    //恢复原来的状态
+    obj.contentEditable = editable;
+    obj.readOnly = readOnly;
+    //如果是安卓端    
+  }else{
+    obj.select();
+  }
+  try{
+    if(document.execCommand(&amp;quot;Copy&amp;quot;,&amp;quot;false&amp;quot;,null)){
+      alert(&amp;quot;复制成功！&amp;quot;);  
+    }else{
+      alert(&amp;quot;复制失败！请手动复制！&amp;quot;);
+    }
+  }catch(err){
+    alert(&amp;quot;复制错误！请手动复制！&amp;quot;)
+  }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下面是一个比较完整的升级版方法，和插件Clipboard.js一样，不过代码不多，就直接拿来用好了。 这个获取的不是input对象，而是需要复制的内容。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//定义函数
+window.Clipboard = (function(window, document, navigator) {
+  var textArea,
+      copy;
+
+  // 判断是不是ios端
+  function isOS() {
+    return navigator.userAgent.match(/ipad|iphone/i);
+  }
+  //创建文本元素
+  function createTextArea(text) {
+    textArea = document.createElement(&#39;textArea&#39;);
+    textArea.value = text;
+    document.body.appendChild(textArea);
+  }
+  //选择内容
+  function selectText() {
+    var range,
+        selection;
+
+    if (isOS()) {
+      range = document.createRange();
+      range.selectNodeContents(textArea);
+      selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      textArea.setSelectionRange(0, 999999);
+    } else {
+      textArea.select();
+    }
+  }
+
+//复制到剪贴板
+  function copyToClipboard() {        
+    try{
+      if(document.execCommand(&amp;quot;Copy&amp;quot;)){
+        alert(&amp;quot;复制成功！&amp;quot;);  
+      }else{
+        alert(&amp;quot;复制失败！请手动复制！&amp;quot;);
+      }
+    }catch(err){
+      alert(&amp;quot;复制错误！请手动复制！&amp;quot;)
+    }
+    document.body.removeChild(textArea);
+  }
+
+  copy = function(text) {
+    createTextArea(text);
+    selectText();
+    copyToClipboard();
+  };
+
+  return {
+    copy: copy
+  };
+})(window, document, navigator);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用函数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;//使用函数
+$(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){
+  var  val = $(&amp;quot;#textAreas&amp;quot;).val();
+  Clipboard.copy(val);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这样就实现了前端点击按钮自动复制剪贴板的功能。 version1.0 —— 2018/5/6，首次创建实现前端点击按钮自动复制剪贴板功能 ©burning_韵七七&lt;/p&gt;
+&lt;p&gt;转自掘金：https://juejin.im/post/5aefeb6e6fb9a07aa43c20af&lt;/p&gt;
+">实现前端点击按钮自动复制剪贴板功能</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://kdt-g.github.io/post/test/"" data-c="
+          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;http://news.mydrivers.com/Img/20120315/2012031510342639.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+">Test</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+  // var escape = "[{&#34;content&#34;:&#34;&lt;h2 id=\&#34;一-原理\&#34;&gt;一、原理&lt;/h2&gt;\n&lt;p&gt;使用iframe标签，更改其中src对应bilibili视频的aid和cid，组装新的HTML源码，即可在文章内嵌入bilibili视频。&lt;/p&gt;\n&lt;h2 id=\&#34;二-获取aid和cid\&#34;&gt;二、获取aid和cid&lt;/h2&gt;\n&lt;p&gt;aid为视频的av号，但是每个av号下不一定只有1p，所以B站用cid来管理视频的真正id，那么也可以说如果视频只有1p，那么cid就无用了，我测试直接填1也是可以的。&lt;/p&gt;\n&lt;p&gt;这里介绍两种获取aid和cid的方法：&lt;/p&gt;\n&lt;h3 id=\&#34;方法一\&#34;&gt;方法一&lt;/h3&gt;\n&lt;p&gt;先观察视频的URL&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;https:``//www.bilibili.com/video/av84267566?from=search&amp;amp;seid=13400362594908841480\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;其中84267566就是av号。&lt;/p&gt;\n&lt;p&gt;或者直接点右键——查看网页源代码——ctrl+f——搜索&#39;aid=&#39;、‘cid=’ 就可以了。&lt;/p&gt;\n&lt;h3 id=\&#34;方法二推荐\&#34;&gt;方法二(推荐)&lt;/h3&gt;\n&lt;p&gt;我们在转发视频的时候直接可以看到嵌入代码&lt;/p&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;1\&#34;&gt;&lt;img src=\&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206150838006-392318847.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;p&gt;这是官方准备的嵌入代码，可以直接拿来用，但是显示效果不是很理想，样式不是我们希望的，需要调整一下。&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;//player.bilibili.com/player.html?aid=84267566&amp;amp;cid=145147963&amp;amp;page=1&amp;quot; scrolling=&amp;quot;no&amp;quot; border=&amp;quot;0&amp;quot; frameborder=&amp;quot;no&amp;quot; framespacing=&amp;quot;0&amp;quot; allowfullscreen=&amp;quot;true&amp;quot;&amp;gt; &amp;lt;/iframe&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;从嵌入代码中我们直接得到了aid和cid&lt;/p&gt;\n&lt;p&gt;我们重新设置一下功能、大小、样式，得到可用的HTML代码&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;//player.bilibili.com/player.html?aid=84267566&amp;amp;amp;cid=145147963&amp;amp;amp;page=1&amp;quot; frameborder=&amp;quot;no&amp;quot; scrolling=&amp;quot;no&amp;quot; width=&amp;quot;95%&amp;quot; height=&amp;quot;600&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;&amp;lt;/p&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;以后插入需要的bilibili视频只需要改变上面的aid和cid就可以了！&lt;/p&gt;\n&lt;h2 id=\&#34;三-移动端适配\&#34;&gt;三、移动端适配&lt;/h2&gt;\n&lt;p&gt;**&lt;a href=\&#34;https://www.cnblogs.com/experdot/\&#34;&gt;ExperDot&lt;/a&gt;**大佬提出移动端出现不适配的问题，我当时其实并没有考虑移动端的问题，固定了播放器的高度造成了这个问题。&lt;/p&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;2\&#34;&gt;&lt;img src=\&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200217230556219-1666126249.png\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;p&gt;大佬已经给出了解决方案&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;position: relative; padding: 30% 45%;&amp;quot;&amp;gt;\n&amp;lt;iframe style=&amp;quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&amp;quot; src=&amp;quot;https://player.bilibili.com/player.html?cid=145147963&amp;amp;aid=84267566&amp;amp;page=1&amp;amp;as_wide=1&amp;amp;high_quality=1&amp;amp;danmaku=0&amp;quot; frameborder=&amp;quot;no&amp;quot; scrolling=&amp;quot;no&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;\n&amp;lt;/div&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;可以用这个代码作为样板，以后只需要改变src的id好就可以了！&lt;/p&gt;\n&lt;p&gt;再次感谢大佬**&lt;a href=\&#34;https://www.cnblogs.com/experdot/\&#34;&gt;ExperDot&lt;/a&gt;**的帮助！&lt;/p&gt;\n&lt;h2 id=\&#34;四-嵌入方法\&#34;&gt;四、嵌入方法&lt;/h2&gt;\n&lt;p&gt;选择tinyMCE编辑器，这是博客园默认的编辑器，选择编辑html原代码，插入上面的代码即可。&lt;/p&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;3\&#34;&gt;&lt;img src=\&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206151748141-1744878901.png\&#34; alt=\&#34;img\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;4\&#34;&gt;&lt;img src=\&#34;https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206153114389-1534665027.png\&#34; alt=\&#34;img\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;h2 id=\&#34;五-参数说明\&#34;&gt;五、参数说明&lt;/h2&gt;\n&lt;p&gt;本来这篇博客是我的游戏之作，但没想到捧场的朋友这么多，我看到评论区有朋友讲清晰度的问题，我这里再说一下几个参数。&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;https://player.bilibili.com/player.html?cid=145147963&amp;amp;aid=84267566&amp;amp;page=1&amp;amp;as_wide=1&amp;amp;high_quality=1&amp;amp;danmaku=0\n&lt;/code&gt;&lt;/pre&gt;\n&lt;table&gt;\n&lt;thead&gt;\n&lt;tr&gt;\n&lt;th&gt;key&lt;/th&gt;\n&lt;th&gt;说明&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/thead&gt;\n&lt;tbody&gt;\n&lt;tr&gt;\n&lt;td&gt;aid&lt;/td&gt;\n&lt;td&gt;视频ID 就是B站的 avxxxx 后面的数字&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td&gt;cid&lt;/td&gt;\n&lt;td&gt;应该是客户端id, clientId 的缩写(推测的, 不一定准确) 经过测试, 这个字段不填也没关系&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td&gt;page&lt;/td&gt;\n&lt;td&gt;第几个视频, 起始下标为 1 (默认值也是为1) 就是B站视频, 选集里的, 第几个视频&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td&gt;as_wide&lt;/td&gt;\n&lt;td&gt;是否宽屏 1: 宽屏, 0: 小屏&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td&gt;high_quality&lt;/td&gt;\n&lt;td&gt;是否高清 1: 高清, 0: 最低视频质量(默认) 如视频有 360p 720p 1080p 三种, 默认或者 high_quality=0 是最低 360p high_quality=1 是最高1080p&lt;/td&gt;\n&lt;/tr&gt;\n&lt;tr&gt;\n&lt;td&gt;danmaku&lt;/td&gt;\n&lt;td&gt;是否开启弹幕 1: 开启(默认), 0: 关闭&lt;/td&gt;\n&lt;/tr&gt;\n&lt;/tbody&gt;\n&lt;/table&gt;\n&lt;p&gt;所以只要设置&lt;strong&gt;high_quality=1&lt;/strong&gt;就能开启最高画质了。&lt;/p&gt;\n&lt;p&gt;B站官方并没有给出文档说明.....但我发现论坛上有一些相关的讨论&lt;/p&gt;\n&lt;p&gt;&lt;a href=\&#34;http://link.acg.tv/forum.php?mod=viewthread&amp;amp;tid=22308&amp;amp;highlight=%E6%92%AD%E6%94%BE%E5%99%A8%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%A8%E5%93%AA%E9%87%8C%E5%91%A2\&#34;&gt;&lt;strong&gt;相关链接&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;经测试high_quality参数可以正常使用，此参数控制外链播放器的默认清晰度：&lt;br&gt;\n=1时默认清晰度是最高非大会员清晰度，例如：&lt;br&gt;\n（1）原视频清晰度有360P、480P、720P，外链播放器默认为最高的720P，&lt;br&gt;\n（2）原视频清晰度有360P、480P、720P、1080P，外链播放器默认为最高的1080P，&lt;br&gt;\n（3）原视频清晰度有360P、480P、720P、1080P、1080P+，外链播放器默认为1080P，&lt;br&gt;\n选择其他清晰度会打开原视频页面，&lt;/p&gt;\n&lt;p&gt;=其他数值或没有此参数时默认清晰度是360P，选择其他清晰度会打开原视频页面。&lt;/p&gt;\n&lt;h2 id=\&#34;六-示例\&#34;&gt;六、示例&lt;/h2&gt;\n&lt;p&gt;这里给出2020拜年祭的《万古生香》&lt;/p&gt;\n&lt;p&gt;万古千秋，代代有玲珑气象！&lt;br&gt;\n风云史往，页页赋秀骨生香！&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;position: relative; padding: 30% 45%;&amp;quot;&amp;gt;\n&amp;lt;iframe style=&amp;quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&amp;quot; src=&amp;quot;https://player.bilibili.com/player.html?cid=145147963&amp;amp;aid=84267566&amp;amp;page=1&amp;amp;as_wide=1&amp;amp;high_quality=1&amp;amp;danmaku=0&amp;quot; frameborder=&amp;quot;no&amp;quot; scrolling=&amp;quot;no&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;\n&amp;lt;/div&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;div style=\&#34;position: relative; padding: 30% 45%;\&#34;&gt;\n&lt;iframe style=\&#34;position: absolute; width: 100%; height: 100%; left: 0; top: 0;\&#34; src=\&#34;https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0\&#34; frameborder=\&#34;no\&#34; scrolling=\&#34;no\&#34;&gt;&lt;/iframe&gt;\n&lt;/div&gt;\n&lt;hr&gt;\n&lt;p&gt;转自博客园：&lt;a href=\&#34;https://www.cnblogs.com/wkfvawl/p/12268980.html\&#34;&gt;https://www.cnblogs.com/wkfvawl/p/12268980.html&lt;a&gt;&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;关于博客园内嵌入bilibili视频(转)&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;有趣的编程知识&#34;,&#34;slug&#34;:&#34;T7mykyUdq&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/T7mykyUdq/&#34;}],&#34;date&#34;:&#34;2020-04-29 10:14:14&#34;,&#34;dateFormat&#34;:&#34;2020-04-29&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;5 min read&#34;,&#34;time&#34;:290000,&#34;words&#34;:1154,&#34;minutes&#34;:5},&#34;description&#34;:&#34;一、原理\n使用iframe标签，更改其中src对应bilibili视频的aid和cid，组装新的HTML源码，即可在文章内嵌入bilibili视频。\n二、获取aid和cid\naid为视频的av号，但是每个av号下不一定只有1p，所以B站用c...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%80-%E5%8E%9F%E7%90%86\&#34;&gt;一、原理&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%8C-%E8%8E%B7%E5%8F%96aid%E5%92%8Ccid\&#34;&gt;二、获取aid和cid&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%96%B9%E6%B3%95%E4%B8%80\&#34;&gt;方法一&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%96%B9%E6%B3%95%E4%BA%8C%E6%8E%A8%E8%8D%90\&#34;&gt;方法二(推荐)&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%89-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D\&#34;&gt;三、移动端适配&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%9B%9B-%E5%B5%8C%E5%85%A5%E6%96%B9%E6%B3%95\&#34;&gt;四、嵌入方法&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%94-%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E\&#34;&gt;五、参数说明&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%85%AD-%E7%A4%BA%E4%BE%8B\&#34;&gt;六、示例&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;div style=\&#34;position: relative; padding: 30% 45%;\&#34;&gt;\n&lt;iframe style=\&#34;position: absolute; width: 100%; height: 100%; left: 0; top: 0;\&#34; src=\&#34;https://player.bilibili.com/player.html?aid=86238906&amp;bvid=BV1X7411x7ao&amp;cid=147396296&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0\&#34; frameborder=\&#34;no\&#34; scrolling=\&#34;no\&#34;&gt;&lt;/iframe&gt;\n&lt;/div&gt;\n&#34;,&#34;fileName&#34;:&#34;12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;12分钟上手CSS【看懂封面就理解CSS】&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;有趣的编程知识&#34;,&#34;slug&#34;:&#34;T7mykyUdq&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/T7mykyUdq/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:48:53&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;0 min read&#34;,&#34;time&#34;:0,&#34;words&#34;:0,&#34;minutes&#34;:0},&#34;description&#34;:&#34;\n\n\n...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;div style=\&#34;position: relative; padding: 30% 45%;\&#34;&gt;\n&lt;iframe style=\&#34;position: absolute; width: 100%; height: 100%; left: 0; top: 0;\&#34; src=\&#34;https://player.bilibili.com/player.html?aid=85460523&amp;bvid=BV137411z7KM&amp;cid=146081137&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0\&#34; frameborder=\&#34;no\&#34; scrolling=\&#34;no\&#34;&gt;&lt;/iframe&gt;\n&lt;/div&gt;&#34;,&#34;fileName&#34;:&#34;1&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;老说的API到底是什么??&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;有趣的编程知识&#34;,&#34;slug&#34;:&#34;T7mykyUdq&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/T7mykyUdq/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:41:38&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/1/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;0 min read&#34;,&#34;time&#34;:0,&#34;words&#34;:0,&#34;minutes&#34;:0},&#34;description&#34;:&#34;\n\n...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;例如要给StringBuilder加一个拓展方法，在一个静态类中，写一个公开的静态方法，参数列表中加上 (this+空格+StringBuilder S ,参数1，参数2，····· )&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;public static  void Add(this StringBuilder S,int a, string b,int c,***){}\n&lt;/code&gt;&lt;/pre&gt;\n&#34;,&#34;fileName&#34;:&#34;ctuo-zhan-fang-fa&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;c#拓展方法&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;c#&#34;,&#34;slug&#34;:&#34;nI-E4R45lf&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/nI-E4R45lf/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:29:44&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/ctuo-zhan-fang-fa/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:15000,&#34;words&#34;:60,&#34;minutes&#34;:1},&#34;description&#34;:&#34;例如要给StringBuilder加一个拓展方法，在一个静态类中，写一个公开的静态方法，参数列表中加上 (this+空格+StringBuilder S ,参数1，参数2，····· )\npublic static  void Add(th...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;C#隐式类型是.net4.0推出的新功能特性，我们先了解一下什么是隐式类型？&lt;br&gt;\n当程序中使用了隐式类型，那么这个变量不需要指定其数据类型，由操作系统自动判断其数据类型，但它绝对不会进行装箱和拆箱的操作。&lt;br&gt;\n以前我们在定义变量的时间，必须要指定变量的数据类型，隐式类型变量是用var关键字来表示的，当使用了var关键字定义的变量就不需要指定其数据类型。例：var flag1=2;var flag2=&amp;quot;张三&amp;quot;;var flag3=true;以上定义隐式类型变量都是正确的，但是使用了隐式类型变量需要注意如下几点：1、使用var作为定义隐式类型的关键字，var其实也是javascript定义变量的语法；2、定义隐式类型时，必须为它赋值，例var str=“test”；3、赋值后，变量的值可以修改，但是值的数据类型是不可更改的；4、隐式类型具体是什么类型，是初始化的值，由编译器自动判断。&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;shi-me-shi-yin-shi-lei-xing&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;什么是隐式类型&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;c#&#34;,&#34;slug&#34;:&#34;nI-E4R45lf&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/nI-E4R45lf/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:29:09&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/shi-me-shi-yin-shi-lei-xing/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:63000,&#34;words&#34;:296,&#34;minutes&#34;:2},&#34;description&#34;:&#34;C#隐式类型是.net4.0推出的新功能特性，我们先了解一下什么是隐式类型？\n当程序中使用了隐式类型，那么这个变量不需要指定其数据类型，由操作系统自动判断其数据类型，但它绝对不会进行装箱和拆箱的操作。\n以前我们在定义变量的时间，必须要指定变...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;HTML扩展类的所有方法都有2个参数：&lt;br&gt;\n以textbox为例子&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;public static string TextBox( this HtmlHelper htmlHelper, string name, Object value, IDictionary&amp;lt;string, Object&amp;gt; htmlAttributes )\npublic static string TextBox( this HtmlHelper htmlHelper, string name, Object value, Object htmlAttributes )\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;这2个参数代表这个html标签的属性集合。使用方法如下。&lt;/p&gt;\n&lt;p&gt;1.ActionLink&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;)%&amp;gt;\n\n//带有QueryString的写法\n\n&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new { page=1 },null)%&amp;gt;\n\n&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, new { page=1 })%&amp;gt;有其它Html属性的写法&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new { id=&amp;quot;link1&amp;quot; })%&amp;gt;\n\n&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;,null, new { id=&amp;quot;link1&amp;quot; })%&amp;gt;\n\n//QueryString与Html属性同时存在\n\n&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot;, &amp;quot;Home&amp;quot;, new { page = 1 }, new { id = &amp;quot;link1&amp;quot; })%&amp;gt;&amp;lt;%=Html.ActionLink(&amp;quot;这是一个连接&amp;quot;, &amp;quot;Index&amp;quot; , new { page = 1 }, new { id = &amp;quot;link1&amp;quot; })%&amp;gt; \n\n//生成结果为：\n\n&amp;lt; a href=&amp;quot;/&amp;quot;&amp;gt; 这是一个连接 &amp;lt; /a &amp;gt; \n\n//带有QueryString的写法\n\n&amp;lt; a href=&amp;quot;/?page=1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;\n\n&amp;lt; a href=&amp;quot;/?page=1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;\n\n//有其它Html属性的写法\n\n&amp;lt; a href=&amp;quot;/?Length=4&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;\n\n&amp;lt; a href=&amp;quot;/&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;\n\n//QueryString与Html属性同时存在\n\n&amp;lt; a href=&amp;quot;/?page=1&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;\n\n&amp;lt; a href=&amp;quot;/?page=1&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;这是一个连接&amp;lt; /a&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;2\&#34;&gt;\n&lt;li&gt;RouteLink&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;跟ActionLink在功能上一样。\n&amp;lt;%=Html.RouteLink(&amp;quot;关于&amp;quot;, &amp;quot;about&amp;quot;, new { })%&amp;gt;\n带QueryString\n&amp;lt;%=Html.RouteLink(&amp;quot;关于&amp;quot;, &amp;quot;about&amp;quot;, new { page = 1 })%&amp;gt;\n&amp;lt;%=Html.RouteLink(&amp;quot;关于&amp;quot;, &amp;quot;about&amp;quot;, new { page = 1 }, new { id = &amp;quot;link1&amp;quot; })%&amp;gt;\n \n生成结果：\n&amp;lt;a href=&amp;quot;/about&amp;quot;&amp;gt;关于&amp;lt;/a&amp;gt;\n&amp;lt;a href=&amp;quot;/about?page=1&amp;quot;&amp;gt;关于&amp;lt;/a&amp;gt;\n&amp;lt;a href=&amp;quot;/about?page=1&amp;quot; id=&amp;quot;link1&amp;quot;&amp;gt;关于&amp;lt;/a&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;3\&#34;&gt;\n&lt;li&gt;Form 2种方法&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%using(Html.BeginForm(&amp;quot;index&amp;quot;,&amp;quot;home&amp;quot;,FormMethod.Post)){%&amp;gt;\n&amp;lt;%} %&amp;gt;\n \n&amp;lt;%Html.BeginForm(&amp;quot;index&amp;quot;, &amp;quot;home&amp;quot;, FormMethod.Post);//注意这里没有=输出%&amp;gt;\n&amp;lt;%Html.EndForm(); %&amp;gt;\n    \n //生成结果：\n&amp;lt;form action=&amp;quot;/home/index&amp;quot; method=&amp;quot;post&amp;quot;&amp;gt;&amp;lt;/form&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;4\&#34;&gt;\n&lt;li&gt;TextBox , Hidden ,&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%=Html.TextBox(&amp;quot;input1&amp;quot;) %&amp;gt;\n&amp;lt;%=Html.TextBox(&amp;quot;input2&amp;quot;,Model.CategoryName,new{ @style = &amp;quot;width:300px;&amp;quot; }) %&amp;gt;\n&amp;lt;%=Html.TextBox(&amp;quot;input3&amp;quot;, ViewData[&amp;quot;Name&amp;quot;],new{ @style = &amp;quot;width:300px;&amp;quot; }) %&amp;gt;\n&amp;lt;%=Html.TextBoxFor(a =&amp;gt; a.CategoryName, new { @style = &amp;quot;width:300px;&amp;quot; })%&amp;gt;\n \n//生成结果：\n \n&amp;lt;input id=&amp;quot;input1&amp;quot; name=&amp;quot;input1&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;\n&amp;lt;input id=&amp;quot;input2&amp;quot; name=&amp;quot;input2&amp;quot; style=&amp;quot;width:300px;&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;Beverages&amp;quot; /&amp;gt;\n&amp;lt;input id=&amp;quot;input3&amp;quot; name=&amp;quot;input3&amp;quot; style=&amp;quot;width:300px;&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;&amp;quot; /&amp;gt;\n&amp;lt;input id=&amp;quot;CategoryName&amp;quot; name=&amp;quot;CategoryName&amp;quot; style=&amp;quot;width:300px;&amp;quot; type=&amp;quot;text&amp;quot; value=&amp;quot;Beverages&amp;quot; /&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;5\&#34;&gt;\n&lt;li&gt;TextArea&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%=Html.TextArea(&amp;quot;input5&amp;quot;, Model.CategoryName, 3, 9,null)%&amp;gt;\n&amp;lt;%=Html.TextAreaFor(a =&amp;gt; a.CategoryName, 3, 3, null)%&amp;gt;\n \n//生成结果：\n&amp;lt;textarea cols=&amp;quot;9&amp;quot; id=&amp;quot;input5&amp;quot; name=&amp;quot;input5&amp;quot; rows=&amp;quot;3&amp;quot;&amp;gt;Beverages&amp;lt;/textarea&amp;gt;\n&amp;lt;textarea cols=&amp;quot;3&amp;quot; id=&amp;quot;CategoryName&amp;quot; name=&amp;quot;CategoryName&amp;quot; rows=&amp;quot;3&amp;quot;&amp;gt;Beverages&amp;lt;/textarea&amp;gt;\n \n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;6\&#34;&gt;\n&lt;li&gt;CheckBox&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%=Html.CheckBox(&amp;quot;chk1&amp;quot;,true) %&amp;gt;\n&amp;lt;%=Html.CheckBox(&amp;quot;chk1&amp;quot;, new { @class=&amp;quot;checkBox&amp;quot;}) %&amp;gt;\n&amp;lt;%=Html.CheckBoxFor(a =&amp;gt;a.IsVaild, new { @class = &amp;quot;checkBox&amp;quot; })%&amp;gt;\n \n//生成结果：\n \n&amp;lt;input checked=&amp;quot;checked&amp;quot; id=&amp;quot;chk1&amp;quot; name=&amp;quot;chk1&amp;quot; type=&amp;quot;checkbox&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;input name=&amp;quot;chk1&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;\n \n&amp;lt;input class=&amp;quot;checkBox&amp;quot; id=&amp;quot;chk1&amp;quot; name=&amp;quot;chk1&amp;quot; type=&amp;quot;checkbox&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;input name=&amp;quot;chk1&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;\n \n&amp;lt;input checked=&amp;quot;checked&amp;quot; class=&amp;quot;checkBox&amp;quot; id=&amp;quot;IsVaild&amp;quot; name=&amp;quot;IsVaild&amp;quot; type=&amp;quot;checkbox&amp;quot; value=&amp;quot;true&amp;quot; /&amp;gt;&amp;lt;input name=&amp;quot;IsVaild&amp;quot; type=&amp;quot;hidden&amp;quot; value=&amp;quot;false&amp;quot; /&amp;gt;\n \n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;7\&#34;&gt;\n&lt;li&gt;ListBox&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%=Html.ListBox(&amp;quot;lstBox1&amp;quot;,(SelectList)ViewData[&amp;quot;Categories&amp;quot;])%&amp;gt;\n&amp;lt;%=Html.ListBoxFor(a =&amp;gt; a.CategoryName, (SelectList)ViewData[&amp;quot;Categories&amp;quot;])%&amp;gt;\n \n//生成结果：\n&amp;lt;select id=&amp;quot;lstBox1&amp;quot; multiple=&amp;quot;multiple&amp;quot; name=&amp;quot;lstBox1&amp;quot;&amp;gt;\n&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;\n&amp;lt;option selected=&amp;quot;selected&amp;quot; value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;\n&amp;lt;/select&amp;gt;\n&amp;lt;select id=&amp;quot;CategoryName&amp;quot; multiple=&amp;quot;multiple&amp;quot; name=&amp;quot;CategoryName&amp;quot;&amp;gt;\n&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;\n&amp;lt;/select&amp;gt;\n \n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;8\&#34;&gt;\n&lt;li&gt;DropDownList&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;&amp;lt;%= Html.DropDownList(&amp;quot;ddl1&amp;quot;, (SelectList)ViewData[&amp;quot;Categories&amp;quot;],  &amp;quot;--Select One--&amp;quot;)%&amp;gt;\n&amp;lt;%=Html.DropDownListFor(a =&amp;gt; a.CategoryName, (SelectList)ViewData[&amp;quot;Categories&amp;quot;], &amp;quot;--Select One--&amp;quot;, new { @class = &amp;quot;dropdownlist&amp;quot; })%&amp;gt;\n \n//生成结果：\n&amp;lt;select id=&amp;quot;ddl1&amp;quot; name=&amp;quot;ddl1&amp;quot;&amp;gt;\n&amp;lt;option value=&amp;quot;&amp;quot;&amp;gt;--Select One--&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;\n&amp;lt;option selected=&amp;quot;selected&amp;quot; value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;\n&amp;lt;/select&amp;gt;\n&amp;lt;select class=&amp;quot;dropdownlist&amp;quot; id=&amp;quot;CategoryName&amp;quot; name=&amp;quot;CategoryName&amp;quot;&amp;gt;\n&amp;lt;option value=&amp;quot;&amp;quot;&amp;gt;--Select One--&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;1&amp;quot;&amp;gt;Beverages&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;2&amp;quot;&amp;gt;Condiments&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;3&amp;quot;&amp;gt;Confections&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;4&amp;quot;&amp;gt;Dairy Products&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;5&amp;quot;&amp;gt;Grains/Cereals&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;6&amp;quot;&amp;gt;Meat/Poultry&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;7&amp;quot;&amp;gt;Produce&amp;lt;/option&amp;gt;\n&amp;lt;option value=&amp;quot;8&amp;quot;&amp;gt;Seafood&amp;lt;/option&amp;gt;\n&amp;lt;/select&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ol start=\&#34;9\&#34;&gt;\n&lt;li&gt;Partial 视图模板&lt;/li&gt;\n&lt;/ol&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-c#\&#34;&gt;//webform里叫自定义控件。功能都是为了复用。但使用上自定义控件真的很难用好。\n&amp;lt;% Html.RenderPartial(&amp;quot;DinnerForm&amp;quot;); %&amp;gt;  看清楚了没有等号的。\n \n&lt;/code&gt;&lt;/pre&gt;\n&#34;,&#34;fileName&#34;:&#34;aspnet-mvc-htmlhelper-yong-fa-da-quan&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;ASP.NET MVC HtmlHelper用法大全 &#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;mvc&#34;,&#34;slug&#34;:&#34;eUm3DzwKG9&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/eUm3DzwKG9/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:18:06&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/aspnet-mvc-htmlhelper-yong-fa-da-quan/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;9 min read&#34;,&#34;time&#34;:529000,&#34;words&#34;:1538,&#34;minutes&#34;:9},&#34;description&#34;:&#34;HTML扩展类的所有方法都有2个参数：\n以textbox为例子\npublic static string TextBox( this HtmlHelper htmlHelper, string name, Object value, IDi...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;h2 id=\&#34;数据库的设计\&#34;&gt;数据库的设计:&lt;/h2&gt;\n&lt;h3 id=\&#34;1多表之间的关系\&#34;&gt;1.多表之间的关系&lt;/h3&gt;\n&lt;h4 id=\&#34;1分类\&#34;&gt;1.分类&lt;/h4&gt;\n&lt;blockquote&gt;\n&lt;p&gt;1)一对一(了解)&lt;br&gt;\n如:人和身份证&lt;br&gt;\n分析:一个人只有一个身份证，一个身份证也只能对一个人&lt;br&gt;\n2).一对多(多对一)&lt;br&gt;\n如:部门和员工&lt;br&gt;\n分析:一个部门有多个员工，一个员工只能对应一个部门3).多对多&lt;br&gt;\n如:学生和课程&lt;br&gt;\n分析:一个学生可以选择很多门课程，一个课程也可以被多个学生选择&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h4 id=\&#34;2实现关系\&#34;&gt;2.实现关系&lt;/h4&gt;\n&lt;blockquote&gt;\n&lt;p&gt;1)一对多(多对一)  部门(主键叫部门ID)和员工(外键部门ID)&lt;br&gt;\n实现方式:在多的一方建立外键，执向一的一方的主键2).多对多关系   学生(ID)和课程(ID)&lt;br&gt;\n实现方式:多对多关系实现需要借助第三张表，中间表至少包含两个字段&lt;br&gt;\n这两个字段作为第三张表的外键，分别指向两张表的主键&lt;br&gt;\n3).一对一  人和身份证&lt;br&gt;\n实现方式:可以在任意一方添加唯一外键指向另一方的主键&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;2数据库设计的范式\&#34;&gt;2.数据库设计的范式&lt;/h3&gt;\n&lt;blockquote&gt;\n&lt;p&gt;设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，&lt;br&gt;\n各种范式呈递次规范，越高的范式数据库冗余越小。&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h3 id=\&#34;目前关系数据库有六种范式\&#34;&gt;目前关系数据库有六种范式&lt;/h3&gt;\n&lt;blockquote&gt;\n&lt;p&gt;第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、&lt;br&gt;\n巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h4 id=\&#34;第一范式1nf\&#34;&gt;第一范式（1NF):&lt;/h4&gt;\n&lt;blockquote&gt;\n&lt;p&gt;即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h4 id=\&#34;第二范式2nf\&#34;&gt;第二范式(2NF)：&lt;/h4&gt;\n&lt;blockquote&gt;\n&lt;p&gt;在1NF的基础上，非码属性必须完全依赖于码（在1NF基础上消除非主属性对主码的部分函数依赖）&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h5 id=\&#34;几个概念\&#34;&gt;几个概念:&lt;/h5&gt;\n&lt;blockquote&gt;\n&lt;p&gt;1.函数依赖:A--&amp;gt;B  如果通过A属性(属性组)的值，可以确定唯一的B属性的值，则称B依赖于A&lt;/p&gt;\n&lt;p&gt;​                     学号--&amp;gt;姓名   （学号，课程名）--&amp;gt;分数&lt;/p&gt;\n&lt;p&gt;2.完全函数依赖：A---&amp;gt;B 如果A是一个属性组，则B属性值的确定需要依赖于A属性组中的所有属性&lt;/p&gt;\n&lt;p&gt;​                    学号，课程名---&amp;gt;分数  完全依赖&lt;/p&gt;\n&lt;p&gt;3.部分函数依赖：A--&amp;gt;B  如果A是一个属性组，则B属性的值确定需要依赖于A属性组中某一些值即可。&lt;/p&gt;\n&lt;p&gt;​                        例如：学号，课程名--&amp;gt;姓名&lt;/p&gt;\n&lt;p&gt;4.传递函数依赖，A--&amp;gt;B  B--&amp;gt;C 如果通过A属性(属性组)的值，可以确定唯一的B属性的值，在通过B属性(属性组)的值&lt;/p&gt;\n&lt;p&gt;​     可以确定唯一的C属性，则称，C传递函数依赖于A&lt;br&gt;\n​               学号--&amp;gt;系名--&amp;gt;系主任&lt;/p&gt;\n&lt;p&gt;5.码:如果在一张表中，一个属性或属性组，被其他属性所完全依赖，则称这个属性（属性组）为该表的码。&lt;/p&gt;\n&lt;p&gt;​\t\t\t\t例如:本表的码为（学号，课程名）&lt;br&gt;\n​                 主属性：码属性组中的所有属性  学号 课程名&lt;br&gt;\n​                 非主属性:除码属性组之外的所有属性&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h4 id=\&#34;第三范式3nf\&#34;&gt;第三范式(3NF)：&lt;/h4&gt;\n&lt;blockquote&gt;\n&lt;p&gt;在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖） 偶数&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;h2 id=\&#34;资料链接\&#34;&gt;资料链接：&lt;/h2&gt;\n&lt;p&gt;https://baike.so.com/doc/4367825-4573590.html&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;shu-ju-ku-she-ji-ji-chong-fan-shi&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;数据库设计-几种范式&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;sql&#34;,&#34;slug&#34;:&#34;aR7QCwnSlO&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/aR7QCwnSlO/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:16:04&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/shu-ju-ku-she-ji-ji-chong-fan-shi/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;4 min read&#34;,&#34;time&#34;:184000,&#34;words&#34;:859,&#34;minutes&#34;:4},&#34;description&#34;:&#34;数据库的设计:\n1.多表之间的关系\n1.分类\n\n1)一对一(了解)\n如:人和身份证\n分析:一个人只有一个身份证，一个身份证也只能对一个人\n2).一对多(多对一)\n如:部门和员工\n分析:一个部门有多个员工，一个员工只能对应一个部门3).多对多...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1\&#34;&gt;数据库的设计:&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#1%E5%A4%9A%E8%A1%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB\&#34;&gt;1.多表之间的关系&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#1%E5%88%86%E7%B1%BB\&#34;&gt;1.分类&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#2%E5%AE%9E%E7%8E%B0%E5%85%B3%E7%B3%BB\&#34;&gt;2.实现关系&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#2%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%8C%83%E5%BC%8F\&#34;&gt;2.数据库设计的范式&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%9B%AE%E5%89%8D%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9C%89%E5%85%AD%E7%A7%8D%E8%8C%83%E5%BC%8F\&#34;&gt;目前关系数据库有六种范式&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F1nf\&#34;&gt;第一范式（1NF):&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F2nf\&#34;&gt;第二范式(2NF)：&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5\&#34;&gt;几个概念:&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F3nf\&#34;&gt;第三范式(3NF)：&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%B5%84%E6%96%99%E9%93%BE%E6%8E%A5\&#34;&gt;资料链接：&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;p&gt;定义了操作所有关系型数据库的规则，每一种数据库操作的方式存&lt;br&gt;\n在不一样的地方，称为方言  Sql server&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;shi-me-shi-sqlstructured-query-language-jie-gou-hua-cha-xun-yu-yan&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;什么是sqlStructured Query  Language结构化查询语言&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;sql&#34;,&#34;slug&#34;:&#34;aR7QCwnSlO&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/aR7QCwnSlO/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:15:11&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/shi-me-shi-sqlstructured-query-language-jie-gou-hua-cha-xun-yu-yan/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:8000,&#34;words&#34;:41,&#34;minutes&#34;:1},&#34;description&#34;:&#34;定义了操作所有关系型数据库的规则，每一种数据库操作的方式存\n在不一样的地方，称为方言  Sql server\n&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;1.SQL语句可以单行或多行书写，以分号结束&lt;br&gt;\n2.可以使用空格或缩进来增强语句的可读性&lt;br&gt;\n3.MySQL数据库的SQL语句不区分大小写，关键字建议使用大写&lt;br&gt;\n4.MySQL 注释  单行--&lt;br&gt;\n多行注释  /*   */&lt;br&gt;\n注释内容  #(mysql  特有)&lt;br&gt;\n5.SQL分类&lt;br&gt;\nDDL：Data Definition Language  定义&lt;br&gt;\n定义数据库对象:数据库，表，列 Create drop  alter&lt;br&gt;\nDCL：Data Control Language&lt;br&gt;\n数据库控制语言&lt;br&gt;\n访问权限和安全级别，REMOVE  Grank&lt;br&gt;\nDML：Data Manipulation Language&lt;br&gt;\n数据库操作语言:&lt;br&gt;\n数据库中的表进行增删改： insert   delete  update&lt;br&gt;\nDQL:Data Query Language&lt;br&gt;\n数据库查询语言  Select  where等&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;sql-tong-yong-yu-fa&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Sql通用语法&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;sql&#34;,&#34;slug&#34;:&#34;aR7QCwnSlO&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/aR7QCwnSlO/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:13:06&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/sql-tong-yong-yu-fa/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:38000,&#34;words&#34;:163,&#34;minutes&#34;:1},&#34;description&#34;:&#34;1.SQL语句可以单行或多行书写，以分号结束\n2.可以使用空格或缩进来增强语句的可读性\n3.MySQL数据库的SQL语句不区分大小写，关键字建议使用大写\n4.MySQL 注释  单行--\n多行注释  /*   */\n注释内容  #(mysq...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;JavaScript window.onload 事件和 jQuery ready 函数之间的主要区别是，前者除了要等待 DOM 被创建还要等到包括大型图片、音频、视频在内的所有外部资源都完全加载。如果加载图片和媒体内容花费了大量时间，用户就会感受到定义在 window.onload 事件上的代码在执行时有明显的延迟。&lt;br&gt;\n另一方面，jQuery ready() 函数只需对 DOM 树的等待，而无需对图像或外部资源加载的等待，从而执行起来更快。使用 jQuery $(document).ready() 的另一个优势是你可以在网页里多次使用它，浏览器会按它们在 HTML 页面里出现的顺序执行它们，相反对于 onload 技术而言，只能在单一函数里使用。鉴于这个好处，用 jQuery ready() 函数比用 JavaScript window.onload 事件要更好些。&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;JavaScript的window.onload事件和jQuery的ready函数有何不同 &#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;前端&#34;,&#34;slug&#34;:&#34;E_OFTC58Mr&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/E_OFTC58Mr/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:12:05&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:49000,&#34;words&#34;:229,&#34;minutes&#34;:1},&#34;description&#34;:&#34;JavaScript window.onload 事件和 jQuery ready 函数之间的主要区别是，前者除了要等待 DOM 被创建还要等到包括大型图片、音频、视频在内的所有外部资源都完全加载。如果加载图片和媒体内容花费了大量时间，用户...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;GET在浏览器回退时是无害的，而POST会再次提交请求。&lt;/p&gt;\n&lt;p&gt;GET产生的URL地址可以被Bookmark，而POST不可以。&lt;/p&gt;\n&lt;p&gt;GET请求会被浏览器主动cache，而POST不会，除非手动设置。&lt;/p&gt;\n&lt;p&gt;GET请求只能进行url编码，而POST支持多种编码方式。&lt;/p&gt;\n&lt;p&gt;GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。&lt;/p&gt;\n&lt;p&gt;GET请求在URL中传送的参数是有长度限制的，而POST么有。&lt;/p&gt;\n&lt;p&gt;对参数的数据类型，GET只接受ASCII字符，而POST没有限制。&lt;/p&gt;\n&lt;p&gt;GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。&lt;/p&gt;\n&lt;p&gt;GET参数通过URL传递，POST放在Request body中。&lt;/p&gt;\n&lt;p&gt;详细链接：https://www.cnblogs.com/logsharing/p/8448446.html&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;get-he-post&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;get和post&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;net&#34;,&#34;slug&#34;:&#34;RwHerlIOlE&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/RwHerlIOlE/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:11:15&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/get-he-post/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:44000,&#34;words&#34;:199,&#34;minutes&#34;:1},&#34;description&#34;:&#34;GET在浏览器回退时是无害的，而POST会再次提交请求。\nGET产生的URL地址可以被Bookmark，而POST不可以。\nGET请求会被浏览器主动cache，而POST不会，除非手动设置。\nGET请求只能进行url编码，而POST支持多种...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;一个项目如果提交到SVN之后，就会在文件夹左下方出现绿色或红色的圆形图标，如果想把该项目引入到另一个项目中去，会发现不能被识别出来，这时候要解除版本控制，解除方法挺诡异的：&lt;br&gt;\n在要解除版本控制的文件夹右键TortoiseSVN–&amp;gt;Export–&amp;gt;选择同一个文件夹（目标文件夹一定要和你右击的文件夹是同一个文件夹），这时就会出现“是否解除版本控制”的对话框。&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;svn-jie-chu-ban-ben-kong-zhi&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;svn解除版本控制&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;svn&#34;,&#34;slug&#34;:&#34;ceX2b77GjA&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/ceX2b77GjA/&#34;}],&#34;date&#34;:&#34;2020-04-28 10:03:31&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/svn-jie-chu-ban-ben-kong-zhi/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;1 min read&#34;,&#34;time&#34;:29000,&#34;words&#34;:145,&#34;minutes&#34;:1},&#34;description&#34;:&#34;一个项目如果提交到SVN之后，就会在文件夹左下方出现绿色或红色的圆形图标，如果想把该项目引入到另一个项目中去，会发现不能被识别出来，这时候要解除版本控制，解除方法挺诡异的：\n在要解除版本控制的文件夹右键TortoiseSVN–&amp;gt;Exp...&#34;,&#34;toc&#34;:&#34;&#34;},{&#34;content&#34;:&#34;&lt;p&gt;【目录】&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;明确需求&lt;/li&gt;\n&lt;li&gt;html分析\n&lt;ul&gt;\n&lt;li&gt;代码实现&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;css分析&lt;/li&gt;\n&lt;li&gt;js分析\n&lt;ul&gt;\n&lt;li&gt;代码实现&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;只要是文本，长按选中就可以复制，但是需求来了挡也挡不住：&lt;/p&gt;\n&lt;h2 id=\&#34;明确需求\&#34;&gt;明确需求&lt;/h2&gt;\n&lt;p&gt;为了提升用户体验，点击【复制】按钮就自动复制到剪贴板，那么就需要前端实现这种功能了。&lt;/p&gt;\n&lt;p&gt;首先明确了需求就先看一下最终图片：&lt;/p&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;1\&#34;&gt;&lt;img src=\&#34;https://user-gold-cdn.xitu.io/2018/5/7/163392f99478483e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;h2 id=\&#34;html分析\&#34;&gt;html分析&lt;/h2&gt;\n&lt;p&gt;左边是一个input的文本框，只读，右边是一个按钮。&lt;/p&gt;\n&lt;h3 id=\&#34;代码实现\&#34;&gt;代码实现：&lt;/h3&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-javascript\&#34;&gt;&amp;lt;!--左边是一个input输入框，要求只读，而且里面的内容通过url?后面的code传入--&amp;gt;\n&amp;lt;input type=&amp;quot;text&amp;quot; value=&amp;quot;AJS4EFS&amp;quot; readonly id=&amp;quot;textAreas&amp;quot;/&amp;gt;\n&amp;lt;!--右边是一个按钮--&amp;gt;\n&amp;lt;a href=&amp;quot;javascript:;&amp;quot; class=&amp;quot;cuteShareBtn&amp;quot; id=&amp;quot;copy&amp;quot;&amp;gt;复制&amp;lt;/a&amp;gt;\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;css分析\&#34;&gt;css分析&lt;/h2&gt;\n&lt;p&gt;这种东西就跳过吧，不是重点。&lt;/p&gt;\n&lt;h2 id=\&#34;js分析\&#34;&gt;js分析&lt;/h2&gt;\n&lt;ol&gt;\n&lt;li&gt;点击按钮获取input对象&lt;/li&gt;\n&lt;/ol&gt;\n&lt;blockquote&gt;\n&lt;p&gt;解决方法：&lt;/p&gt;\n&lt;ol&gt;\n&lt;li&gt;如果使用的jquery，那么直接$(&amp;quot;#textArea&amp;quot;).select()选中的就是这个input对象&lt;/li&gt;\n&lt;li&gt;如果使用的zepto，上面的方法是获取到的zepto对象是不支持原生select()方法的，那么就使用原生的办法 &lt;code&gt;var obj = document.getElementById(&amp;quot;textAreas&amp;quot;);&lt;/code&gt; &lt;code&gt;obj.select();&lt;/code&gt;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/blockquote&gt;\n&lt;p&gt;​\t2.然后复制到剪贴板&lt;/p&gt;\n&lt;p&gt;两行？看起来是不是很简单？哈哈~那你就错了，这里面是有坑的。 第一目前没有一个很完美的方法可以兼容各个浏览器和移动端，引用插件也是一样的。 查了半天最好的办法就是使用 &lt;strong&gt;document.execCommand(&amp;quot;Copy&amp;quot;)&lt;/strong&gt; 兼容性是不错的：&lt;/p&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;2\&#34;&gt;&lt;img src=\&#34;https://user-gold-cdn.xitu.io/2018/5/7/163392f994522bd0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;3\&#34;&gt;&lt;img src=\&#34;https://user-gold-cdn.xitu.io/2018/5/7/163392f9946584e9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&lt;p&gt;手机安卓支持到4.1、各种浏览器是可以的，&lt;strong&gt;但是唯独ios是不支持的&lt;/strong&gt;，来给我把刀，ios你这玩意你限制是干什么？是要保护手机安全还是咋的。 所以只是&lt;strong&gt;pc端&lt;/strong&gt; 使用那么就下面几行代码就可以搞定了：&lt;/p&gt;\n&lt;h3 id=\&#34;代码实现-2\&#34;&gt;代码实现&lt;/h3&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-javascript\&#34;&gt;//复制按钮事件绑定\n$(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){\n  //获取input对象\n  var obj = document.getElementById(&amp;quot;textAreas&amp;quot;);\n  //选择当前对象\n  obj.select(); \n  try{\n    //进行复制到剪切板\n    if(document.execCommand(&amp;quot;Copy&amp;quot;,&amp;quot;false&amp;quot;,null)){\n      //如果复制成功\n      alert(&amp;quot;复制成功！&amp;quot;);  \n    }else{\n      //如果复制失败\n      alert(&amp;quot;复制失败！&amp;quot;);\n    }\n  }catch(err){\n    //如果报错\n    alert(&amp;quot;复制错误！&amp;quot;)\n  }\n})\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;那如果是&lt;strong&gt;移动端&lt;/strong&gt; 的话，就要兼容IOS，但是依然在iPhone5的10.2的系统中，依然显示复制失败，由于用户使用率较低，兼容就做到这里，那些用户你们就自己手动复制吧。 下面的两种方法都可以进行复制，因为核心代码就那么几行，先来简单的：&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-javascript\&#34;&gt;$(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){\n  //获取input对象\n  var obj = document.getElementById(&amp;quot;textAreas&amp;quot;);\n  //如果是ios端\n  if(isiOSDevice){\n    // 获取元素内容是否可编辑和是否只读\n    var editable = obj.contentEditable;\n    var readOnly = obj.readOnly;\n\n    // 将对象变成可编辑的\n    obj.contentEditable = true;\n    obj.readOnly = false;\n\n    // 创建一个Range对象，Range 对象表示文档的连续范围区域，如用户在浏览器窗口中用鼠标拖动选中的区域\n    var range = document.createRange();\n   //获取obj的内容作为选中的范围\n    range.selectNodeContents(obj);\n    \n    var selection = window.getSelection();\n    selection.removeAllRanges();\n    selection.addRange(range);\n\n    obj.setSelectionRange(0, 999999);  //选择范围，确保全选\n    //恢复原来的状态\n    obj.contentEditable = editable;\n    obj.readOnly = readOnly;\n    //如果是安卓端    \n  }else{\n    obj.select();\n  }\n  try{\n    if(document.execCommand(&amp;quot;Copy&amp;quot;,&amp;quot;false&amp;quot;,null)){\n      alert(&amp;quot;复制成功！&amp;quot;);  \n    }else{\n      alert(&amp;quot;复制失败！请手动复制！&amp;quot;);\n    }\n  }catch(err){\n    alert(&amp;quot;复制错误！请手动复制！&amp;quot;)\n  }\n})\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;下面是一个比较完整的升级版方法，和插件Clipboard.js一样，不过代码不多，就直接拿来用好了。 这个获取的不是input对象，而是需要复制的内容。&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-javascript\&#34;&gt;//定义函数\nwindow.Clipboard = (function(window, document, navigator) {\n  var textArea,\n      copy;\n\n  // 判断是不是ios端\n  function isOS() {\n    return navigator.userAgent.match(/ipad|iphone/i);\n  }\n  //创建文本元素\n  function createTextArea(text) {\n    textArea = document.createElement(&#39;textArea&#39;);\n    textArea.value = text;\n    document.body.appendChild(textArea);\n  }\n  //选择内容\n  function selectText() {\n    var range,\n        selection;\n\n    if (isOS()) {\n      range = document.createRange();\n      range.selectNodeContents(textArea);\n      selection = window.getSelection();\n      selection.removeAllRanges();\n      selection.addRange(range);\n      textArea.setSelectionRange(0, 999999);\n    } else {\n      textArea.select();\n    }\n  }\n\n//复制到剪贴板\n  function copyToClipboard() {        \n    try{\n      if(document.execCommand(&amp;quot;Copy&amp;quot;)){\n        alert(&amp;quot;复制成功！&amp;quot;);  \n      }else{\n        alert(&amp;quot;复制失败！请手动复制！&amp;quot;);\n      }\n    }catch(err){\n      alert(&amp;quot;复制错误！请手动复制！&amp;quot;)\n    }\n    document.body.removeChild(textArea);\n  }\n\n  copy = function(text) {\n    createTextArea(text);\n    selectText();\n    copyToClipboard();\n  };\n\n  return {\n    copy: copy\n  };\n})(window, document, navigator);\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;使用函数&lt;/p&gt;\n&lt;pre&gt;&lt;code class=\&#34;language-javascript\&#34;&gt;//使用函数\n$(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){\n  var  val = $(&amp;quot;#textAreas&amp;quot;).val();\n  Clipboard.copy(val);\n});\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;这样就实现了前端点击按钮自动复制剪贴板的功能。 version1.0 —— 2018/5/6，首次创建实现前端点击按钮自动复制剪贴板功能 ©burning_韵七七&lt;/p&gt;\n&lt;p&gt;转自掘金：https://juejin.im/post/5aefeb6e6fb9a07aa43c20af&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;shi-xian-qian-duan-dian-ji-an-niu-zi-dong-fu-zhi-jian-tie-ban-gong-neng&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;实现前端点击按钮自动复制剪贴板功能&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;前端&#34;,&#34;slug&#34;:&#34;E_OFTC58Mr&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/E_OFTC58Mr/&#34;}],&#34;date&#34;:&#34;2020-04-28 08:31:39&#34;,&#34;dateFormat&#34;:&#34;2020-04-28&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/shi-xian-qian-duan-dian-ji-an-niu-zi-dong-fu-zhi-jian-tie-ban-gong-neng/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;5 min read&#34;,&#34;time&#34;:295000,&#34;words&#34;:1180,&#34;minutes&#34;:5},&#34;description&#34;:&#34;【目录】\n\n明确需求\nhtml分析\n\n代码实现\n\n\ncss分析\njs分析\n\n代码实现\n\n\n\n只要是文本，长按选中就可以复制，但是需求来了挡也挡不住：\n明确需求\n为了提升用户体验，点击【复制】按钮就自动复制到剪贴板，那么就需要前端实现这种功能...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%98%8E%E7%A1%AE%E9%9C%80%E6%B1%82\&#34;&gt;明确需求&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#html%E5%88%86%E6%9E%90\&#34;&gt;html分析&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0\&#34;&gt;代码实现：&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#css%E5%88%86%E6%9E%90\&#34;&gt;css分析&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#js%E5%88%86%E6%9E%90\&#34;&gt;js分析&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2\&#34;&gt;代码实现&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;figure data-type=\&#34;image\&#34; tabindex=\&#34;1\&#34;&gt;&lt;img src=\&#34;http://news.mydrivers.com/Img/20120315/2012031510342639.jpg\&#34; alt=\&#34;\&#34; loading=\&#34;lazy\&#34;&gt;&lt;/figure&gt;\n&#34;,&#34;fileName&#34;:&#34;test&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Test&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;Gridea&#34;,&#34;slug&#34;:&#34;nkTCrKc6w&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://kdt-g.github.io/tag/nkTCrKc6w/&#34;}],&#34;date&#34;:&#34;2020-04-27 18:34:03&#34;,&#34;dateFormat&#34;:&#34;2020-04-27&#34;,&#34;feature&#34;:&#34;http://news.mydrivers.com/Img/20120315/2012031510342639.jpg&#34;,&#34;link&#34;:&#34;https://kdt-g.github.io/post/test/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:true,&#34;stats&#34;:{&#34;text&#34;:&#34;0 min read&#34;,&#34;time&#34;:0,&#34;words&#34;:0,&#34;minutes&#34;:0},&#34;description&#34;:&#34;\n...&#34;,&#34;toc&#34;:&#34;&#34;}]";
+  // var json = escape.substr(1, escape.length - 2);
+  // var datas = json.split(',');
+  // for (let i=0; i < datas.length; i++) {
+  //   let item = datas[i];
+  //   let attrs = item.split('34;:&#34')
+  //   debugger
+  //   console.log(datas[i])
+  // }
+  let escapeMap = new Map();
+  escapeMap.set('&#34;', '"');
+  escapeMap.set('&gt;', '>');
+  escapeMap.set('&#39;', "'");
+  escapeMap.set('&lt;', '<');
+  escapeMap.set('&quot;', '"');
+  escapeMap.set('&amp;', '&');
+</script> -->
+
+
+</html>

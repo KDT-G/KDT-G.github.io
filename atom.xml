@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://kdt-g.github.io</id>
+    <title>枫亦的博客</title>
+    <updated>2020-04-29T02:27:59.115Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://kdt-g.github.io"/>
+    <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://kdt-g.github.io/images/avatar.png</logo>
+    <icon>https://kdt-g.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[关于博客园内嵌入bilibili视频(转)]]></title>
+        <id>https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/</id>
+        <link href="https://kdt-g.github.io/post/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/">
+        </link>
+        <updated>2020-04-29T02:14:14.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-原理">一、原理</h2>
+<p>使用iframe标签，更改其中src对应bilibili视频的aid和cid，组装新的HTML源码，即可在文章内嵌入bilibili视频。</p>
+<h2 id="二-获取aid和cid">二、获取aid和cid</h2>
+<p>aid为视频的av号，但是每个av号下不一定只有1p，所以B站用cid来管理视频的真正id，那么也可以说如果视频只有1p，那么cid就无用了，我测试直接填1也是可以的。</p>
+<p>这里介绍两种获取aid和cid的方法：</p>
+<h3 id="方法一">方法一</h3>
+<p>先观察视频的URL</p>
+<pre><code>https:``//www.bilibili.com/video/av84267566?from=search&amp;seid=13400362594908841480
+</code></pre>
+<p>其中84267566就是av号。</p>
+<p>或者直接点右键——查看网页源代码——ctrl+f——搜索'aid='、‘cid=’ 就可以了。</p>
+<h3 id="方法二推荐">方法二(推荐)</h3>
+<p>我们在转发视频的时候直接可以看到嵌入代码</p>
+<figure data-type="image" tabindex="1"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206150838006-392318847.png" alt="" loading="lazy"></figure>
+<p>这是官方准备的嵌入代码，可以直接拿来用，但是显示效果不是很理想，样式不是我们希望的，需要调整一下。</p>
+<pre><code>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=84267566&amp;cid=145147963&amp;page=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt; &lt;/iframe&gt;
+</code></pre>
+<p>从嵌入代码中我们直接得到了aid和cid</p>
+<p>我们重新设置一下功能、大小、样式，得到可用的HTML代码</p>
+<pre><code>&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=84267566&amp;amp;cid=145147963&amp;amp;page=1&quot; frameborder=&quot;no&quot; scrolling=&quot;no&quot; width=&quot;95%&quot; height=&quot;600&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</code></pre>
+<p>以后插入需要的bilibili视频只需要改变上面的aid和cid就可以了！</p>
+<h2 id="三-移动端适配">三、移动端适配</h2>
+<p>**<a href="https://www.cnblogs.com/experdot/">ExperDot</a>**大佬提出移动端出现不适配的问题，我当时其实并没有考虑移动端的问题，固定了播放器的高度造成了这个问题。</p>
+<figure data-type="image" tabindex="2"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200217230556219-1666126249.png" alt="" loading="lazy"></figure>
+<p>大佬已经给出了解决方案</p>
+<pre><code>&lt;div style=&quot;position: relative; padding: 30% 45%;&quot;&gt;
+&lt;iframe style=&quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&quot; src=&quot;https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&quot; frameborder=&quot;no&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<p>可以用这个代码作为样板，以后只需要改变src的id好就可以了！</p>
+<p>再次感谢大佬**<a href="https://www.cnblogs.com/experdot/">ExperDot</a>**的帮助！</p>
+<h2 id="四-嵌入方法">四、嵌入方法</h2>
+<p>选择tinyMCE编辑器，这是博客园默认的编辑器，选择编辑html原代码，插入上面的代码即可。</p>
+<figure data-type="image" tabindex="3"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206151748141-1744878901.png" alt="img" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://img2018.cnblogs.com/i-beta/1358881/202002/1358881-20200206153114389-1534665027.png" alt="img" loading="lazy"></figure>
+<h2 id="五-参数说明">五、参数说明</h2>
+<p>本来这篇博客是我的游戏之作，但没想到捧场的朋友这么多，我看到评论区有朋友讲清晰度的问题，我这里再说一下几个参数。</p>
+<pre><code>https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aid</td>
+<td>视频ID 就是B站的 avxxxx 后面的数字</td>
+</tr>
+<tr>
+<td>cid</td>
+<td>应该是客户端id, clientId 的缩写(推测的, 不一定准确) 经过测试, 这个字段不填也没关系</td>
+</tr>
+<tr>
+<td>page</td>
+<td>第几个视频, 起始下标为 1 (默认值也是为1) 就是B站视频, 选集里的, 第几个视频</td>
+</tr>
+<tr>
+<td>as_wide</td>
+<td>是否宽屏 1: 宽屏, 0: 小屏</td>
+</tr>
+<tr>
+<td>high_quality</td>
+<td>是否高清 1: 高清, 0: 最低视频质量(默认) 如视频有 360p 720p 1080p 三种, 默认或者 high_quality=0 是最低 360p high_quality=1 是最高1080p</td>
+</tr>
+<tr>
+<td>danmaku</td>
+<td>是否开启弹幕 1: 开启(默认), 0: 关闭</td>
+</tr>
+</tbody>
+</table>
+<p>所以只要设置<strong>high_quality=1</strong>就能开启最高画质了。</p>
+<p>B站官方并没有给出文档说明.....但我发现论坛上有一些相关的讨论</p>
+<p><a href="http://link.acg.tv/forum.php?mod=viewthread&amp;tid=22308&amp;highlight=%E6%92%AD%E6%94%BE%E5%99%A8%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E5%9C%A8%E5%93%AA%E9%87%8C%E5%91%A2"><strong>相关链接</strong></a></p>
+<p>经测试high_quality参数可以正常使用，此参数控制外链播放器的默认清晰度：<br>
+=1时默认清晰度是最高非大会员清晰度，例如：<br>
+（1）原视频清晰度有360P、480P、720P，外链播放器默认为最高的720P，<br>
+（2）原视频清晰度有360P、480P、720P、1080P，外链播放器默认为最高的1080P，<br>
+（3）原视频清晰度有360P、480P、720P、1080P、1080P+，外链播放器默认为1080P，<br>
+选择其他清晰度会打开原视频页面，</p>
+<p>=其他数值或没有此参数时默认清晰度是360P，选择其他清晰度会打开原视频页面。</p>
+<h2 id="六-示例">六、示例</h2>
+<p>这里给出2020拜年祭的《万古生香》</p>
+<p>万古千秋，代代有玲珑气象！<br>
+风云史往，页页赋秀骨生香！</p>
+<pre><code>&lt;div style=&quot;position: relative; padding: 30% 45%;&quot;&gt;
+&lt;iframe style=&quot;position: absolute; width: 100%; height: 100%; left: 0; top: 0;&quot; src=&quot;https://player.bilibili.com/player.html?cid=145147963&amp;aid=84267566&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0&quot; frameborder=&quot;no&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+</code></pre>
+<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?cid=145147963&aid=84267566&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no"></iframe>
+</div>
+<hr>
+<p>转自博客园：<a href="https://www.cnblogs.com/wkfvawl/p/12268980.html">https://www.cnblogs.com/wkfvawl/p/12268980.html<a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[12分钟上手CSS【看懂封面就理解CSS】]]></title>
+        <id>https://kdt-g.github.io/post/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/</id>
+        <link href="https://kdt-g.github.io/post/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/">
+        </link>
+        <updated>2020-04-28T02:48:53.000Z</updated>
+        <content type="html"><![CDATA[<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=86238906&bvid=BV1X7411x7ao&cid=147396296&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no"></iframe>
+</div>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[老说的API到底是什么??]]></title>
+        <id>https://kdt-g.github.io/post/1/</id>
+        <link href="https://kdt-g.github.io/post/1/">
+        </link>
+        <updated>2020-04-28T02:41:38.000Z</updated>
+        <content type="html"><![CDATA[<div style="position: relative; padding: 30% 45%;">
+<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=85460523&bvid=BV137411z7KM&cid=146081137&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no"></iframe>
+</div>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[c#拓展方法]]></title>
+        <id>https://kdt-g.github.io/post/ctuo-zhan-fang-fa/</id>
+        <link href="https://kdt-g.github.io/post/ctuo-zhan-fang-fa/">
+        </link>
+        <updated>2020-04-28T02:29:44.000Z</updated>
+        <content type="html"><![CDATA[<p>例如要给StringBuilder加一个拓展方法，在一个静态类中，写一个公开的静态方法，参数列表中加上 (this+空格+StringBuilder S ,参数1，参数2，····· )</p>
+<pre><code class="language-c#">public static  void Add(this StringBuilder S,int a, string b,int c,***){}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[什么是隐式类型]]></title>
+        <id>https://kdt-g.github.io/post/shi-me-shi-yin-shi-lei-xing/</id>
+        <link href="https://kdt-g.github.io/post/shi-me-shi-yin-shi-lei-xing/">
+        </link>
+        <updated>2020-04-28T02:29:09.000Z</updated>
+        <content type="html"><![CDATA[<p>C#隐式类型是.net4.0推出的新功能特性，我们先了解一下什么是隐式类型？<br>
+当程序中使用了隐式类型，那么这个变量不需要指定其数据类型，由操作系统自动判断其数据类型，但它绝对不会进行装箱和拆箱的操作。<br>
+以前我们在定义变量的时间，必须要指定变量的数据类型，隐式类型变量是用var关键字来表示的，当使用了var关键字定义的变量就不需要指定其数据类型。例：var flag1=2;var flag2=&quot;张三&quot;;var flag3=true;以上定义隐式类型变量都是正确的，但是使用了隐式类型变量需要注意如下几点：1、使用var作为定义隐式类型的关键字，var其实也是javascript定义变量的语法；2、定义隐式类型时，必须为它赋值，例var str=“test”；3、赋值后，变量的值可以修改，但是值的数据类型是不可更改的；4、隐式类型具体是什么类型，是初始化的值，由编译器自动判断。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ASP.NET MVC HtmlHelper用法大全 ]]></title>
+        <id>https://kdt-g.github.io/post/aspnet-mvc-htmlhelper-yong-fa-da-quan/</id>
+        <link href="https://kdt-g.github.io/post/aspnet-mvc-htmlhelper-yong-fa-da-quan/">
+        </link>
+        <updated>2020-04-28T02:18:06.000Z</updated>
+        <content type="html"><![CDATA[<p>HTML扩展类的所有方法都有2个参数：<br>
+以textbox为例子</p>
+<pre><code class="language-c#">public static string TextBox( this HtmlHelper htmlHelper, string name, Object value, IDictionary&lt;string, Object&gt; htmlAttributes )
+public static string TextBox( this HtmlHelper htmlHelper, string name, Object value, Object htmlAttributes )
+</code></pre>
+<p>这2个参数代表这个html标签的属性集合。使用方法如下。</p>
+<p>1.ActionLink</p>
+<pre><code class="language-c#">&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;, &quot;Home&quot;)%&gt;
+
+//带有QueryString的写法
+
+&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;, &quot;Home&quot;, new { page=1 },null)%&gt;
+
+&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;, new { page=1 })%&gt;有其它Html属性的写法&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;, &quot;Home&quot;, new { id=&quot;link1&quot; })%&gt;
+
+&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;,null, new { id=&quot;link1&quot; })%&gt;
+
+//QueryString与Html属性同时存在
+
+&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot;, &quot;Home&quot;, new { page = 1 }, new { id = &quot;link1&quot; })%&gt;&lt;%=Html.ActionLink(&quot;这是一个连接&quot;, &quot;Index&quot; , new { page = 1 }, new { id = &quot;link1&quot; })%&gt; 
+
+//生成结果为：
+
+&lt; a href=&quot;/&quot;&gt; 这是一个连接 &lt; /a &gt; 
+
+//带有QueryString的写法
+
+&lt; a href=&quot;/?page=1&quot;&gt;这是一个连接&lt; /a&gt;
+
+&lt; a href=&quot;/?page=1&quot;&gt;这是一个连接&lt; /a&gt;
+
+//有其它Html属性的写法
+
+&lt; a href=&quot;/?Length=4&quot; id=&quot;link1&quot;&gt;这是一个连接&lt; /a&gt;
+
+&lt; a href=&quot;/&quot; id=&quot;link1&quot;&gt;这是一个连接&lt; /a&gt;
+
+//QueryString与Html属性同时存在
+
+&lt; a href=&quot;/?page=1&quot; id=&quot;link1&quot;&gt;这是一个连接&lt; /a&gt;
+
+&lt; a href=&quot;/?page=1&quot; id=&quot;link1&quot;&gt;这是一个连接&lt; /a&gt;
+</code></pre>
+<ol start="2">
+<li>RouteLink</li>
+</ol>
+<pre><code class="language-c#">跟ActionLink在功能上一样。
+&lt;%=Html.RouteLink(&quot;关于&quot;, &quot;about&quot;, new { })%&gt;
+带QueryString
+&lt;%=Html.RouteLink(&quot;关于&quot;, &quot;about&quot;, new { page = 1 })%&gt;
+&lt;%=Html.RouteLink(&quot;关于&quot;, &quot;about&quot;, new { page = 1 }, new { id = &quot;link1&quot; })%&gt;
+ 
+生成结果：
+&lt;a href=&quot;/about&quot;&gt;关于&lt;/a&gt;
+&lt;a href=&quot;/about?page=1&quot;&gt;关于&lt;/a&gt;
+&lt;a href=&quot;/about?page=1&quot; id=&quot;link1&quot;&gt;关于&lt;/a&gt;
+</code></pre>
+<ol start="3">
+<li>Form 2种方法</li>
+</ol>
+<pre><code class="language-c#">&lt;%using(Html.BeginForm(&quot;index&quot;,&quot;home&quot;,FormMethod.Post)){%&gt;
+&lt;%} %&gt;
+ 
+&lt;%Html.BeginForm(&quot;index&quot;, &quot;home&quot;, FormMethod.Post);//注意这里没有=输出%&gt;
+&lt;%Html.EndForm(); %&gt;
+    
+ //生成结果：
+&lt;form action=&quot;/home/index&quot; method=&quot;post&quot;&gt;&lt;/form&gt;
+</code></pre>
+<ol start="4">
+<li>TextBox , Hidden ,</li>
+</ol>
+<pre><code class="language-c#">&lt;%=Html.TextBox(&quot;input1&quot;) %&gt;
+&lt;%=Html.TextBox(&quot;input2&quot;,Model.CategoryName,new{ @style = &quot;width:300px;&quot; }) %&gt;
+&lt;%=Html.TextBox(&quot;input3&quot;, ViewData[&quot;Name&quot;],new{ @style = &quot;width:300px;&quot; }) %&gt;
+&lt;%=Html.TextBoxFor(a =&gt; a.CategoryName, new { @style = &quot;width:300px;&quot; })%&gt;
+ 
+//生成结果：
+ 
+&lt;input id=&quot;input1&quot; name=&quot;input1&quot; type=&quot;text&quot; value=&quot;&quot; /&gt;
+&lt;input id=&quot;input2&quot; name=&quot;input2&quot; style=&quot;width:300px;&quot; type=&quot;text&quot; value=&quot;Beverages&quot; /&gt;
+&lt;input id=&quot;input3&quot; name=&quot;input3&quot; style=&quot;width:300px;&quot; type=&quot;text&quot; value=&quot;&quot; /&gt;
+&lt;input id=&quot;CategoryName&quot; name=&quot;CategoryName&quot; style=&quot;width:300px;&quot; type=&quot;text&quot; value=&quot;Beverages&quot; /&gt;
+</code></pre>
+<ol start="5">
+<li>TextArea</li>
+</ol>
+<pre><code class="language-c#">&lt;%=Html.TextArea(&quot;input5&quot;, Model.CategoryName, 3, 9,null)%&gt;
+&lt;%=Html.TextAreaFor(a =&gt; a.CategoryName, 3, 3, null)%&gt;
+ 
+//生成结果：
+&lt;textarea cols=&quot;9&quot; id=&quot;input5&quot; name=&quot;input5&quot; rows=&quot;3&quot;&gt;Beverages&lt;/textarea&gt;
+&lt;textarea cols=&quot;3&quot; id=&quot;CategoryName&quot; name=&quot;CategoryName&quot; rows=&quot;3&quot;&gt;Beverages&lt;/textarea&gt;
+ 
+</code></pre>
+<ol start="6">
+<li>CheckBox</li>
+</ol>
+<pre><code class="language-c#">&lt;%=Html.CheckBox(&quot;chk1&quot;,true) %&gt;
+&lt;%=Html.CheckBox(&quot;chk1&quot;, new { @class=&quot;checkBox&quot;}) %&gt;
+&lt;%=Html.CheckBoxFor(a =&gt;a.IsVaild, new { @class = &quot;checkBox&quot; })%&gt;
+ 
+//生成结果：
+ 
+&lt;input checked=&quot;checked&quot; id=&quot;chk1&quot; name=&quot;chk1&quot; type=&quot;checkbox&quot; value=&quot;true&quot; /&gt;&lt;input name=&quot;chk1&quot; type=&quot;hidden&quot; value=&quot;false&quot; /&gt;
+ 
+&lt;input class=&quot;checkBox&quot; id=&quot;chk1&quot; name=&quot;chk1&quot; type=&quot;checkbox&quot; value=&quot;true&quot; /&gt;&lt;input name=&quot;chk1&quot; type=&quot;hidden&quot; value=&quot;false&quot; /&gt;
+ 
+&lt;input checked=&quot;checked&quot; class=&quot;checkBox&quot; id=&quot;IsVaild&quot; name=&quot;IsVaild&quot; type=&quot;checkbox&quot; value=&quot;true&quot; /&gt;&lt;input name=&quot;IsVaild&quot; type=&quot;hidden&quot; value=&quot;false&quot; /&gt;
+ 
+</code></pre>
+<ol start="7">
+<li>ListBox</li>
+</ol>
+<pre><code class="language-c#">&lt;%=Html.ListBox(&quot;lstBox1&quot;,(SelectList)ViewData[&quot;Categories&quot;])%&gt;
+&lt;%=Html.ListBoxFor(a =&gt; a.CategoryName, (SelectList)ViewData[&quot;Categories&quot;])%&gt;
+ 
+//生成结果：
+&lt;select id=&quot;lstBox1&quot; multiple=&quot;multiple&quot; name=&quot;lstBox1&quot;&gt;
+&lt;option value=&quot;1&quot;&gt;Beverages&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;Condiments&lt;/option&gt;
+&lt;option selected=&quot;selected&quot; value=&quot;3&quot;&gt;Confections&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;Dairy Products&lt;/option&gt;
+&lt;option value=&quot;5&quot;&gt;Grains/Cereals&lt;/option&gt;
+&lt;option value=&quot;6&quot;&gt;Meat/Poultry&lt;/option&gt;
+&lt;option value=&quot;7&quot;&gt;Produce&lt;/option&gt;
+&lt;option value=&quot;8&quot;&gt;Seafood&lt;/option&gt;
+&lt;/select&gt;
+&lt;select id=&quot;CategoryName&quot; multiple=&quot;multiple&quot; name=&quot;CategoryName&quot;&gt;
+&lt;option value=&quot;1&quot;&gt;Beverages&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;Condiments&lt;/option&gt;
+&lt;option value=&quot;3&quot;&gt;Confections&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;Dairy Products&lt;/option&gt;
+&lt;option value=&quot;5&quot;&gt;Grains/Cereals&lt;/option&gt;
+&lt;option value=&quot;6&quot;&gt;Meat/Poultry&lt;/option&gt;
+&lt;option value=&quot;7&quot;&gt;Produce&lt;/option&gt;
+&lt;option value=&quot;8&quot;&gt;Seafood&lt;/option&gt;
+&lt;/select&gt;
+ 
+</code></pre>
+<ol start="8">
+<li>DropDownList</li>
+</ol>
+<pre><code class="language-c#">&lt;%= Html.DropDownList(&quot;ddl1&quot;, (SelectList)ViewData[&quot;Categories&quot;],  &quot;--Select One--&quot;)%&gt;
+&lt;%=Html.DropDownListFor(a =&gt; a.CategoryName, (SelectList)ViewData[&quot;Categories&quot;], &quot;--Select One--&quot;, new { @class = &quot;dropdownlist&quot; })%&gt;
+ 
+//生成结果：
+&lt;select id=&quot;ddl1&quot; name=&quot;ddl1&quot;&gt;
+&lt;option value=&quot;&quot;&gt;--Select One--&lt;/option&gt;
+&lt;option value=&quot;1&quot;&gt;Beverages&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;Condiments&lt;/option&gt;
+&lt;option selected=&quot;selected&quot; value=&quot;3&quot;&gt;Confections&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;Dairy Products&lt;/option&gt;
+&lt;option value=&quot;5&quot;&gt;Grains/Cereals&lt;/option&gt;
+&lt;option value=&quot;6&quot;&gt;Meat/Poultry&lt;/option&gt;
+&lt;option value=&quot;7&quot;&gt;Produce&lt;/option&gt;
+&lt;option value=&quot;8&quot;&gt;Seafood&lt;/option&gt;
+&lt;/select&gt;
+&lt;select class=&quot;dropdownlist&quot; id=&quot;CategoryName&quot; name=&quot;CategoryName&quot;&gt;
+&lt;option value=&quot;&quot;&gt;--Select One--&lt;/option&gt;
+&lt;option value=&quot;1&quot;&gt;Beverages&lt;/option&gt;
+&lt;option value=&quot;2&quot;&gt;Condiments&lt;/option&gt;
+&lt;option value=&quot;3&quot;&gt;Confections&lt;/option&gt;
+&lt;option value=&quot;4&quot;&gt;Dairy Products&lt;/option&gt;
+&lt;option value=&quot;5&quot;&gt;Grains/Cereals&lt;/option&gt;
+&lt;option value=&quot;6&quot;&gt;Meat/Poultry&lt;/option&gt;
+&lt;option value=&quot;7&quot;&gt;Produce&lt;/option&gt;
+&lt;option value=&quot;8&quot;&gt;Seafood&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<ol start="9">
+<li>Partial 视图模板</li>
+</ol>
+<pre><code class="language-c#">//webform里叫自定义控件。功能都是为了复用。但使用上自定义控件真的很难用好。
+&lt;% Html.RenderPartial(&quot;DinnerForm&quot;); %&gt;  看清楚了没有等号的。
+ 
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据库设计-几种范式]]></title>
+        <id>https://kdt-g.github.io/post/shu-ju-ku-she-ji-ji-chong-fan-shi/</id>
+        <link href="https://kdt-g.github.io/post/shu-ju-ku-she-ji-ji-chong-fan-shi/">
+        </link>
+        <updated>2020-04-28T02:16:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="数据库的设计">数据库的设计:</h2>
+<h3 id="1多表之间的关系">1.多表之间的关系</h3>
+<h4 id="1分类">1.分类</h4>
+<blockquote>
+<p>1)一对一(了解)<br>
+如:人和身份证<br>
+分析:一个人只有一个身份证，一个身份证也只能对一个人<br>
+2).一对多(多对一)<br>
+如:部门和员工<br>
+分析:一个部门有多个员工，一个员工只能对应一个部门3).多对多<br>
+如:学生和课程<br>
+分析:一个学生可以选择很多门课程，一个课程也可以被多个学生选择</p>
+</blockquote>
+<h4 id="2实现关系">2.实现关系</h4>
+<blockquote>
+<p>1)一对多(多对一)  部门(主键叫部门ID)和员工(外键部门ID)<br>
+实现方式:在多的一方建立外键，执向一的一方的主键2).多对多关系   学生(ID)和课程(ID)<br>
+实现方式:多对多关系实现需要借助第三张表，中间表至少包含两个字段<br>
+这两个字段作为第三张表的外键，分别指向两张表的主键<br>
+3).一对一  人和身份证<br>
+实现方式:可以在任意一方添加唯一外键指向另一方的主键</p>
+</blockquote>
+<h3 id="2数据库设计的范式">2.数据库设计的范式</h3>
+<blockquote>
+<p>设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，<br>
+各种范式呈递次规范，越高的范式数据库冗余越小。</p>
+</blockquote>
+<h3 id="目前关系数据库有六种范式">目前关系数据库有六种范式</h3>
+<blockquote>
+<p>第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、<br>
+巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。</p>
+</blockquote>
+<h4 id="第一范式1nf">第一范式（1NF):</h4>
+<blockquote>
+<p>即数据库表的每一列都是不可分割的原子数据项，而不能是集合，数组</p>
+</blockquote>
+<h4 id="第二范式2nf">第二范式(2NF)：</h4>
+<blockquote>
+<p>在1NF的基础上，非码属性必须完全依赖于码（在1NF基础上消除非主属性对主码的部分函数依赖）</p>
+</blockquote>
+<h5 id="几个概念">几个概念:</h5>
+<blockquote>
+<p>1.函数依赖:A--&gt;B  如果通过A属性(属性组)的值，可以确定唯一的B属性的值，则称B依赖于A</p>
+<p>​                     学号--&gt;姓名   （学号，课程名）--&gt;分数</p>
+<p>2.完全函数依赖：A---&gt;B 如果A是一个属性组，则B属性值的确定需要依赖于A属性组中的所有属性</p>
+<p>​                    学号，课程名---&gt;分数  完全依赖</p>
+<p>3.部分函数依赖：A--&gt;B  如果A是一个属性组，则B属性的值确定需要依赖于A属性组中某一些值即可。</p>
+<p>​                        例如：学号，课程名--&gt;姓名</p>
+<p>4.传递函数依赖，A--&gt;B  B--&gt;C 如果通过A属性(属性组)的值，可以确定唯一的B属性的值，在通过B属性(属性组)的值</p>
+<p>​     可以确定唯一的C属性，则称，C传递函数依赖于A<br>
+​               学号--&gt;系名--&gt;系主任</p>
+<p>5.码:如果在一张表中，一个属性或属性组，被其他属性所完全依赖，则称这个属性（属性组）为该表的码。</p>
+<p>​				例如:本表的码为（学号，课程名）<br>
+​                 主属性：码属性组中的所有属性  学号 课程名<br>
+​                 非主属性:除码属性组之外的所有属性</p>
+</blockquote>
+<h4 id="第三范式3nf">第三范式(3NF)：</h4>
+<blockquote>
+<p>在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖） 偶数</p>
+</blockquote>
+<h2 id="资料链接">资料链接：</h2>
+<p>https://baike.so.com/doc/4367825-4573590.html</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[什么是sqlStructured Query  Language结构化查询语言]]></title>
+        <id>https://kdt-g.github.io/post/shi-me-shi-sqlstructured-query-language-jie-gou-hua-cha-xun-yu-yan/</id>
+        <link href="https://kdt-g.github.io/post/shi-me-shi-sqlstructured-query-language-jie-gou-hua-cha-xun-yu-yan/">
+        </link>
+        <updated>2020-04-28T02:15:11.000Z</updated>
+        <content type="html"><![CDATA[<p>定义了操作所有关系型数据库的规则，每一种数据库操作的方式存<br>
+在不一样的地方，称为方言  Sql server</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Sql通用语法]]></title>
+        <id>https://kdt-g.github.io/post/sql-tong-yong-yu-fa/</id>
+        <link href="https://kdt-g.github.io/post/sql-tong-yong-yu-fa/">
+        </link>
+        <updated>2020-04-28T02:13:06.000Z</updated>
+        <content type="html"><![CDATA[<p>1.SQL语句可以单行或多行书写，以分号结束<br>
+2.可以使用空格或缩进来增强语句的可读性<br>
+3.MySQL数据库的SQL语句不区分大小写，关键字建议使用大写<br>
+4.MySQL 注释  单行--<br>
+多行注释  /*   */<br>
+注释内容  #(mysql  特有)<br>
+5.SQL分类<br>
+DDL：Data Definition Language  定义<br>
+定义数据库对象:数据库，表，列 Create drop  alter<br>
+DCL：Data Control Language<br>
+数据库控制语言<br>
+访问权限和安全级别，REMOVE  Grank<br>
+DML：Data Manipulation Language<br>
+数据库操作语言:<br>
+数据库中的表进行增删改： insert   delete  update<br>
+DQL:Data Query Language<br>
+数据库查询语言  Select  where等</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JavaScript的window.onload事件和jQuery的ready函数有何不同 ]]></title>
+        <id>https://kdt-g.github.io/post/javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong/</id>
+        <link href="https://kdt-g.github.io/post/javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong/">
+        </link>
+        <updated>2020-04-28T02:12:05.000Z</updated>
+        <content type="html"><![CDATA[<p>JavaScript window.onload 事件和 jQuery ready 函数之间的主要区别是，前者除了要等待 DOM 被创建还要等到包括大型图片、音频、视频在内的所有外部资源都完全加载。如果加载图片和媒体内容花费了大量时间，用户就会感受到定义在 window.onload 事件上的代码在执行时有明显的延迟。<br>
+另一方面，jQuery ready() 函数只需对 DOM 树的等待，而无需对图像或外部资源加载的等待，从而执行起来更快。使用 jQuery $(document).ready() 的另一个优势是你可以在网页里多次使用它，浏览器会按它们在 HTML 页面里出现的顺序执行它们，相反对于 onload 技术而言，只能在单一函数里使用。鉴于这个好处，用 jQuery ready() 函数比用 JavaScript window.onload 事件要更好些。</p>
+]]></content>
+    </entry>
+</feed>
