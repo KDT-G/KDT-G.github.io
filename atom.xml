@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-07T13:52:14.974Z</updated>
+    <updated>2020-05-08T02:42:09.645Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[partial 局部类型概念中的修饰符 可以在多个地方续写类、接口、结构]]></title>
+        <id>https://kdt-g.github.io/post/partial-ju-bu-lei-xing-gai-nian-zhong-de-xiu-shi-fu-ke-yi-zai-duo-ge-di-fang-xu-xie-lei-jie-kou-jie-gou/</id>
+        <link href="https://kdt-g.github.io/post/partial-ju-bu-lei-xing-gai-nian-zhong-de-xiu-shi-fu-ke-yi-zai-duo-ge-di-fang-xu-xie-lei-jie-kou-jie-gou/">
+        </link>
+        <updated>2020-05-08T02:38:57.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用C# Winform写个英汉词典]]></title>
         <id>https://kdt-g.github.io/post/yong-c-winform-xie-ge-ying-han-ci-dian/</id>
@@ -72,12 +79,5 @@
         <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/">
         </link>
         <updated>2020-05-07T13:33:48.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C#简易电影记录管理系统:开发六[数据搜索]]]></title>
-        <id>https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/</id>
-        <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/">
-        </link>
-        <updated>2020-05-07T13:32:47.000Z</updated>
     </entry>
 </feed>
