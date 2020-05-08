@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-08T02:42:09.645Z</updated>
+    <updated>2020-05-08T03:04:07.929Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Git安装教程（Windows安装超详细教程）]]></title>
+        <id>https://kdt-g.github.io/post/git-an-zhuang-jiao-cheng-windows-an-zhuang-chao-xiang-xi-jiao-cheng/</id>
+        <link href="https://kdt-g.github.io/post/git-an-zhuang-jiao-cheng-windows-an-zhuang-chao-xiang-xi-jiao-cheng/">
+        </link>
+        <updated>2020-05-08T03:01:53.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[partial 局部类型概念中的修饰符 可以在多个地方续写类、接口、结构]]></title>
         <id>https://kdt-g.github.io/post/partial-ju-bu-lei-xing-gai-nian-zhong-de-xiu-shi-fu-ke-yi-zai-duo-ge-di-fang-xu-xie-lei-jie-kou-jie-gou/</id>
@@ -72,12 +79,5 @@
         <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
         </link>
         <updated>2020-05-07T13:34:49.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C#简易电影记录管理系统:开发七[用户分类]]]></title>
-        <id>https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/</id>
-        <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/">
-        </link>
-        <updated>2020-05-07T13:33:48.000Z</updated>
     </entry>
 </feed>
