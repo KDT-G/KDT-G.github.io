@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-08T03:04:07.929Z</updated>
+    <updated>2020-05-08T03:32:46.286Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Git GUI如何汉化设置成中文？]]></title>
+        <id>https://kdt-g.github.io/post/git-gui-ru-he-han-hua-she-zhi-cheng-zhong-wen/</id>
+        <link href="https://kdt-g.github.io/post/git-gui-ru-he-han-hua-she-zhi-cheng-zhong-wen/">
+        </link>
+        <updated>2020-05-08T03:21:05.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Git安装教程（Windows安装超详细教程）]]></title>
         <id>https://kdt-g.github.io/post/git-an-zhuang-jiao-cheng-windows-an-zhuang-chao-xiang-xi-jiao-cheng/</id>
@@ -72,12 +79,5 @@
         <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/">
         </link>
         <updated>2020-05-07T13:36:00.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C#简易电影记录管理系统:开发八[数据备份]]]></title>
-        <id>https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/</id>
-        <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
-        </link>
-        <updated>2020-05-07T13:34:49.000Z</updated>
     </entry>
 </feed>
