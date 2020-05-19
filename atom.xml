@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-19T09:45:25.868Z</updated>
+    <updated>2020-05-19T11:31:22.703Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -11,73 +11,73 @@
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
     <entry>
+        <title type="html"><![CDATA[关于]]></title>
+        <id>https://kdt-g.github.io/about/</id>
+        <link href="https://kdt-g.github.io/about/">
+        </link>
+        <updated>2020-05-19T10:27:33.000Z</updated>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[web上传文件并保存使用]]></title>
-        <id>https://kdt-g.github.io/post/web-shang-chuan-wen-jian-bing-bao-cun-shi-yong/</id>
-        <link href="https://kdt-g.github.io/post/web-shang-chuan-wen-jian-bing-bao-cun-shi-yong/">
+        <id>https://kdt-g.github.io/rsvSGesn_/</id>
+        <link href="https://kdt-g.github.io/rsvSGesn_/">
         </link>
         <updated>2020-05-19T07:11:25.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[vs调试方法和注意事项]]></title>
-        <id>https://kdt-g.github.io/post/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/</id>
-        <link href="https://kdt-g.github.io/post/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">
+        <id>https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/</id>
+        <link href="https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">
         </link>
         <updated>2020-05-19T07:10:50.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。]]></title>
-        <id>https://kdt-g.github.io/post/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/</id>
-        <link href="https://kdt-g.github.io/post/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/">
+        <id>https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/</id>
+        <link href="https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/">
         </link>
         <updated>2020-05-19T07:10:07.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[HTTP协议和TCP协议有什么区别？]]></title>
-        <id>https://kdt-g.github.io/post/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/</id>
-        <link href="https://kdt-g.github.io/post/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">
+        <id>https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/</id>
+        <link href="https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">
         </link>
         <updated>2020-05-19T07:09:34.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[DataAdapter适配器]]></title>
-        <id>https://kdt-g.github.io/post/dataadapter-gua-pei-qi/</id>
-        <link href="https://kdt-g.github.io/post/dataadapter-gua-pei-qi/">
+        <id>https://kdt-g.github.io/dataadapter-gua-pei-qi/</id>
+        <link href="https://kdt-g.github.io/dataadapter-gua-pei-qi/">
         </link>
         <updated>2020-05-19T07:07:58.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[GET和POST]]></title>
-        <id>https://kdt-g.github.io/post/get-he-zpost/</id>
-        <link href="https://kdt-g.github.io/post/get-he-zpost/">
+        <id>https://kdt-g.github.io/get-he-zpost/</id>
+        <link href="https://kdt-g.github.io/get-he-zpost/">
         </link>
         <updated>2020-05-19T07:05:54.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[杂乱笔记2]]></title>
-        <id>https://kdt-g.github.io/post/za-luan-bi-ji-2/</id>
-        <link href="https://kdt-g.github.io/post/za-luan-bi-ji-2/">
+        <id>https://kdt-g.github.io/za-luan-bi-ji-2/</id>
+        <link href="https://kdt-g.github.io/za-luan-bi-ji-2/">
         </link>
         <updated>2020-05-19T07:03:51.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[vs依赖项不被识别解决方案]]></title>
-        <id>https://kdt-g.github.io/post/vs-yi-lai-xiang-bu-bei-shi-bie-jie-jue-fang-an/</id>
-        <link href="https://kdt-g.github.io/post/vs-yi-lai-xiang-bu-bei-shi-bie-jie-jue-fang-an/">
+        <id>https://kdt-g.github.io/vs-yi-lai-xiang-bu-bei-shi-bie-jie-jue-fang-an/</id>
+        <link href="https://kdt-g.github.io/vs-yi-lai-xiang-bu-bei-shi-bie-jie-jue-fang-an/">
         </link>
         <updated>2020-05-19T07:02:38.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[什么是HTML，CSS和DOM]]></title>
-        <id>https://kdt-g.github.io/post/shi-me-shi-htmlcss-he-dom/</id>
-        <link href="https://kdt-g.github.io/post/shi-me-shi-htmlcss-he-dom/">
+        <id>https://kdt-g.github.io/shi-me-shi-htmlcss-he-dom/</id>
+        <link href="https://kdt-g.github.io/shi-me-shi-htmlcss-he-dom/">
         </link>
         <updated>2020-05-19T07:02:03.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JavaScript window.onload 事件和 jQuery ready 函数之间的主要区别是]]></title>
-        <id>https://kdt-g.github.io/post/javascript-windowonload-shi-jian-he-jquery-ready-han-shu-zhi-jian-de-zhu-yao-qu-bie-shi/</id>
-        <link href="https://kdt-g.github.io/post/javascript-windowonload-shi-jian-he-jquery-ready-han-shu-zhi-jian-de-zhu-yao-qu-bie-shi/">
-        </link>
-        <updated>2020-05-19T07:00:54.000Z</updated>
     </entry>
 </feed>
