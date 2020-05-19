@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-19T13:50:52.697Z</updated>
+    <updated>2020-05-19T17:34:14.456Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,62 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[用户名、密码等15个常用的js正则表达式]]></title>
+        <id>https://kdt-g.github.io/RFKu0o4lH/</id>
+        <link href="https://kdt-g.github.io/RFKu0o4lH/">
+        </link>
+        <updated>2020-05-19T17:29:04.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[jqUI简单调用和使用]]></title>
+        <id>https://kdt-g.github.io/VpFGK3lBJ/</id>
+        <link href="https://kdt-g.github.io/VpFGK3lBJ/">
+        </link>
+        <updated>2020-05-19T17:27:35.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ado.net EF与ado.net区别比较]]></title>
+        <id>https://kdt-g.github.io/RQWPTTnrX/</id>
+        <link href="https://kdt-g.github.io/RQWPTTnrX/">
+        </link>
+        <updated>2020-05-19T17:27:09.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ashx输出图片]]></title>
+        <id>https://kdt-g.github.io/kMxdooebu/</id>
+        <link href="https://kdt-g.github.io/kMxdooebu/">
+        </link>
+        <updated>2020-05-19T17:26:05.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[分页查询实现步骤]]></title>
+        <id>https://kdt-g.github.io/WYJ3bpOOT/</id>
+        <link href="https://kdt-g.github.io/WYJ3bpOOT/">
+        </link>
+        <updated>2020-05-19T17:25:11.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Func和Action委托的区别和简单使用]]></title>
+        <id>https://kdt-g.github.io/TlyNsGK_v/</id>
+        <link href="https://kdt-g.github.io/TlyNsGK_v/">
+        </link>
+        <updated>2020-05-19T17:24:24.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[什么是隐式类型]]></title>
+        <id>https://kdt-g.github.io/0VY44_rPu/</id>
+        <link href="https://kdt-g.github.io/0VY44_rPu/">
+        </link>
+        <updated>2020-05-19T17:22:06.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[c# string类型存储原理]]></title>
+        <id>https://kdt-g.github.io/wwof9uN34/</id>
+        <link href="https://kdt-g.github.io/wwof9uN34/">
+        </link>
+        <updated>2020-05-19T17:18:24.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[web上传文件并保存使用]]></title>
         <id>https://kdt-g.github.io/rsvSGesn_/</id>
@@ -23,61 +79,5 @@
         <link href="https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">
         </link>
         <updated>2020-05-19T07:10:50.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。]]></title>
-        <id>https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/</id>
-        <link href="https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/">
-        </link>
-        <updated>2020-05-19T07:10:07.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[HTTP协议和TCP协议有什么区别？]]></title>
-        <id>https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/</id>
-        <link href="https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">
-        </link>
-        <updated>2020-05-19T07:09:34.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[DataAdapter适配器]]></title>
-        <id>https://kdt-g.github.io/dataadapter-gua-pei-qi/</id>
-        <link href="https://kdt-g.github.io/dataadapter-gua-pei-qi/">
-        </link>
-        <updated>2020-05-19T07:07:58.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[GET和POST]]></title>
-        <id>https://kdt-g.github.io/get-he-zpost/</id>
-        <link href="https://kdt-g.github.io/get-he-zpost/">
-        </link>
-        <updated>2020-05-19T07:05:54.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[杂乱笔记2]]></title>
-        <id>https://kdt-g.github.io/za-luan-bi-ji-2/</id>
-        <link href="https://kdt-g.github.io/za-luan-bi-ji-2/">
-        </link>
-        <updated>2020-05-19T07:03:51.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[vs依赖项不被识别解决方案]]></title>
-        <id>https://kdt-g.github.io/vs-yi-lai-xiang-bu-bei-shi-bie-jie-jue-fang-an/</id>
-        <link href="https://kdt-g.github.io/vs-yi-lai-xiang-bu-bei-shi-bie-jie-jue-fang-an/">
-        </link>
-        <updated>2020-05-19T07:02:38.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[什么是HTML，CSS和DOM]]></title>
-        <id>https://kdt-g.github.io/shi-me-shi-htmlcss-he-dom/</id>
-        <link href="https://kdt-g.github.io/shi-me-shi-htmlcss-he-dom/">
-        </link>
-        <updated>2020-05-19T07:02:03.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JavaScript window.onload 事件和 jQuery ready 函数之间的主要区别是]]></title>
-        <id>https://kdt-g.github.io/javascript-windowonload-shi-jian-he-jquery-ready-han-shu-zhi-jian-de-zhu-yao-qu-bie-shi/</id>
-        <link href="https://kdt-g.github.io/javascript-windowonload-shi-jian-he-jquery-ready-han-shu-zhi-jian-de-zhu-yao-qu-bie-shi/">
-        </link>
-        <updated>2020-05-19T07:00:54.000Z</updated>
     </entry>
 </feed>
