@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-10T14:11:26.516Z</updated>
+    <updated>2020-05-19T06:21:05.614Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[编译型语言、解释型语言、脚本语言的区别]]></title>
+        <id>https://kdt-g.github.io/post/bian-yi-xing-yu-yan-jie-shi-xing-yu-yan-jiao-ben-yu-yan-de-qu-bie/</id>
+        <link href="https://kdt-g.github.io/post/bian-yi-xing-yu-yan-jie-shi-xing-yu-yan-jiao-ben-yu-yan-de-qu-bie/">
+        </link>
+        <updated>2020-05-19T06:20:17.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Git GUI如何汉化设置成中文？]]></title>
         <id>https://kdt-g.github.io/post/git-gui-ru-he-han-hua-she-zhi-cheng-zhong-wen/</id>
@@ -72,12 +79,5 @@
         <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-wan-jie-pian-quan-xian-fen-pei/">
         </link>
         <updated>2020-05-07T13:36:56.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C#简易电影记录管理系统:开发九[数据恢复]]]></title>
-        <id>https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/</id>
-        <link href="https://kdt-g.github.io/post/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/">
-        </link>
-        <updated>2020-05-07T13:36:00.000Z</updated>
     </entry>
 </feed>
