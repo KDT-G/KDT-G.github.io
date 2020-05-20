@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>12分钟上手CSS【看懂封面就理解CSS】 | 枫亦的博客</title>
+<title>html复制保留原格式 | 枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1589954261702">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="12分钟上手CSS【看懂封面就理解CSS】" />
-  <meta name="keywords" content="有趣的编程知识" />
+  <meta name="description" content="html复制保留原格式" />
+  <meta name="keywords" content="html,有趣的编程知识,前端" />
 </head>
 
 <body>
@@ -283,8 +283,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/">
-      12分钟上手CSS【看懂封面就理解CSS】
+    <a class="post-title-link" href="https://kdt-g.github.io/UwJA_HwRn/">
+      html复制保留原格式
     </a>
   </h1>
   <div class="post-meta">
@@ -292,7 +292,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-04-28</span>
+      <span>2020-05-20</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -301,8 +301,20 @@
       <span class="pc-show">分类于</span>
       
       
+      <a href="https://kdt-g.github.io/hYgNFTBzV/">
+        <span>html</span>
+      </a>、
+      
+      
+      
       <a href="https://kdt-g.github.io/T7mykyUdq/">
         <span>有趣的编程知识</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/E_OFTC58Mr/">
+        <span>前端</span>
       </a>
       
       
@@ -311,17 +323,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>0分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>0<span class="pc-show">字数</span></span>
+      <span>232<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/" data-flag-title="12分钟上手CSS【看懂封面就理解CSS】" class="meta-item pc-show leancloud_visitors">
+    <span id="/UwJA_HwRn/" data-flag-title="html复制保留原格式" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -330,9 +342,48 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <div style="position: relative; padding: 30% 45%;">
-<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" src="https://player.bilibili.com/player.html?aid=86238906&bvid=BV1X7411x7ao&cid=147396296&page=1&as_wide=1&high_quality=1&danmaku=0" frameborder="no" scrolling="no"></iframe>
-</div>
+              <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;复制文本内容保持预留格式&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   
+    &lt;button  id=&quot;b2&quot;&gt;复制2&lt;/button&gt;
+    &lt;pre class=&quot;preText&quot;&gt;                              ---------------EOF---------------
+ &lt;p style=&quot;color:red;&quot;&gt;456&lt;/p&gt;
+ 
+                    ****** CORVARINCE ******
+    1
+     1450416.8750     94220.6953     58098.9414    -76054.6328   -232771.8750    212933.2500    -68626.6250     61194.3438
+      124985.3984    240836.2188    203419.0469     27533.9531    -57570.3281     49936.1172    219656.1406    492165.6250
+      239934.3281    457249.6250   -106036.7109     94176.5859   -313093.4062    -13598.0986    400218.0000    193047.2969
+      153492.9219
+&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.10.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var text = $('.preText').text();
+    function copyText(text) {
+        var tag = document.createElement('textarea');
+        var elementID = &quot;cp_hgz_input&quot;;
+        tag.setAttribute('id', elementID);
+        tag.value = text;
+        // document.getElementById('main-content').appendChild(tag);
+        document.body.appendChild(tag);
+        document.getElementById(elementID).select();
+        document.execCommand('copy');
+        document.getElementById(elementID).remove();
+    }
+    $('#b2').click(function(event) {
+        copyText(text)
+    });
+&lt;/script&gt;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20190703164215503.gif" alt="img" loading="lazy"></figure>
+<p>转自：<a href="https://blog.csdn.net/xxxxxxxxYZ/article/details/94572080">https://blog.csdn.net/xxxxxxxxYZ/article/details/94572080</a></p>
 
             </div>
             <div class="post-footer">
@@ -343,7 +394,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/" title="12分钟上手CSS【看懂封面就理解CSS】">https://kdt-g.github.io/12-fen-zhong-shang-shou-csskan-dong-feng-mian-jiu-li-jie-css/</a>
+      <a href="https://kdt-g.github.io/UwJA_HwRn/" title="html复制保留原格式">https://kdt-g.github.io/UwJA_HwRn/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -352,21 +403,21 @@
   </ul>
   <div class="tags">
     
+      <a href="https://kdt-g.github.io/hYgNFTBzV/"># html</a>
+    
       <a href="https://kdt-g.github.io/T7mykyUdq/"># 有趣的编程知识</a>
+    
+      <a href="https://kdt-g.github.io/E_OFTC58Mr/"># 前端</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="关于博客园内嵌入bilibili视频(转)" href="https://kdt-g.github.io/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/">关于博客园内嵌入bilibili视频(转)</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="关于博客园内嵌入bilibili视频(转)" href="https://kdt-g.github.io/guan-yu-bo-ke-yuan-nei-qian-ru-bilibili-shi-pin-zhuan/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="老说的API到底是什么??" href="https://kdt-g.github.io/1/">老说的API到底是什么??</a>
-        <a class="nav-mobile-next" title="老说的API到底是什么??" href="https://kdt-g.github.io/1/">下一篇</a>
+        <a class="nav-pc-next" title="用户名、密码等15个常用的js正则表达式" href="https://kdt-g.github.io/RFKu0o4lH/">用户名、密码等15个常用的js正则表达式</a>
+        <a class="nav-mobile-next" title="用户名、密码等15个常用的js正则表达式" href="https://kdt-g.github.io/RFKu0o4lH/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
