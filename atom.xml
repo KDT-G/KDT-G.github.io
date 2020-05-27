@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-20T18:03:13.404Z</updated>
+    <updated>2020-05-27T13:08:28.502Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[github克隆文件和获取远程仓库的更新]]></title>
+        <id>https://kdt-g.github.io/1cLHajqIJ/</id>
+        <link href="https://kdt-g.github.io/1cLHajqIJ/">
+        </link>
+        <updated>2020-05-27T13:02:44.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[github上传文件]]></title>
+        <id>https://kdt-g.github.io/qMUNtCci6/</id>
+        <link href="https://kdt-g.github.io/qMUNtCci6/">
+        </link>
+        <updated>2020-05-27T13:01:32.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C# DataGridView 多了一行空白]]></title>
         <id>https://kdt-g.github.io/PzxpwKuLh/</id>
@@ -65,19 +79,5 @@
         <link href="https://kdt-g.github.io/TlyNsGK_v/">
         </link>
         <updated>2020-05-19T17:24:24.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[什么是隐式类型]]></title>
-        <id>https://kdt-g.github.io/0VY44_rPu/</id>
-        <link href="https://kdt-g.github.io/0VY44_rPu/">
-        </link>
-        <updated>2020-05-19T17:22:06.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[c# string类型存储原理]]></title>
-        <id>https://kdt-g.github.io/wwof9uN34/</id>
-        <link href="https://kdt-g.github.io/wwof9uN34/">
-        </link>
-        <updated>2020-05-19T17:18:24.000Z</updated>
     </entry>
 </feed>

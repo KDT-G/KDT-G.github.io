@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。 | 枫亦的博客</title>
+<title>github克隆文件和获取远程仓库的更新 | 枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1590584900736">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。" />
-  <meta name="keywords" content="NPOI" />
+  <meta name="description" content="github克隆文件和获取远程仓库的更新" />
+  <meta name="keywords" content="git版本控制器" />
 </head>
 
 <body>
@@ -156,7 +156,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -196,6 +197,196 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%85%8B%E9%9A%86">克隆</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E6%9B%B4%E6%96%B0">获取远程仓库的更新</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -283,8 +474,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/">
-      NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。
+    <a class="post-title-link" href="https://kdt-g.github.io/1cLHajqIJ/">
+      github克隆文件和获取远程仓库的更新
     </a>
   </h1>
   <div class="post-meta">
@@ -292,7 +483,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-05-19</span>
+      <span>2020-05-27</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -301,8 +492,8 @@
       <span class="pc-show">分类于</span>
       
       
-      <a href="https://kdt-g.github.io/4uAkNT7dB/">
-        <span>NPOI</span>
+      <a href="https://kdt-g.github.io/SAQBiRNK7/">
+        <span>git版本控制器</span>
       </a>
       
       
@@ -316,12 +507,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>49<span class="pc-show">字数</span></span>
+      <span>62<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/" data-flag-title="NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。" class="meta-item pc-show leancloud_visitors">
+    <span id="/1cLHajqIJ/" data-flag-title="github克隆文件和获取远程仓库的更新" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -330,8 +521,15 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>1.2.3中，NPOI.SS.UserModel.Sheet sheet = hssfworkbook.CreateSheet(）；<br>
-1.2.4中  NPOI.SS.UserModel.ISheet sheet = hssfworkbook.CreateSheet(）；//名称变了，本来就是个接口，只是1.2.3中没有按接口命名的规范</p>
+              <h2 id="克隆">克隆</h2>
+<pre><code>git clone git@github.com:[用户名]/[仓库名].git
+
+</code></pre>
+<h2 id="获取远程仓库的更新">获取远程仓库的更新</h2>
+<pre><code> git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;
+
+ //远程主机名是连接远程仓库时创建的
+</code></pre>
 
             </div>
             <div class="post-footer">
@@ -342,7 +540,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/" title="NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。">https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/</a>
+      <a href="https://kdt-g.github.io/1cLHajqIJ/" title="github克隆文件和获取远程仓库的更新">https://kdt-g.github.io/1cLHajqIJ/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -351,21 +549,17 @@
   </ul>
   <div class="tags">
     
-      <a href="https://kdt-g.github.io/4uAkNT7dB/"># NPOI</a>
+      <a href="https://kdt-g.github.io/SAQBiRNK7/"># git版本控制器</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="vs调试方法和注意事项" href="https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">vs调试方法和注意事项</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="vs调试方法和注意事项" href="https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="HTTP协议和TCP协议有什么区别？" href="https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">HTTP协议和TCP协议有什么区别？</a>
-        <a class="nav-mobile-next" title="HTTP协议和TCP协议有什么区别？" href="https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">下一篇</a>
+        <a class="nav-pc-next" title="github上传文件" href="https://kdt-g.github.io/qMUNtCci6/">github上传文件</a>
+        <a class="nav-mobile-next" title="github上传文件" href="https://kdt-g.github.io/qMUNtCci6/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>

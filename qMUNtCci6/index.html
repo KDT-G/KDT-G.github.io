@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。 | 枫亦的博客</title>
+<title>github上传文件 | 枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1590584900736">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。" />
-  <meta name="keywords" content="NPOI" />
+  <meta name="description" content="github上传文件" />
+  <meta name="keywords" content="git版本控制器" />
 </head>
 
 <body>
@@ -156,7 +156,8 @@
       <div class="sidebar-body pisces" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -196,6 +197,199 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%B7%A5%E5%85%B7%E5%8E%9F%E6%96%99">工具/原料</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E6%AD%A5%E9%AA%A41">方法/步骤1</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E6%AD%A5%E9%AA%A42">方法/步骤2</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E6%AD%A5%E9%AA%A43">方法/步骤3</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -283,8 +477,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/">
-      NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。
+    <a class="post-title-link" href="https://kdt-g.github.io/qMUNtCci6/">
+      github上传文件
     </a>
   </h1>
   <div class="post-meta">
@@ -292,7 +486,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-05-19</span>
+      <span>2020-05-27</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -301,8 +495,8 @@
       <span class="pc-show">分类于</span>
       
       
-      <a href="https://kdt-g.github.io/4uAkNT7dB/">
-        <span>NPOI</span>
+      <a href="https://kdt-g.github.io/SAQBiRNK7/">
+        <span>git版本控制器</span>
       </a>
       
       
@@ -311,17 +505,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>4分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>49<span class="pc-show">字数</span></span>
+      <span>857<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/" data-flag-title="NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。" class="meta-item pc-show leancloud_visitors">
+    <span id="/qMUNtCci6/" data-flag-title="github上传文件" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -330,8 +524,101 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>1.2.3中，NPOI.SS.UserModel.Sheet sheet = hssfworkbook.CreateSheet(）；<br>
-1.2.4中  NPOI.SS.UserModel.ISheet sheet = hssfworkbook.CreateSheet(）；//名称变了，本来就是个接口，只是1.2.3中没有按接口命名的规范</p>
+              <h2 id="工具原料">工具/原料</h2>
+<ul>
+<li>客户端：Git-2.11.1-64-bit.exe（注意使用2.5.1客户端的话可能会出现找不到tmp的问题）</li>
+<li>账户：在github网站上注册一个账户</li>
+</ul>
+<h2 id="方法步骤1">方法/步骤1</h2>
+<ol>
+<li>
+<p>1</p>
+<p>安装客户端与注册账户很简单，在这里就不多说了，详情请参阅网上步骤。首先登陆github官网后选择start a project创建一个项目仓库。</p>
+<figure data-type="image" tabindex="1"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=1"><img src="https://exp-picture.cdn.bcebos.com/1f9feadca039131f7a3c056ae275f2c4ed990a64.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+</li>
+<li>
+<p>2</p>
+<p>进入自己需要上传项目的文件夹内，右击选择git bash here打开git客户端</p>
+<p>输入：git init，然后就会生成一个.git的文件夹。</p>
+<figure data-type="image" tabindex="2"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=2"><img src="https://exp-picture.cdn.bcebos.com/58021a0148fe1e42e0bbd262c2299a8838130364.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+</li>
+<li>
+<p>3</p>
+<p>由于第一次使用git上传项目，需要配置ssh</p>
+<p>输入：ssh-keygen -t rsa -C &quot;email@qq.com&quot;</p>
+<p>后面的email@qq.com改为你的邮箱。我的邮箱是qq邮箱，也是在github上注册的那个邮箱</p>
+<p>回车后接着会提示你输入两次密码，默认为空直接回车，出现以下图案表示shh key已经生成成功</p>
+<figure data-type="image" tabindex="3"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=3"><img src="https://exp-picture.cdn.bcebos.com/e9a4f2eeadbcbe2f81a090ab54dae43b3a867864.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<p>END</p>
+</li>
+</ol>
+<h2 id="方法步骤2">方法/步骤2</h2>
+<ol>
+<li>
+<p>1</p>
+<p>进入c盘的C:\Users\标准用户.ssh（一般都是在这个文加下）生成了两个文件，用记事本打开id_rsa.pub，全选然后复制。</p>
+<figure data-type="image" tabindex="4"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=4"><img src="https://exp-picture.cdn.bcebos.com/de9bfa3b3b860221838745e5d8bbf82065fb7264.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+</li>
+<li>
+<p>2</p>
+<p>进入github官网，选择setting-》ssh and GPG keys-》new ssh key</p>
+<p>然后title随便写一个，在下面面的内容处粘贴刚复制的内容。</p>
+<figure data-type="image" tabindex="5"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=5"><img src="https://exp-picture.cdn.bcebos.com/52fae62064fb960be3f1d3d28fa355e982ae6c64.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+</li>
+<li>
+<p>3</p>
+<p>选择则保存，然后进入git客户端</p>
+<p>输入：ssh -T git@github.com</p>
+<p>如果ssh key配置成功的话，会看到以下效果</p>
+<figure data-type="image" tabindex="6"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=6"><img src="https://exp-picture.cdn.bcebos.com/04201aa355e983ae3f078f9968efe07815316964.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<p>END</p>
+</li>
+</ol>
+<h2 id="方法步骤3">方法/步骤3</h2>
+<ol>
+<li></li>
+</ol>
+<p>设置username和email，因为github每次commit都会记录他们</p>
+<p>输入以下两个命令：</p>
+<p>$ git config --global user.name &quot;your name&quot;（注册时填写的名字）</p>
+<p>$ git config --global user.email &quot;email@qq.com&quot;（自己的邮箱）</p>
+<p>开始建立连接：</p>
+<p>git remote add origin git@github.com:yourName/yourRepo.git</p>
+<p>yourName和yourRepo表示你再github的用户名和刚才新建的仓库，加完之后进入.git</p>
+<figure data-type="image" tabindex="7"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=7"><img src="https://exp-picture.cdn.bcebos.com/586bfdefe07814310366e4dfdc6699cf03536264.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<ol start="2">
+<li></li>
+</ol>
+<p>如果出现了以下情况fatal: remote origin already exists.说明以前已经连接过此项目，此时需要输入命令：git remote rm origin（移除连接，一般新建的仓库不会出现此问题），然后重新连接</p>
+<p>输入：git add test.txt (将test文件上传，如果需要上传所有文件请输入：</p>
+<p>git add . )</p>
+<figure data-type="image" tabindex="8"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=8"><img src="https://exp-picture.cdn.bcebos.com/562787cf02532f63c1553685699147e832e05c64.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<ol start="3">
+<li></li>
+</ol>
+<p>开始提交刚才添加的文件，输入：</p>
+<p>git commit -m &quot;first commit&quot; （会看到这里列出了所有你需要上传的文件）</p>
+<figure data-type="image" tabindex="9"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=9"><img src="https://exp-picture.cdn.bcebos.com/46a92de039723d03523ae835bb486143d6d45764.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<ol start="4">
+<li></li>
+</ol>
+<p>最后使用git push命令，将本地仓库推送到远程服务器</p>
+<p>输入：git push origin master</p>
+<p>成功后效果如下</p>
+<figure data-type="image" tabindex="10"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=10"><img src="https://exp-picture.cdn.bcebos.com/31097f43d7d44831eb3b2014d40f822b75ee5164.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<ol start="5">
+<li></li>
+</ol>
+<p>进入github个人后台，会发现test.txt已经成功上传.</p>
+<p>下载项目直接使用git clone https://github.com/TaberZaly/online-shop.git即可或者直接进入github下载zip压缩包。</p>
+<figure data-type="image" tabindex="11"><a href="http://jingyan.baidu.com/album/e5c39bf5c8c4d039d76033b2.html?picindex=11"><img src="https://exp-picture.cdn.bcebos.com/05aae8a75f0f822b873eca81c018512c8df14d64.jpg?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_500" alt="如何使用git上传代码到github" loading="lazy"></a></figure>
+<p>END</p>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>如果出现此错误fatal: remote origin already exists.表示连接问题，原因可能是仓库已经和本地的某一个项目建立了连接，使用新项目与原来仓库连接会出现这个问题，所以先移除连接git remote rm origin</li>
+<li>当输入git commit -m &quot;first commit&quot;后，在你移除原连接新建后，并没有列出你所要上传的文件，而显示没有目录或者文件。此时直接新建仓库重新执行以上步骤即可。</li>
+<li>初次上传时需要配置ssh key 与设置config --global信息，之后上传一般不需要了。</li>
+</ul>
 
             </div>
             <div class="post-footer">
@@ -342,7 +629,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/" title="NPOI（1.2.4）无法将类型“NPOI.SS.UserModel.Sheet”隐式转换为“NPOI.HSSF.UserModel.HSSFSheet”。">https://kdt-g.github.io/npoi124wu-fa-jiang-lei-xing-npoissusermodelsheetyin-shi-zhuan-huan-wei-npoihssfusermodelhssfsheet/</a>
+      <a href="https://kdt-g.github.io/qMUNtCci6/" title="github上传文件">https://kdt-g.github.io/qMUNtCci6/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -351,21 +638,21 @@
   </ul>
   <div class="tags">
     
-      <a href="https://kdt-g.github.io/4uAkNT7dB/"># NPOI</a>
+      <a href="https://kdt-g.github.io/SAQBiRNK7/"># git版本控制器</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="vs调试方法和注意事项" href="https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">vs调试方法和注意事项</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="vs调试方法和注意事项" href="https://kdt-g.github.io/vs-diao-shi-fang-fa-he-zhu-yi-shi-xiang/">上一篇</a>
+        <a class="nav-pc-next" title="github克隆文件和获取远程仓库的更新" href="https://kdt-g.github.io/1cLHajqIJ/">github克隆文件和获取远程仓库的更新</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="github克隆文件和获取远程仓库的更新" href="https://kdt-g.github.io/1cLHajqIJ/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="HTTP协议和TCP协议有什么区别？" href="https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">HTTP协议和TCP协议有什么区别？</a>
-        <a class="nav-mobile-next" title="HTTP协议和TCP协议有什么区别？" href="https://kdt-g.github.io/http-xie-yi-he-tcp-xie-yi-you-shi-me-qu-bie/">下一篇</a>
+        <a class="nav-pc-next" title="C# DataGridView 多了一行空白" href="https://kdt-g.github.io/PzxpwKuLh/">C# DataGridView 多了一行空白</a>
+        <a class="nav-mobile-next" title="C# DataGridView 多了一行空白" href="https://kdt-g.github.io/PzxpwKuLh/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
