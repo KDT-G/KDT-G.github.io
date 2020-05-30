@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-27T13:08:28.502Z</updated>
+    <updated>2020-05-30T12:33:31.780Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,55 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第七节：执行shell命令、文件另存为、合并文件和打开多个文件）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/KzuzckBo6/</id>
+        <link href="https://kdt-g.github.io/KzuzckBo6/">
+        </link>
+        <updated>2020-05-30T12:32:24.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第六节：搜索命令和替换命令）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/HS_UBlK0K/</id>
+        <link href="https://kdt-g.github.io/HS_UBlK0K/">
+        </link>
+        <updated>2020-05-30T12:29:02.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第五节：文件信息、跳转、定位括号和缩进）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/K2aGiihrd/</id>
+        <link href="https://kdt-g.github.io/K2aGiihrd/">
+        </link>
+        <updated>2020-05-30T12:27:29.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第四节：粘贴命令、替换命令、替换模式和修改命令）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/XMtyLWfdv/</id>
+        <link href="https://kdt-g.github.io/XMtyLWfdv/">
+        </link>
+        <updated>2020-05-30T12:25:45.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第三节：删除命令、数字的奥义、撤销和恢复命令）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/UldoXhfMg/</id>
+        <link href="https://kdt-g.github.io/UldoXhfMg/">
+        </link>
+        <updated>2020-05-30T12:23:27.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第二节：插入模式和退出VIM的方法）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/XCJWIHqR9/</id>
+        <link href="https://kdt-g.github.io/XCJWIHqR9/">
+        </link>
+        <updated>2020-05-30T12:22:44.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VIM基础学习(第一节：使用 h j k l 来移动你的光标）转自：鱼C论坛]]></title>
+        <id>https://kdt-g.github.io/JnFXw4Sbm/</id>
+        <link href="https://kdt-g.github.io/JnFXw4Sbm/">
+        </link>
+        <updated>2020-05-30T12:18:14.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[github克隆文件和获取远程仓库的更新]]></title>
         <id>https://kdt-g.github.io/1cLHajqIJ/</id>
@@ -30,54 +79,5 @@
         <link href="https://kdt-g.github.io/PzxpwKuLh/">
         </link>
         <updated>2020-05-20T14:26:11.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[html复制保留原格式]]></title>
-        <id>https://kdt-g.github.io/UwJA_HwRn/</id>
-        <link href="https://kdt-g.github.io/UwJA_HwRn/">
-        </link>
-        <updated>2020-05-20T05:55:01.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[用户名、密码等15个常用的js正则表达式]]></title>
-        <id>https://kdt-g.github.io/RFKu0o4lH/</id>
-        <link href="https://kdt-g.github.io/RFKu0o4lH/">
-        </link>
-        <updated>2020-05-19T17:29:04.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[jqUI简单调用和使用]]></title>
-        <id>https://kdt-g.github.io/VpFGK3lBJ/</id>
-        <link href="https://kdt-g.github.io/VpFGK3lBJ/">
-        </link>
-        <updated>2020-05-19T17:27:35.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ado.net EF与ado.net区别比较]]></title>
-        <id>https://kdt-g.github.io/RQWPTTnrX/</id>
-        <link href="https://kdt-g.github.io/RQWPTTnrX/">
-        </link>
-        <updated>2020-05-19T17:27:09.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ashx输出图片]]></title>
-        <id>https://kdt-g.github.io/kMxdooebu/</id>
-        <link href="https://kdt-g.github.io/kMxdooebu/">
-        </link>
-        <updated>2020-05-19T17:26:05.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[分页查询实现步骤]]></title>
-        <id>https://kdt-g.github.io/WYJ3bpOOT/</id>
-        <link href="https://kdt-g.github.io/WYJ3bpOOT/">
-        </link>
-        <updated>2020-05-19T17:25:11.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Func和Action委托的区别和简单使用]]></title>
-        <id>https://kdt-g.github.io/TlyNsGK_v/</id>
-        <link href="https://kdt-g.github.io/TlyNsGK_v/">
-        </link>
-        <updated>2020-05-19T17:24:24.000Z</updated>
     </entry>
 </feed>
