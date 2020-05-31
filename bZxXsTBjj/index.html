@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>Silverlight圣诞下雪动画及其扩展应用的实现 | 枫亦的博客</title>
+<title>枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1590930298514">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,6 @@
 
 
 
-  <meta name="description" content="Silverlight圣诞下雪动画及其扩展应用的实现" />
-  <meta name="keywords" content="有趣的编程知识,c#,net" />
 </head>
 
 <body>
@@ -138,26 +136,10 @@
   <div class="main-continer">
     
     <div
-      class="section-layout pisces ">
+      class="section-layout  pisces">
       <div class="section-layout-wrapper">
-        
-
-<div class="sidebar">
-  
-    <div class="sidebar-box box-shadow-wrapper bg-color right-motion" id="sidebar">
-      
-        <div class="post-list-sidebar">
-          <div class="sidebar-title">
-            <span id="tocSideBar" class="sidebar-title-item sidebar-title-active">文章目录</span>
-            <span id="metaSideBar" class="sidebar-title-item">站点概览</span>
-          </div>
-        </div>
-      
-      <div class="sidebar-body pisces" id="sidebar_body">
-        
-          
-            <div class="post-side-meta" id="post_side_meta">
-              
+        <div id="sidebarMeta" class="sidebar">
+    
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -197,804 +179,602 @@
 
 
 </div>
-            </div>
-            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
-              <div class="toc-box right-motion">
-  <div class="toc-wrapper auto-number auto"
-    id="toc_wrapper">
-    <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%AE%80%E4%BB%8B"><strong>简介</strong></a></li>
-<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%95%E7%A4%BA"><strong>应用展示</strong></a></li>
-<li><a href="#merry-christmas-%E5%AE%9E%E7%8E%B0">Merry Christmas 实现</a></li>
-</ul>
-</li>
-</ul>
-
-  </div>
 </div>
-
 <script>
-
-  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
-  let active = 'active-show', activeClass = 'active-current';
-  let tocWrapper = document.querySelector('#toc_wrapper');
-  let tocContent = tocWrapper.children[0];
-  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
-
-  function addTocNumber(elem, deep) {
-    if (!elem) {
-      return;
-    }
-    let prop = elem.__proto__;
-
-    if (prop === HTMLUListElement.prototype) {
-      for (let i = 0; i < elem.children.length; i++) {
-        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'pisces';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
       }
-    } else if (prop === HTMLLIElement.prototype) {
-      // 保存li元素
-      if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
-        lList.push(elem);
-      }
-      for (let i = 0; i < elem.children.length; i++) {
-        let cur = elem.children[i];
-        if (cur.__proto__ === HTMLAnchorElement.prototype) {
-          if (autoNumber) {
-            cur.text = deep + ' ' + cur.text;
-          }
-        } else if (cur.__proto__ === HTMLUListElement.prototype) {
-          addTocNumber(cur, deep);
-        }
-      }
-    }
-  }
-
-  function removeParentActiveClass() {
-    let parents = tocContent.querySelectorAll('.' + active)
-    parents.forEach(function (elem) {
-      elem.classList.remove(active);
     });
   }
-
-  function addActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.add(activeClass);
-    }
-  }
-
-  function removeActiveClass(index) {
-    if (index >= 0 && index < hList.length) {
-      lList[index].classList.remove(activeClass);
-    }
-  }
-
-  function addActiveLiElemment(elem, parent) {
-    if (!elem || elem === parent) {
-      return;
-    } else {
-      if (elem.__proto__ === HTMLLIElement.prototype) {
-        elem.classList.add(active);
-      }
-      addActiveLiElemment(elem.parentElement, parent);
-    }
-  }
-
-  function showToc() {
-    if (tocWrapper) {
-      postBody = document.querySelector('#post_body');
-      for (let i = 0; i < postBody.children.length; i++) {
-        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
-          hList.push(postBody.children[i]);
-        }
-      }
-      if (tocWrapper.classList.contains('compress')) {
-        tocContent.classList.add('closed');
-      } else if (tocWrapper.classList.contains('no_compress')) {
-        tocContent.classList.add('expanded');
-      } else {
-        if (hList.length > 10) {
-          active = 'active-hidden'
-          tocContent.classList.add('closed');
-        } else {
-          tocContent.classList.add('expanded');
-        }
-      }
-    }
-  }
-
-  (function () {
-    // 处理不是从#一级标题开始目录
-    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
-      let con = tocContent.children[0].children[0];
-      tocContent.innerHTML = con.innerHTML;
-    }
-    let markdownItTOC = document.querySelector('.markdownIt-TOC');
-    let innerHeight = window.innerHeight;
-    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
-    addTocNumber(tocContent, '');
-  })();
-
-  document.addEventListener('scroll', function (e) {
-    if (lList.length <= 0) {
-      return;
-    }
-    let scrollTop = document.scrollingElement.scrollTop + 10;
-    let dir;
-
-    if (lastTop - scrollTop > 0) {
-      dir = 'up';
-    } else {
-      dir = 'down';
-    }
-
-    lastTop = scrollTop;
-    if (scrollTop <= 0) {
-      if (lastIndex >= 0 && lastIndex < hList.length) {
-        lList[lastIndex].classList.remove(activeClass);
-      }
-      return;
-    }
-
-    let current = 0, hasFind = false;
-    for (let i = 0; i < hList.length; i++) {
-      if (hList[i].offsetTop > scrollTop) {
-        current = i;
-        hasFind = true;
-        break;
-      }
-    }
-    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
-      current = hList.length - 1;
-    } else {
-      current--;
-    }
-    if (dir === 'down') {
-      if (current > lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex)
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    } else {
-      if (current < lastIndex) {
-        addActiveClass(current);
-        removeActiveClass(lastIndex);
-        lastIndex = current;
-        removeParentActiveClass();
-        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
-      }
-    }
-  });
-
-
-  window.addEventListener('load', function () {
-    showToc();
-    document.querySelector('#sidebar').style = 'display: block;';
-    tocWrapper.classList.add('toc-active');
-    setTimeout(function () {
-      if ("createEvent" in document) {
-        let evt = document.createEvent("HTMLEvents");
-        evt.initEvent("scroll", false, true);
-        document.dispatchEvent(evt);
-      }
-      else {
-        document.fireEvent("scroll");
-      }
-    }, 500)
-  })
-
-</script>
-            </div>
-          
-        
+  </script>
+        <div class="section-box tag-line box-shadow-wrapper">
+          <section class="section tags-section posts-expand bg-color">
+            <div class="padding-wrapper">
+  <div class="tag-timeline-box">
+    <div class="tag-timeline-wrapper">
+      <div class="tag-timeline-title">
+        <h2>
+          EF
+          <small>标签</small>
+        </h2>
       </div>
-    </div>
-  
-</div>
-<script>
-  const SIDEBAR_TITLE_ACTIVE = 'sidebar-title-active';
-  const SIDEBAR_BODY_ACTIVE = 'sidebar-body-active';
-  const SLIDE_UP_IN = 'slide-up-in';
-
-  let sidebar = document.querySelector('#sidebar'),
-  tocSideBar = document.querySelector('#tocSideBar'),
-  metaSideBar = document.querySelector('#metaSideBar'),
-  postToc = document.querySelector('#post_toc'),
-  postSiteMeta = document.querySelector('#post_side_meta'),
-  sidebarTitle = document.querySelector('.sidebar-title'),
-  sidebarBody = document.querySelector('#sidebar_body');
-
-  tocSideBar && tocSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  metaSideBar && metaSideBar.addEventListener('click', (e) => {
-    toggleSidebar(e);
-  });
-
-  function toggleSidebar(e) {
-    let currentTitle = document.querySelector("."+SIDEBAR_TITLE_ACTIVE);
-    if (currentTitle == e.srcElement) {
-      return ;
-    }
-    let current, showElement, hideElement;
-    if (e.srcElement == metaSideBar) {
-      showElement = postSiteMeta;
-      hideElement = postToc;
-    } else if (e.srcElement == tocSideBar){
-      showElement = postToc;
-      hideElement = postSiteMeta;
-    }
-    currentTitle.classList.remove(SIDEBAR_TITLE_ACTIVE);
-    e.srcElement.classList.add(SIDEBAR_TITLE_ACTIVE);
-
-    window.Velocity(hideElement, 'stop');
-    window.Velocity(hideElement, 'transition.slideUpOut', {
-      display: 'none',
-      duration: 200,
-      complete: function () {
-        window.Velocity(showElement, 'transition.slideDownIn', {
-          duration: 200
-        });
-      }
-    })
-    hideElement.classList.remove(SIDEBAR_BODY_ACTIVE);
-    showElement.classList.add(SIDEBAR_BODY_ACTIVE);
-  }
-
-  postToc && postToc.addEventListener('transitionend', function() {
-    this.classList.remove(SLIDE_UP_IN);
-  });
-
-  if (sidebarBody) {
-    if (sidebarBody.classList.contains('pisces') || sidebarBody.classList.contains('gemini')) {
-      let hasFix = false;
-      let scrollEl = document.querySelector('.main-continer');
-      let limitTop = document.querySelector('#nav_ul').children.length * 42 + 162;
-      window.addEventListener('scroll', function(e) {
-        if (document.scrollingElement.scrollTop >= limitTop) {
-          if (!hasFix) {
-            sidebar.classList.add('sidebar-fixed');
-            hasFix = true;
-          }
-        } else {
-          if (hasFix) {
-            sidebar.classList.remove('sidebar-fixed');
-            hasFix = false;
-          }
-        }
-      });
-    }
-  }
-  
-</script>
-        <div class="section-box box-shadow-wrapper">
-          <div class="section bg-color post post-page">
-            <header class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/silverlight-sheng-dan-xia-xue-dong-hua-ji-qi-kuo-zhan-ying-yong-de-shi-xian/">
-      Silverlight圣诞下雪动画及其扩展应用的实现
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span>发布于</span>
-      <span>2020-05-07</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show">分类于</span>
-      
-      
-      <a href="https://kdt-g.github.io/T7mykyUdq/">
-        <span>有趣的编程知识</span>
-      </a>、
       
       
       
-      <a href="https://kdt-g.github.io/nI-E4R45lf/">
-        <span>c#</span>
-      </a>、
-      
-      
-      
-      <a href="https://kdt-g.github.io/RwHerlIOlE/">
-        <span>net</span>
+      <a href="https://kdt-g.github.io/BUELmxlju/">
+        <div class="motion-warpper">
+          <div class="tag-post-node">
+            <h1>
+              05-31
+              <small>注册验证ef规则</small>
+            </h1>
+          </div>
+        </div>
       </a>
       
       
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>13分钟</span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>2773<span class="pc-show">字数</span></span>
-    </span>
-    
-    
-    
-    <span id="/silverlight-sheng-dan-xia-xue-dong-hua-ji-qi-kuo-zhan-ying-yong-de-shi-xian/" data-flag-title="Silverlight圣诞下雪动画及其扩展应用的实现" class="meta-item pc-show leancloud_visitors">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-eye"></i>
-      <span>浏览量：<span class="leancloud-visitors-count"></span></span>
-    </span>
-    
-  </div>
-</header>
-            <div class="post-body next-md-body" id="post_body">
-              <h2 id="简介"><strong>简介</strong></h2>
-<p>前段时间看到网上有几篇关于silverlight下雪动画的文章,看过Demo之后,觉得非常有趣;于是脑海里闪现出一些想法,学习了下,并将其扩展成了以下几个有趣的web小应用.关于Silverlight下雪动画的实现方法有很多,这里有篇文章介绍的非常详细,值得一看: <a href="http://www.kirupa.com/blend_silverlight/falling_snow_silverlight_pg1.htm">Falling Snow in Silverlight</a></p>
-<h2 id="应用展示"><strong>应用展示</strong></h2>
-<p>这里有3个扩展的web应用 <strong>Merry Christmas</strong>, <strong>古风歌曲页面 以及 情人节快乐!</strong></p>
-<p>主要用到了物体飘落的动画,加之背景图片音效,以及一些操作功能,使得一个简单的页面看起来变得更生动了些.</p>
-<p><strong>Merry Christmas(无音乐版)</strong>                                      <a href="http://files.cnblogs.com/longwu/SL_MerryChristmas_XAP.zip">XAP发布包</a>(带音乐版)</p>
-<iframe id="_sl_historyFrame" width="320" height="240" style="margin: 0px; padding: 0px; visibility: hidden; height: 0px; width: 0px; border: 0px;"></iframe>
-<p><strong>古风歌曲页面(无音乐版)</strong>                                       <a href="http://files.cnblogs.com/longwu/Duihuanghun_XAP.zip">XAP发布包</a>(带音乐版)</p>
-<iframe id="_sl_historyFrame" width="320" height="240" style="margin: 0px; padding: 0px; visibility: hidden; height: 0px; width: 0px; border: 0px;"></iframe>
-<p><strong>情人节快乐!</strong> <strong>(无音乐版)</strong>                                       <a href="http://files.cnblogs.com/longwu/SL_LoveYou_XAP.zip">XAP发布包</a>(带音乐版)</p>
-<p>如有需要, 各位男生可以模仿着做个, 送给心怡的她哦 😃</p>
-<iframe id="_sl_historyFrame" width="320" height="240" style="margin: 0px; padding: 0px; visibility: hidden; height: 0px; width: 0px; border: 0px;"></iframe>
-<p>好了,展示就到这里结束,开始我们今天的主题,实现圣诞下雪扩展应用之Merry Christmas!</p>
-<h2 id="merry-christmas-实现">Merry Christmas 实现</h2>
-<p><strong>1. 创建Silverlight导航应用程序</strong></p>
-<p>首先,我们需要新建一个Silverlight导航应用程序,这里用到了Silverlight导航框架,主要因为它为我们定义好了页面自适应浏览器大小的框架以及页面顶端的导航控制按钮. 所以我们稍作修改就可以用了,非常方便.</p>
-<figure data-type="image" tabindex="1"><img src="https://images0.cnblogs.com/blog/326877/201303/21033517-ec6393e1c797497295af9699ed3ba829.png" alt="01" loading="lazy"></figure>
-<p>Silverlight 导航应用程序主页面</p>
-<figure data-type="image" tabindex="2"><img src="https://images0.cnblogs.com/blog/326877/201303/21033518-ca44009e9d2e4c86b93eeee55ba1b51e.png" alt="03" loading="lazy"></figure>
-<p><strong>2. 添加应用程序背景</strong></p>
-<p>我们在MainPage.xaml页面添加一张圣诞快乐的背景图片</p>
-<pre><code>&lt;!--背景图片 Begin--&gt;
-&lt;Grid.Background&gt;
-    &lt;ImageBrush ImageSource=&quot;Images/background_1600_900.jpg&quot;  Stretch=&quot;Fill&quot; /&gt;
-&lt;/Grid.Background&gt;
-&lt;!--背景图片 End--&gt;
-</code></pre>
-<p>运行效果如下, 效果不错吧 😃</p>
-<figure data-type="image" tabindex="3"><img src="https://images0.cnblogs.com/blog/326877/201303/21033528-b56d4508bf4d4843be29b4b001199300.png" alt="04" loading="lazy"></figure>
-<p><strong>3.下雪效果的实现</strong></p>
-<p>首先,我们需要在MainPage.xaml页面画出一些静态的雪花Ellipse.</p>
-<p>添加一个用于装载雪花Ellipse的Canvas;</p>
-<pre><code>        &lt;Canvas x:Name=&quot;CanvasLayOut&quot; Width=&quot;1600&quot; Height=&quot;900&quot; &gt;
-        &lt;/Canvas&gt;
-</code></pre>
-<p>然后,新建个UserControl, 名为SnowEllipse.xaml, 主要用于在Canvas内部动态添加多个Ellipse雪花,并让其运动.</p>
-<pre><code>&lt;UserControl x:Class=&quot;SL_MerryChristmas.SnowEllipse&quot;
-    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-    xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
-    xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
-    Width=&quot;20&quot; Height=&quot;20&quot; &gt;
-
-    &lt;Grid x:Name=&quot;LayoutRoot&quot;  &gt;
-        &lt;Ellipse  Fill=&quot;#FFFFFF&quot; /&gt;
-    &lt;/Grid&gt;
-&lt;/UserControl&gt;
-</code></pre>
-<p>之后,在后端C#代码里实现了 设置雪花属性 以及 使其运动起来的方法.</p>
-<pre><code>/// &lt;summary&gt;
-/// 设置雪花属性 
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;snowAreaWidth&quot;&gt;雪花可移动区域的宽度&lt;/param&gt;
-/// &lt;param name=&quot;snowAreaHeight&quot;&gt;雪花可移动区域的高度&lt;/param&gt;
-public void SetSnowEllipse(int snowAreaWidth, int snowAreaHeight)
-{
-    scale = randomNumber.Next(1, 15); //定义一个中间值 确保高和宽一样
-    radius = randomNumber.Next(2); //雪花移动半径
-
-    //水平和垂直方向的移动速度
-    horizontalSpeed = randomNumber.NextDouble() / 50;
-    verticalSpeed = randomNumber.NextDouble() * 2;
-
-    //每个雪花的高和宽
-    this.Width = scale;
-    this.Height = scale;
-
-    //透明度
-    this.Opacity = 0.1 + randomNumber.NextDouble();
-
-    SnowArea = new Point(snowAreaWidth, snowAreaHeight);
-
-    //设置每个雪花的初始位置
-    Canvas.SetLeft(this, randomNumber.Next(snowAreaWidth));
-    Canvas.SetTop(this, randomNumber.Next(snowAreaHeight));
-
-    //获取初始的移动纵坐标 
-    yMovedPosition = Canvas.GetTop(this);
-
-    //注册雪花移动方法 循环触发
-    CompositionTarget.Rendering += (s, e) =&gt; { MoveSnow(); };
-}
-</code></pre>
-<pre><code>/// &lt;summary&gt;
-/// 让页面上的雪花动起来
-/// &lt;/summary&gt;
-public void MoveSnow()
-{
-    //移动过程中的位置变化
-    xMovedPosition += horizontalSpeed;
-    yMovedPosition += verticalSpeed;
-
-    //设置移动状态下的雪花坐标
-    Canvas.SetTop(this, yMovedPosition);
-    Canvas.SetLeft(this, Canvas.GetLeft(this) + radius * Math.Cos(xMovedPosition));
-
-    //如果雪花掉落出底部区域 则将其移回顶部
-    if (Canvas.GetTop(this) &gt; SnowArea.Y)
-    {
-        Canvas.SetTop(this, -30);
-        yMovedPosition = Canvas.GetTop(this);
-    }
-    //如果水平方向超出边界 则随机移动到可见区域的某个位置
-    if (Canvas.GetLeft(this) &gt; SnowArea.X || Canvas.GetLeft(this) &lt; 0)
-    {
-        Canvas.SetLeft(this, randomNumber.Next((int)SnowArea.X));
-        xMovedPosition = Canvas.GetLeft(this);
-    }
-}
-</code></pre>
-<p>为了能让程序跑起来,我们需要在MainPage.xaml.cs里写点代码.</p>
-<p>DrawStaticSnow()方法主要用于在web页面画出静态雪花,而计时器timer则用于让静态的雪花在页面上飘起来.</p>
-<pre><code>SnowEllipse snowEllipse = new SnowEllipse();
-private DispatcherTimer timer = new DispatcherTimer();
-public MainPage()
-{
-    InitializeComponent();
-    //画雪花
-    DrawStaticSnow(200, 1600, 900);
-
-    //让雪花动起来
-    snowEllipse = new SnowEllipse();
-    timer.Interval = TimeSpan.FromMilliseconds(5);
-    timer.Tick += (s, e) =&gt; { snowEllipse.MoveSnow(); };
-    timer.Start();
-}
-</code></pre>
-<pre><code>/// &lt;summary&gt;
-/// 在页面上画出静态雪花
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;count&quot;&gt;雪花的个数&lt;/param&gt;
-/// &lt;param name=&quot;snowAreaWidth&quot;&gt;雪花可移动区域的宽度&lt;/param&gt;
-/// &lt;param name=&quot;snowAreaHeight&quot;&gt;雪花可移动区域的高度&lt;/param&gt;
-public void DrawStaticSnow(int count, int snowAreaWidth, int snowAreaHeight)
-{
-    for (int i = 0; i &lt; count; ++i)
-    {
-        snowEllipse = new SnowEllipse();
-        snowEllipse.SetSnowEllipse(snowAreaWidth, snowAreaHeight);
-        CanvasLayOut.Children.Add(snowEllipse);
-    }
-}
-</code></pre>
-<p>于是,雪花漫天飞舞的场景便做成了:) 我们运行下,看看效果.</p>
-<figure data-type="image" tabindex="4"><img src="https://images0.cnblogs.com/blog/326877/201303/21033542-e22ca5919e8d4161a071b0f2213c9c1b.png" alt="动态下雪" loading="lazy"></figure>
-<p><strong>4. 控制下雪以及增加操作提示功能</strong></p>
-<p>为了增加一些我们想要的功能,于是把MainPage.xaml页面顶部导航栏内容稍作修改.</p>
-<p>右侧的两个按钮改为一个开关下雪和一个操作提示按钮</p>
-<pre><code>&lt;HyperlinkButton x:Name=&quot;btnFallingSnowOrNot&quot; Style=&quot;{StaticResource LinkStyle}&quot; 
-            Content=&quot;雪停〉_〈&quot; /&gt;
-
-&lt;Rectangle x:Name=&quot;Divider1&quot; Style=&quot;{StaticResource DividerStyle}&quot;/&gt;
-
-&lt;HyperlinkButton x:Name=&quot;btnToolTips&quot; Style=&quot;{StaticResource LinkStyle}&quot; 
-                Content=&quot;操作提示&quot; /&gt;
-</code></pre>
-<p>针对操作提示按钮,我们还需要写个Popup控件,用于在鼠标移上去的时候弹出操作提示框,移出的时候则让提示框隐藏起来.</p>
-<pre><code>        &lt;!--操作提示弹出窗口 Begin--&gt;
-        &lt;Popup Name=&quot;ppTooltips&quot; HorizontalAlignment=&quot;Right&quot; Margin=&quot;0 40 140 5&quot; IsOpen=&quot;False&quot;&gt;
-            &lt;Border Width=&quot;140&quot; Height=&quot;165&quot; &gt;
-                &lt;StackPanel Orientation=&quot;Vertical&quot;&gt;
-                    &lt;TextBlock Text=&quot;   鼠标右键有菜单哦&quot; Width=&quot;140&quot; FontSize=&quot;14&quot; Height=&quot;20&quot; Margin=&quot;0 3 0 0&quot; Foreground=&quot;White&quot; FontWeight=&quot;Bold&quot;&gt;&lt;/TextBlock&gt;
-                    &lt;Image Source=&quot;Images/Menu/Menu.png&quot; Width=&quot;114&quot; Height=&quot;130&quot;&gt;&lt;/Image&gt;
-                &lt;/StackPanel&gt;
-            &lt;/Border&gt;
-        &lt;/Popup&gt;
-        &lt;!--操作提示弹出窗口 End--&gt;
-
-</code></pre>
-<p>接着,我们需要在后端实现这两个功能:</p>
-<p>首先,在MainPage.xaml.cs的构造函数内部加入相应的鼠标事件</p>
-<pre><code>//给雪停 和 操作提示 两个按钮注册鼠标事件
-btnFallingSnowOrNot.Click += (s, e) =&gt; { btnFallingSnowOrNot_Click(s, e); };
-btnToolTips.MouseEnter += (s, e) =&gt; { btnToolTips_MouseEnter(s, e); };
-btnToolTips.MouseLeave += (s, e) =&gt; { btnToolTips_MouseLevae(s, e); };
-
-</code></pre>
-<p>接着实现这些事件, 实现控制下雪事件:</p>
-<pre><code>/// &lt;summary&gt;
-/// 控制下雪单击事件
-/// &lt;/summary&gt;
-private void btnFallingSnowOrNot_Click(object sender, RoutedEventArgs e)
-{
-    if (timer.IsEnabled)
-    {
-        btnFallingSnowOrNot.Content = &quot;雪下∩_∩&quot;;
-        timer.Stop();
-        CanvasLayOut.Children.Clear(); //移除所有的雪花颗粒
-    }
-    else if (!timer.IsEnabled)
-    {
-        btnFallingSnowOrNot.Content = &quot;雪停〉_〈&quot;;
-        DrawStaticSnow(200, 1600, 900); //重新绘制雪花颗粒
-        timer.Start();
-    }
-}
-
-</code></pre>
-<p>实现操作提示窗体弹出和隐藏事件</p>
-<pre><code>/// &lt;summary&gt;
-/// 提示窗体的弹出和隐藏事件
-/// &lt;/summary&gt;
-private void btnToolTips_MouseEnter(object sender, MouseEventArgs e)
-{
-    if (!ppTooltips.IsOpen)
-        ppTooltips.IsOpen = true;
-}
-private void btnToolTips_MouseLevae(object sender, MouseEventArgs e)
-{
-    if (ppTooltips.IsOpen)
-        ppTooltips.IsOpen = false;
-}
-
-</code></pre>
-<p>运行下看看</p>
-<p>默认为下雪中</p>
-<figure data-type="image" tabindex="5"><img src="https://images0.cnblogs.com/blog/326877/201303/21033555-fb514e2dd43f41b68b0db2f922898618.png" alt="雪下" loading="lazy"></figure>
-<p>点击雪停,则雪停.</p>
-<figure data-type="image" tabindex="6"><img src="https://images0.cnblogs.com/blog/326877/201303/21033609-6541227e3b4e4ff082d5fdf19c9deeb4.png" alt="雪停" loading="lazy"></figure>
-<p>鼠标移到操作提示按钮上,弹出操作提示.</p>
-<figure data-type="image" tabindex="7"><img src="https://images0.cnblogs.com/blog/326877/201303/21033621-83c6015a51994e66a2cd4e035ba50f29.png" alt="操作提示" loading="lazy"></figure>
-<p>移开鼠标,操作提示消失.</p>
-<figure data-type="image" tabindex="8"><img src="https://images0.cnblogs.com/blog/326877/201303/21033634-b7ea9659fde34c869bcb263b27cc377b.png" alt="操作提示消失" loading="lazy"></figure>
-<p><strong>5. 鼠标右键菜单</strong></p>
-<p>好了,最后我们需要实现的是一个鼠标右键菜单.</p>
-<p>实现前,我们需要先给页面添加一首背景音乐,让页面看起来更动感;在MainPage.xaml.cs构造函数内部加入如下代码.</p>
-<pre><code>//添加背景音乐
-backgroundMusic.Source = new Uri(&quot;/We Wish You A Merry Christmas.mp3&quot;, UriKind.RelativeOrAbsolute);
-backgroundMusic.AutoPlay = true;
-LayoutRoot.Children.Add(backgroundMusic);
-
-</code></pre>
-<p>这样当我们运行的时候 就能听到美妙动听的背景音乐了 😃</p>
-<p>接着是制作鼠标右键菜单:</p>
-<p>这里,我们需要先添加一个System.Windows.Controls.Input.Toolkit dll的引用.</p>
-<p>如果添加引用里没有的话可以去这里下载 http://silverlight.codeplex.com/releases/view/43528/</p>
-<figure data-type="image" tabindex="9"><img src="https://images0.cnblogs.com/blog/326877/201303/21033637-f5cd52bc05e142fe8fd7fc2a84a612a9.png" alt="添加Toolkit引用" loading="lazy"></figure>
-<p>然后在MainPage.xaml里引用它</p>
-<pre><code>xmlns:my=&quot;clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit&quot;
-
-</code></pre>
-<p>并添加右键菜单的XAML代码,右键菜单包含了刷新页面,开关背景音乐,全屏观看以及关闭页面4个方法.</p>
-<pre><code>        &lt;!--右键菜单 Begin--&gt;
-        &lt;my:ContextMenuService.ContextMenu&gt;
-            &lt;my:ContextMenu FontSize=&quot;14&quot; FontStyle=&quot;Normal&quot;  Foreground=&quot;#0087CB&quot;  BorderBrush=&quot;#0087CB&quot; BorderThickness=&quot;2&quot; &gt;
-                &lt;my:MenuItem  Header=&quot;刷新&quot; ToolTipService.ToolTip=&quot;刷新页面&quot; Click=&quot;MenuItem_Click&quot;&gt;
-                    &lt;my:MenuItem.Icon&gt;
-                        &lt;Image Source=&quot;Images/Menu/Refresh_blue.png&quot;/&gt;
-                    &lt;/my:MenuItem.Icon&gt;
-                &lt;/my:MenuItem&gt;
-                &lt;my:Separator/&gt;
-
-                &lt;my:MenuItem x:Name=&quot;itemCloseMusic&quot; Header=&quot;关闭音乐&quot; ToolTipService.ToolTip=&quot;关闭背景音乐&quot; Click=&quot;MenuItem_Click&quot;&gt;
-                    &lt;my:MenuItem.Icon&gt;
-                        &lt;Image x:Name=&quot;imgPlay&quot; Source=&quot;Images/Menu/Player Stop_blue.png&quot;  Width=&quot;16&quot; Height=&quot;16&quot; /&gt;
-                    &lt;/my:MenuItem.Icon&gt;
-                &lt;/my:MenuItem&gt;
-                &lt;my:Separator/&gt;
-
-                &lt;my:MenuItem x:Name=&quot;itemFullScreen&quot; Header=&quot;全屏模式&quot; ToolTipService.ToolTip=&quot;启动全屏模式&quot; Click=&quot;MenuItem_Click&quot;&gt;
-                    &lt;my:MenuItem.Icon&gt;
-                        &lt;Image Source=&quot;Images/Menu/Full Size_blue.png&quot; Width=&quot;16&quot; Height=&quot;16&quot; /&gt;
-                    &lt;/my:MenuItem.Icon&gt;
-                &lt;/my:MenuItem&gt;
-                &lt;my:Separator/&gt;
-
-                &lt;my:MenuItem  Header=&quot;关闭&quot;  ToolTipService.ToolTip=&quot;关闭当前页面&quot; Click=&quot;MenuItem_Click&quot;&gt;
-                    &lt;my:MenuItem.Icon&gt;
-                        &lt;Image Source=&quot;Images/Menu/Exit_blue.png&quot; Width=&quot;16&quot; Height=&quot;16&quot; /&gt;
-                    &lt;/my:MenuItem.Icon&gt;
-                &lt;/my:MenuItem&gt;
-
-            &lt;/my:ContextMenu&gt;
-        &lt;/my:ContextMenuService.ContextMenu&gt;
-        &lt;!--右键菜单 End--&gt;
-
-</code></pre>
-<p>之后,在后端相应的菜单按钮事件下,实现这些方法.</p>
-<p>这里需要增加一个Menu类,里面包含了全屏,关闭当前页面,刷新3个方法.</p>
-<pre><code>public class Menu
-{
-    public static string FullScreen(string screenState)
-    {
-        if (screenState == &quot;全屏模式&quot;)
-            screenState = &quot;退出全屏&quot;;
-        else
-            screenState = &quot;全屏模式&quot;;
-        if (!Application.Current.Host.Content.IsFullScreen)
-            Application.Current.Host.Content.IsFullScreen = true;
-        else
-            Application.Current.Host.Content.IsFullScreen = false;
-        return screenState;
-    }
-
-    public static void Exit()
-    {
-        if (MessageBox.Show(&quot;确认关闭当前页面?(仅在IE下有效)&quot;, &quot;退出提示&quot;, MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-        {
-            System.Windows.Browser.HtmlPage.Window.Invoke(&quot;close&quot;);
-        }
-    }
-
-    public static void Refresh(Frame frame)
-    {
-        frame.Refresh();
-    }
-}
-
-</code></pre>
-<p>最后是实现我们的右键菜单的单击事件了</p>
-<pre><code>        /// &lt;summary&gt;
-        /// 鼠标右键菜单
-        /// &lt;/summary&gt;
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            MenuItem menuItem = sender as MenuItem;
-            switch (menuItem.Header.ToString())
-            {
-                case &quot;刷新&quot;:
-                    timer.Stop();
-                    CanvasLayOut.Children.Clear();
-                    DrawStaticSnow(200, 1600, 900); //重新绘制雪花颗粒
-                    timer.Start();
-                    backgroundMusic.Stop();
-                    backgroundMusic.Play();
-                    break;
-
-                case &quot;关闭音乐&quot;:
-                    backgroundMusic.Stop();
-                    menuItem.Header = &quot;开启音乐&quot;;
-                    ToolTipService.SetToolTip(menuItem, &quot;开启背景音乐&quot;);
-                    Uri uriPlay = new Uri(&quot;Images/Menu/Player Play_blue.png&quot;, UriKind.RelativeOrAbsolute);
-                    BitmapImage bitImg = new BitmapImage(uriPlay);
-                    imgPlay.Source = bitImg;
-                    break;
-
-                case &quot;开启音乐&quot;:
-                    backgroundMusic.Play();
-                    menuItem.Header = &quot;关闭音乐&quot;;
-                    ToolTipService.SetToolTip(menuItem, &quot;关闭背景音乐&quot;);
-                    Uri uriStop = new Uri(&quot;Images/Menu/Player Stop_blue.png&quot;, UriKind.RelativeOrAbsolute);
-                    BitmapImage bitImg2 = new BitmapImage(uriStop);
-                    imgPlay.Source = bitImg2;
-                    break;
-
-                case &quot;全屏模式&quot;:
-                    menuItem.Header = Menu.FullScreen(menuItem.Header.ToString());
-                    ToolTipService.SetToolTip(menuItem, &quot;退出全屏模式&quot;);
-                    break;
-
-                case &quot;退出全屏&quot;:
-                    menuItem.Header = Menu.FullScreen(menuItem.Header.ToString());
-                    ToolTipService.SetToolTip(menuItem, &quot;启动全屏模式&quot;);
-                    break;
-
-                case &quot;关闭&quot;:
-                    Menu.Exit();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-</code></pre>
-<p>运行看下</p>
-<figure data-type="image" tabindex="10"><img src="https://images0.cnblogs.com/blog/326877/201303/21033647-351fbe81d7d24523a16954697c6ce482.png" alt="右键菜单" loading="lazy"></figure>
-<p>到这里整个下雪的扩展小应用Merry Christmas便完成了 😃   <a href="http://files.cnblogs.com/longwu/SL_MerryChristmas.zip">Merry Christmas源代码下载</a></p>
-<p>转自：<a href="https://www.cnblogs.com/longwu/archive/2013/03/21/2972460.html">https://www.cnblogs.com/longwu/archive/2013/03/21/2972460.html<a></p>
-
-            </div>
-            <div class="post-footer">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-      <strong>本文作者：</strong>
-      枫亦
-    </li>
-    <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/silverlight-sheng-dan-xia-xue-dong-hua-ji-qi-kuo-zhan-ying-yong-de-shi-xian/" title="Silverlight圣诞下雪动画及其扩展应用的实现">https://kdt-g.github.io/silverlight-sheng-dan-xia-xue-dong-hua-ji-qi-kuo-zhan-ying-yong-de-shi-xian/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-  <div class="tags">
-    
-      <a href="https://kdt-g.github.io/T7mykyUdq/"># 有趣的编程知识</a>
-    
-      <a href="https://kdt-g.github.io/nI-E4R45lf/"># c#</a>
-    
-      <a href="https://kdt-g.github.io/RwHerlIOlE/"># net</a>
-    
-  </div>
-  <div class="nav">
-    <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="写个简单的18禁图片查看器" href="https://kdt-g.github.io/xie-ge-jian-dan-de-18-jin-tu-pian-cha-kan-qi/">写个简单的18禁图片查看器</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="写个简单的18禁图片查看器" href="https://kdt-g.github.io/xie-ge-jian-dan-de-18-jin-tu-pian-cha-kan-qi/">上一篇</a>
       
-    </div>
-    <div class="nav-next">
       
-        <a class="nav-pc-next" title="C# Winform简单模拟水果店结账系统" href="https://kdt-g.github.io/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/">C# Winform简单模拟水果店结账系统</a>
-        <a class="nav-mobile-next" title="C# Winform简单模拟水果店结账系统" href="https://kdt-g.github.io/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/">下一篇</a>
-        <i class="fa fa-chevron-right"></i>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
     </div>
   </div>
 </div>
-            
-  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js"></script>
-<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
-
-<style>
-  .v .veditor {
-    min-height: 10rem;
-    background-image: url('   ');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-color: rgba(255, 255, 255, 0);
-    resize: none;
-  }
-
-  .v .vwrap {
-    border: 1px solid #000 !important;
-  }
-
-  .v .vbtn {
-    padding: .4rem 1.2rem !important;
-    border-color: #fff !important;
-    background-color: #49b1f5 !important;
-    color: #fff !important;
-    font-size: .7rem !important;
-  }
-
-  .v .vcards .vcard .vh .vmeta .vat {
-    padding: 0 .8rem !important;
-    border: 1px solid #00c4b6 !important;
-    border-radius: 5px !important;
-    color: #00c4b6 !important;
-  }
-</style>
-<script>
-  new Valine({
-    el: '#vcomments',
-    appId: 'aiaz9SotuI0it1stLpstx3sA-gzGzoHsz',
-    appKey: 'JPSyyGJOhMa2NBwr672A8zO8',
-    avatar: 'wavatar',
-    placeholder: '请输入评论...',
-    pageSize: '',
-    lang: 'zh-cn',
-    visitor: 'true' === 'true',
-    highlight: 'true' === 'true',
-    avatarForce: 'true' === 'false',
-  });
-</script>
-
-          </div>
+          </section>
         </div>
       </div>
     </div>
@@ -1164,36 +944,6 @@ LayoutRoot.Children.Add(backgroundMusic);
   // 代码高亮
   hljs.initHighlightingOnLoad();
 
-</script>
-    <div class="light-box" id="light_box"></div>
-<script>
-  let imgs = document.querySelectorAll('.post-body img');
-  let lightBox = document.querySelector('#light_box');
-  lightBox.addEventListener('mousedown', (e) => {
-    e.preventDefault()
-  })
-  lightBox.addEventListener('mousewheel', (e) => {
-    e.preventDefault()
-  })
-  let width = window.innerWidth * 0.8;
-  lightBox.onclick = () => {
-    let img = lightBox.querySelector('img');
-    lightBox.style = '';
-    img && img.remove();
-  }
-  imgs.forEach(item => {
-    item.onclick = function (e) {
-      let lightImg = document.createElement('img');
-      lightImg.src = this.src;
-      lightBox.style = `height: 100%; opacity: 1; background-color: rgba(0, 0, 0, 0.5);cursor: zoom-out;`;
-      lightImg.style = `width: ${width}px; border: 1px solid #fff; border-radius: 2px;`;
-      lightImg.onclick = function () {
-        lightBox.style = '';
-        this.remove();
-      }
-      lightBox.append(lightImg);
-    }
-  })
 </script>
   </div>
 </body>
@@ -10594,6 +10344,7 @@ $(&amp;quot;#copy&amp;quot;).on(&amp;quot;tap&amp;quot;,function(){
   escapeMap.set('&quot;', '"');
   escapeMap.set('&amp;', '&');
 </script> -->
+
 
 
 </html>

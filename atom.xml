@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-30T12:33:31.780Z</updated>
+    <updated>2020-05-31T13:05:16.513Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[注册验证ef规则]]></title>
+        <id>https://kdt-g.github.io/BUELmxlju/</id>
+        <link href="https://kdt-g.github.io/BUELmxlju/">
+        </link>
+        <updated>2020-05-31T13:04:02.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[VIM基础学习(第七节：执行shell命令、文件另存为、合并文件和打开多个文件）转自：鱼C论坛]]></title>
         <id>https://kdt-g.github.io/KzuzckBo6/</id>
@@ -72,12 +79,5 @@
         <link href="https://kdt-g.github.io/qMUNtCci6/">
         </link>
         <updated>2020-05-27T13:01:32.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C# DataGridView 多了一行空白]]></title>
-        <id>https://kdt-g.github.io/PzxpwKuLh/</id>
-        <link href="https://kdt-g.github.io/PzxpwKuLh/">
-        </link>
-        <updated>2020-05-20T14:26:11.000Z</updated>
     </entry>
 </feed>
