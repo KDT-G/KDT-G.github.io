@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-05-31T13:05:16.513Z</updated>
+    <updated>2020-06-01T08:02:27.793Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[jquery判断 input type="file"上传文件是否为空]]></title>
+        <id>https://kdt-g.github.io/RyYVHercR/</id>
+        <link href="https://kdt-g.github.io/RyYVHercR/">
+        </link>
+        <updated>2020-06-01T07:58:47.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[注册验证ef规则]]></title>
         <id>https://kdt-g.github.io/BUELmxlju/</id>
@@ -72,12 +79,5 @@
         <link href="https://kdt-g.github.io/1cLHajqIJ/">
         </link>
         <updated>2020-05-27T13:02:44.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[github上传文件]]></title>
-        <id>https://kdt-g.github.io/qMUNtCci6/</id>
-        <link href="https://kdt-g.github.io/qMUNtCci6/">
-        </link>
-        <updated>2020-05-27T13:01:32.000Z</updated>
     </entry>
 </feed>
