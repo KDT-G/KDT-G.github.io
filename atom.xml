@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kdt-g.github.io</id>
     <title>枫亦的博客</title>
-    <updated>2020-06-12T09:00:25.373Z</updated>
+    <updated>2020-06-12T09:06:49.910Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kdt-g.github.io"/>
     <link rel="self" href="https://kdt-g.github.io/atom.xml"/>
@@ -10,6 +10,27 @@
     <logo>https://kdt-g.github.io/images/avatar.png</logo>
     <icon>https://kdt-g.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 枫亦的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[简单使用Tesseract文字识别]]></title>
+        <id>https://kdt-g.github.io/SVJLeGHuD/</id>
+        <link href="https://kdt-g.github.io/SVJLeGHuD/">
+        </link>
+        <updated>2020-06-12T09:05:48.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用jTessBoxEditorFX训练字库]]></title>
+        <id>https://kdt-g.github.io/XCOy2dPpC/</id>
+        <link href="https://kdt-g.github.io/XCOy2dPpC/">
+        </link>
+        <updated>2020-06-12T09:04:37.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[调用百度云接口实现文字识别功能]]></title>
+        <id>https://kdt-g.github.io/37MmJjubk/</id>
+        <link href="https://kdt-g.github.io/37MmJjubk/">
+        </link>
+        <updated>2020-06-12T09:02:49.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[c#连接web接口上传图片]]></title>
         <id>https://kdt-g.github.io/UR6JXKE2l/</id>
@@ -58,26 +79,5 @@
         <link href="https://kdt-g.github.io/BUELmxlju/">
         </link>
         <updated>2020-05-31T13:04:02.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[VIM基础学习(第七节：执行shell命令、文件另存为、合并文件和打开多个文件）转自：鱼C论坛]]></title>
-        <id>https://kdt-g.github.io/KzuzckBo6/</id>
-        <link href="https://kdt-g.github.io/KzuzckBo6/">
-        </link>
-        <updated>2020-05-30T12:32:24.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[VIM基础学习(第六节：搜索命令和替换命令）转自：鱼C论坛]]></title>
-        <id>https://kdt-g.github.io/HS_UBlK0K/</id>
-        <link href="https://kdt-g.github.io/HS_UBlK0K/">
-        </link>
-        <updated>2020-05-30T12:29:02.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[VIM基础学习(第五节：文件信息、跳转、定位括号和缩进）转自：鱼C论坛]]></title>
-        <id>https://kdt-g.github.io/K2aGiihrd/</id>
-        <link href="https://kdt-g.github.io/K2aGiihrd/">
-        </link>
-        <updated>2020-05-30T12:27:29.000Z</updated>
     </entry>
 </feed>
