@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>基于C# Winform的简易聊天程序[第三篇-信息群发] | 枫亦的博客</title>
+<title>C#获取pdf文档的页数 | 枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593609443663">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="基于C# Winform的简易聊天程序[第三篇-信息群发]" />
-  <meta name="keywords" content="socket,winfrom,c#" />
+  <meta name="description" content="C#获取pdf文档的页数" />
+  <meta name="keywords" content="有趣的编程知识,c#" />
 </head>
 
 <body>
@@ -283,8 +283,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-san-pian-xin-xi-qun-fa/">
-      基于C# Winform的简易聊天程序[第三篇-信息群发]
+    <a class="post-title-link" href="https://kdt-g.github.io/nNpEgVB_z/">
+      C#获取pdf文档的页数
     </a>
   </h1>
   <div class="post-meta">
@@ -292,7 +292,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-05-07</span>
+      <span>2020-07-01</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -301,14 +301,8 @@
       <span class="pc-show">分类于</span>
       
       
-      <a href="https://kdt-g.github.io/IW7PpnGGB/">
-        <span>socket</span>
-      </a>、
-      
-      
-      
-      <a href="https://kdt-g.github.io/7OvAr6UFt/">
-        <span>winfrom</span>
+      <a href="https://kdt-g.github.io/T7mykyUdq/">
+        <span>有趣的编程知识</span>
       </a>、
       
       
@@ -323,17 +317,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>5分钟</span>
+      <span>1分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1180<span class="pc-show">字数</span></span>
+      <span>136<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-san-pian-xin-xi-qun-fa/" data-flag-title="基于C# Winform的简易聊天程序[第三篇-信息群发]" class="meta-item pc-show leancloud_visitors">
+    <span id="/nNpEgVB_z/" data-flag-title="C#获取pdf文档的页数" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -342,130 +336,31 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p><strong>程序简介</strong></p>
-<p>好久没写博客了,最近时间比较充足.于是便打算把之前的聊天程序功能改进下,增加了一个服务端给客户端群发信息的功能.</p>
-<p><strong>原理</strong></p>
-<p>首先我们需要获取连接客户端的IP和Port,并添加到客户端列表里作为每个客户端的唯一标识.然后通过相应客户端的Socket.Send()方法将信息发送出去.</p>
-<p>服务端给客户端的信息群发与服务端给单个客户端的信息发送原理是一样的,通过遍历客户端列表里的所有客户端标识,然后把信息一个个发送出去.</p>
-<p><strong>界面设计 - 客户端</strong></p>
-<figure data-type="image" tabindex="1"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207020854592570.png" alt="Client-UI" loading="lazy"></figure>
-<p><strong>界面设计 - 服务端</strong></p>
-<figure data-type="image" tabindex="2"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207020855024191.png" alt="Server-UI" loading="lazy"></figure>
-<p><strong>代码实施 - 客户端</strong></p>
-<p>客户端没有做什么功能改进,这里就不贴代码了,需要看的学友可以到随笔后面下载源代码.</p>
-<p><strong>代码实施 - 服务端</strong></p>
-<p>这里将手动输入服务端IPv4地址改为了程序自动获取</p>
-<pre><code class="language-c#">       /// &lt;summary&gt;
-       /// 获取本地IPv4地址
-       /// &lt;/summary&gt;
-       /// &lt;returns&gt;本地IPv4地址&lt;/returns&gt;
-       public IPAddress GetLocalIPv4Address()
-       {
-           IPAddress localIPv4 = null;
-           //获取本机所有的IP地址列表
-           IPAddress[] ipAddressList = Dns.GetHostAddresses(Dns.GetHostName());
-           foreach (IPAddress ipAddress in ipAddressList)
-           {
-               //判断是否是IPv4地址
-               if (ipAddress.AddressFamily == AddressFamily.InterNetwork) //AddressFamily.InterNetwork表示IPv4 
-               {
-                   localIPv4 = ipAddress;
-               }
-               else
-                   continue;
-           }
-           return localIPv4;
-       }
-</code></pre>
-<p>为了方便后期给所有访问的客户端群发信息,我们需要用过通过监听客户端来获取所有访问客户端的IP地址和端口号,并组成每个访问客户端的唯一标识clientName 用于显示在客户端列表上;客户端唯一标识还有个作用就是服务端可以选择性的给单独某个客户端发送信息.</p>
-<pre><code class="language-c#">        //用于保存所有通信客户端的Socket
-        Dictionary&lt;string, Socket&gt; dicSocket = new Dictionary&lt;string, Socket&gt;();
-
-        //创建与客户端建立连接的套接字
-        Socket socConnection = null;
-        string clientName = null; //创建访问客户端的名字
-        IPAddress clientIP; //访问客户端的IP
-        int clientPort; //访问客户端的端口号
-        /// &lt;summary&gt;
-        /// 持续不断监听客户端发来的请求, 用于不断获取客户端发送过来的连续数据信息
+              <p>[操作pdf文档]之C#判断pdf文档的页数：</p>
+<pre><code class="language-c#">        /// &lt;summary&gt;
+        /// 获取pdf文档的页数
         /// &lt;/summary&gt;
-        private void WatchConnecting()
+        /// &lt;param name=&quot;filePath&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;-1表示文件不存在&lt;/returns&gt;
+        public static int GetPDFofPageCount(string filePath)
         {
-            while (true)
+            int count = -1;//-1表示文件不存在
+            if (File.Exists(filePath))
             {
-                try
+                using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
-                    socConnection = socketWatch.Accept();
+                    StreamReader reader = new StreamReader(fs);
+                    //从流的当前位置到末尾读取流
+                    string pdfText = reader.ReadToEnd();
+                    Regex rgx = new Regex(@&quot;/Type\s*/Page[^s]&quot;);
+                    MatchCollection matches = rgx.Matches(pdfText);
+                    count = matches.Count;
                 }
-                catch (Exception ex)
-                {
-                    txtMsg.AppendText(ex.Message); //提示套接字监听异常
-                    break;
-                }
-                //获取访问客户端的IP
-                clientIP = (socConnection.RemoteEndPoint as IPEndPoint).Address;
-                //获取访问客户端的Port
-                clientPort = (socConnection.RemoteEndPoint as IPEndPoint).Port;
-                //创建访问客户端的唯一标识 由IP和端口号组成 
-                clientName = &quot;IP: &quot; + clientIP +&quot; Port: &quot;+ clientPort;
-                lstClients.Items.Add(clientName); //在客户端列表添加该访问客户端的唯一标识
-                dicSocket.Add(clientName, socConnection); //将客户端名字和套接字添加到添加到数据字典中
-
-                //创建通信线程 
-                ParameterizedThreadStart pts = new ParameterizedThreadStart(ServerRecMsg);
-                Thread thread = new Thread(pts);
-                thread.IsBackground = true;
-                //启动线程
-                thread.Start(socConnection);
-                txtMsg.AppendText(&quot;IP: &quot; + clientIP + &quot; Port: &quot; + clientPort + &quot; 的客户端与您连接成功,现在你们可以开始通信了...\r\n&quot;);
             }
+            return count;
         }
 </code></pre>
-<p>服务端向客户端发送信息,在没有选择具体某个客户端的情况下,默认群发. 如果选择了具体某个客户端,则单独向该客户端发送信息.</p>
-<pre><code class="language-c#">       /// &lt;summary&gt;
-       /// 发送信息到客户端的方法
-       /// &lt;/summary&gt;
-       /// &lt;param name=&quot;sendMsg&quot;&gt;发送的字符串信息&lt;/param&gt;
-       private void ServerSendMsg(string sendMsg)
-       {
-           sendMsg = txtSendMsg.Text.Trim();
-           //将输入的字符串转换成 机器可以识别的字节数组
-           byte[] arrSendMsg = Encoding.UTF8.GetBytes(sendMsg);
-           //向客户端列表选中的客户端发送信息
-           if (!string.IsNullOrEmpty(lstClients.Text.Trim())) 
-           {
-               //获得相应的套接字 并将字节数组信息发送出去
-               dicSocket[lstClients.Text.Trim()].Send(arrSendMsg);
-               //通过Socket的send方法将字节数组发送出去
-               txtMsg.AppendText(&quot;您在 &quot; + GetCurrentTime() + &quot; 向 IP: &quot; + clientIP + &quot; Port: &quot; + clientPort + &quot; 的客户端发送了:\r\n&quot; + sendMsg + &quot;\r\n&quot;);
-           }
-           else //如果未选择任何客户端 则默认为群发信息
-           {
-               //遍历所有的客户端
-               for (int i = 0; i &lt; lstClients.Items.Count; i++)
-               {
-                   dicSocket[lstClients.Items[i].ToString()].Send(arrSendMsg);
-               }
-               txtMsg.AppendText(&quot;您在 &quot; + GetCurrentTime() + &quot; 群发了信息:\r\n&quot; + sendMsg + &quot; \r\n&quot;);
-           }
-       }
-</code></pre>
-<p><strong>运行程序</strong></p>
-<p>1.首先启动服务端并连接各个客户端</p>
-<p><strong><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207021819362511.png" alt="1-server" loading="lazy"></strong></p>
-<figure data-type="image" tabindex="3"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207021819406226.png" alt="1-client1" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207020921051910.png" alt="1-client2" loading="lazy"></figure>
-<p>2.服务端向所有客户端群发信息</p>
-<figure data-type="image" tabindex="5"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207020921099529.png" alt="2-server" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207021819449177.png" alt="2-client1" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207021819485650.png" alt="2-client2" loading="lazy"></figure>
-<p>3.向指定的客户端发送信息</p>
-<figure data-type="image" tabindex="8"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207021819532298.png" alt="3server" loading="lazy"></figure>
-<figure data-type="image" tabindex="9"><img src="https://images.cnblogs.com/cnblogs_com/longwu/201207/201207021819577201.png" alt="3-client2" loading="lazy"></figure>
-<p>这样,服务端向客户端群发信息的功能就做好了.如果大家感兴趣,可以结合第2篇-文件发送 来做个服务端向客户端群发文件的功能 😃</p>
-<p><strong>附上源代码</strong></p>
-<p>服务端<a href="http://files.cnblogs.com/longwu/ChatServer3.zip">ChatServer3.zip</a> 客户端 <a href="http://files.cnblogs.com/longwu/ChatClient3.zip">ChatClient3.zip</a></p>
-<p>转自：<a herf=" https://www.cnblogs.com/longwu/archive/2012/07/02/2572648.html">https://www.cnblogs.com/longwu/archive/2012/07/02/2572648.html<a></p>
+<p>转自：<a href="https://blog.csdn.net/weixin_34037515/article/details/86193239">https://blog.csdn.net/weixin_34037515/article/details/86193239</a></p>
 
             </div>
             <div class="post-footer">
@@ -476,7 +371,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-san-pian-xin-xi-qun-fa/" title="基于C# Winform的简易聊天程序[第三篇-信息群发]">https://kdt-g.github.io/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-san-pian-xin-xi-qun-fa/</a>
+      <a href="https://kdt-g.github.io/nNpEgVB_z/" title="C#获取pdf文档的页数">https://kdt-g.github.io/nNpEgVB_z/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -485,9 +380,7 @@
   </ul>
   <div class="tags">
     
-      <a href="https://kdt-g.github.io/IW7PpnGGB/"># socket</a>
-    
-      <a href="https://kdt-g.github.io/7OvAr6UFt/"># winfrom</a>
+      <a href="https://kdt-g.github.io/T7mykyUdq/"># 有趣的编程知识</a>
     
       <a href="https://kdt-g.github.io/nI-E4R45lf/"># c#</a>
     
@@ -495,15 +388,11 @@
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="C# winform写入和读取TXT文件" href="https://kdt-g.github.io/c-winform-xie-ru-he-du-qu-txt-wen-jian/">C# winform写入和读取TXT文件</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="C# winform写入和读取TXT文件" href="https://kdt-g.github.io/c-winform-xie-ru-he-du-qu-txt-wen-jian/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="基于C# Winform的简易聊天程序[第二篇-文件发送]" href="https://kdt-g.github.io/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-er-pian-wen-jian-fa-song/">基于C# Winform的简易聊天程序[第二篇-文件发送]</a>
-        <a class="nav-mobile-next" title="基于C# Winform的简易聊天程序[第二篇-文件发送]" href="https://kdt-g.github.io/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-er-pian-wen-jian-fa-song/">下一篇</a>
+        <a class="nav-pc-next" title="简单使用Tesseract文字识别" href="https://kdt-g.github.io/SVJLeGHuD/">简单使用Tesseract文字识别</a>
+        <a class="nav-mobile-next" title="简单使用Tesseract文字识别" href="https://kdt-g.github.io/SVJLeGHuD/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
