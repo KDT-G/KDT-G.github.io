@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>字符串转换为Unicode格式 | 枫亦的博客</title>
+<title>c#获取图片文件大小（亦可获取其他文件大小） | 枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1594862145614">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,7 +29,7 @@
 
 
 
-  <meta name="description" content="字符串转换为Unicode格式" />
+  <meta name="description" content="c#获取图片文件大小（亦可获取其他文件大小）" />
   <meta name="keywords" content="有趣的编程知识,c#" />
 </head>
 
@@ -283,8 +283,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/12aI-D5r8/">
-      字符串转换为Unicode格式
+    <a class="post-title-link" href="https://kdt-g.github.io/LkDd9fT3J/">
+      c#获取图片文件大小（亦可获取其他文件大小）
     </a>
   </h1>
   <div class="post-meta">
@@ -292,7 +292,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-06-12</span>
+      <span>2020-07-16</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -322,12 +322,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>36<span class="pc-show">字数</span></span>
+      <span>162<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/12aI-D5r8/" data-flag-title="字符串转换为Unicode格式" class="meta-item pc-show leancloud_visitors">
+    <span id="/LkDd9fT3J/" data-flag-title="c#获取图片文件大小（亦可获取其他文件大小）" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -336,12 +336,41 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <pre><code class="language-c#">  public static string Unicode2String(string source)
-        {
-            return new Regex(@&quot;\\u([0-9A-F]{4})&quot;, RegexOptions.IgnoreCase | RegexOptions.Compiled).Replace(
-                         source, x =&gt; string.Empty + Convert.ToChar(Convert.ToUInt16(x.Result(&quot;$1&quot;), 16)));
-        }
-</code></pre>
+              <pre><code class="language-c#">       /// &lt;summary&gt;
+       /// 获取图片文件大小
+       /// &lt;/summary&gt;
+       /// &lt;param name=&quot;path&quot;&gt;图片路径&lt;/param&gt;
+       /// &lt;returns&gt;&lt;/returns&gt;
+       public static double GetFileSize(string path)
+       {
+           System.IO.FileInfo fileInfo = null;
+           try
+           {
+               fileInfo = new System.IO.FileInfo(path);
+           }
+           catch (Exception e)
+           {
+               Console.WriteLine($@&quot;获取图片{path}大小失败 Getcatch&quot;);
+               Console.WriteLine(e);
+               return 0;
+           }
+           if (fileInfo != null &amp;&amp; fileInfo.Exists)
+           {
+               //if ((int)System.Math.Ceiling(fileInfo.Length / 1024.0) &gt;= 1024)
+               //{
+               //    Console.WriteLine((System.Math.Floor(fileInfo.Length / 1024.0 / 1024.0) + System.Math.Floor(fileInfo.Length / 1024.0 % 1024.0/10)/100) + &quot;MB&quot;);
+               //    return (System.Math.Floor(fileInfo.Length / 1024.0 ) );
+               //}
+               // Console.WriteLine(System.Math.Ceiling(fileInfo.Length / 1024.0)+&quot;kb&quot;);
+               return System.Math.Ceiling(fileInfo.Length / 1024.0);
+           }
+           else
+           {
+               Console.WriteLine($@&quot;获取图片{path}大小失败 Getelse&quot;);
+               return 0;
+           }
+       }
+       ```</code></pre>
 
             </div>
             <div class="post-footer">
@@ -352,7 +381,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/12aI-D5r8/" title="字符串转换为Unicode格式">https://kdt-g.github.io/12aI-D5r8/</a>
+      <a href="https://kdt-g.github.io/LkDd9fT3J/" title="c#获取图片文件大小（亦可获取其他文件大小）">https://kdt-g.github.io/LkDd9fT3J/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -370,14 +399,14 @@
     <div class="nav-prev">
       
         <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="c#连接web接口上传图片" href="https://kdt-g.github.io/UR6JXKE2l/">c#连接web接口上传图片</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="c#连接web接口上传图片" href="https://kdt-g.github.io/UR6JXKE2l/">上一篇</a>
+        <a class="nav-pc-next" title="c#压缩图片" href="https://kdt-g.github.io/FkjvP9E8C/">c#压缩图片</a class="nav-pc-next">
+        <a class="nav-mobile-prev" title="c#压缩图片" href="https://kdt-g.github.io/FkjvP9E8C/">上一篇</a>
       
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="json解析（可以解决奇怪的json串）" href="https://kdt-g.github.io/JEceyFXKd/">json解析（可以解决奇怪的json串）</a>
-        <a class="nav-mobile-next" title="json解析（可以解决奇怪的json串）" href="https://kdt-g.github.io/JEceyFXKd/">下一篇</a>
+        <a class="nav-pc-next" title="C#获取pdf文档的页数" href="https://kdt-g.github.io/nNpEgVB_z/">C#获取pdf文档的页数</a>
+        <a class="nav-mobile-next" title="C#获取pdf文档的页数" href="https://kdt-g.github.io/nNpEgVB_z/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
