@@ -8,7 +8,7 @@
 <meta name="keywords" content="枫亦的个人博客">
 <meta name="description" content="温故而知新">
 <meta name="theme-color" content="#000">
-<title>svn解除版本控制 | 枫亦的博客</title>
+<title>JSON序列化和JSON反序列化和ajax一直返回error的解决方案 | 枫亦的博客</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1597242286094">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/pisces.css">
@@ -29,8 +29,8 @@
 
 
 
-  <meta name="description" content="svn解除版本控制" />
-  <meta name="keywords" content="svn" />
+  <meta name="description" content="JSON序列化和JSON反序列化和ajax一直返回error的解决方案" />
+  <meta name="keywords" content="javascript,html,Json,有趣的编程知识,c#,mvc,前端" />
 </head>
 
 <body>
@@ -283,8 +283,8 @@
           <div class="section bg-color post post-page">
             <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://kdt-g.github.io/svn-jie-chu-ban-ben-kong-zhi/">
-      svn解除版本控制
+    <a class="post-title-link" href="https://kdt-g.github.io/-sBSOb8Xu/">
+      JSON序列化和JSON反序列化和ajax一直返回error的解决方案
     </a>
   </h1>
   <div class="post-meta">
@@ -292,7 +292,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-04-28</span>
+      <span>2020-08-12</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -301,8 +301,44 @@
       <span class="pc-show">分类于</span>
       
       
-      <a href="https://kdt-g.github.io/ceX2b77GjA/">
-        <span>svn</span>
+      <a href="https://kdt-g.github.io/MtaHtVrj0/">
+        <span>javascript</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/hYgNFTBzV/">
+        <span>html</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/czKZ5CEsW/">
+        <span>Json</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/T7mykyUdq/">
+        <span>有趣的编程知识</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/nI-E4R45lf/">
+        <span>c#</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/eUm3DzwKG9/">
+        <span>mvc</span>
+      </a>、
+      
+      
+      
+      <a href="https://kdt-g.github.io/E_OFTC58Mr/">
+        <span>前端</span>
       </a>
       
       
@@ -311,17 +347,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>1分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>145<span class="pc-show">字数</span></span>
+      <span>539<span class="pc-show">字数</span></span>
     </span>
     
     
     
-    <span id="/svn-jie-chu-ban-ben-kong-zhi/" data-flag-title="svn解除版本控制" class="meta-item pc-show leancloud_visitors">
+    <span id="/-sBSOb8Xu/" data-flag-title="JSON序列化和JSON反序列化和ajax一直返回error的解决方案" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span>浏览量：<span class="leancloud-visitors-count"></span></span>
@@ -330,8 +366,103 @@
   </div>
 </header>
             <div class="post-body next-md-body" id="post_body">
-              <p>一个项目如果提交到SVN之后，就会在文件夹左下方出现绿色或红色的圆形图标，如果想把该项目引入到另一个项目中去，会发现不能被识别出来，这时候要解除版本控制，解除方法挺诡异的：<br>
-在要解除版本控制的文件夹右键TortoiseSVN–&gt;Export–&gt;选择同一个文件夹（目标文件夹一定要和你右击的文件夹是同一个文件夹），这时就会出现“是否解除版本控制”的对话框。</p>
+              <p>一、JSON.stringify()序列化和JSON.parse()反序列化</p>
+<pre><code class="language-js">var K = JSON.stringify(data);//JSON.stringify() 将JavaScript 对象转换为 JSON 字符
+alert(K);
+var data1 = '{&quot;name&quot;:&quot;chunlynn&quot; ,&quot;age&quot;: 27, &quot;sex&quot;: &quot;man&quot; ,&quot;qq&quot;:&quot;277539687&quot;}';
+var Kx = JSON.parse(K);//JSON.parse()将JSON字符串转为一个对象
+layer.alert(Kx[0]['id'] + Kx[0]['username']);
+
+
+
+</code></pre>
+<p>二、ajax的注意事项</p>
+<blockquote>
+<p>简单来说就是，在用ajax提交数据后，获取返回的结果，一定要保证后台返回时，尽量全部代码在异常处理代码中，设置出现异常返回提醒或者其他东西，不然一旦你一点代码出问题，哪怕接收的参数处理出现问题，ajax都会因为得不到后台处理该异常，一直返回error</p>
+</blockquote>
+<p>前台：</p>
+<pre><code class="language-js"> 		
+$.ajax({
+                    //几个参数需要注意一下
+                    type: &quot;post&quot;,//方法类型
+                    url: &quot;/Home/Add/&quot;,//url
+                    data: { &quot;json&quot;: JSON.stringify(data.field) },
+                    dataType: 'text',
+                    async: false,
+                    success: function (result) {
+                        console.log(result);//打印服务端返回的数据(调试用)
+                        if (&quot;&quot; != result) {
+                            if (index == null) {
+                                alert('失败，失败原因：' + result);
+                            }
+                            else {
+                            parent.layer.msg('失败，失败原因：' + result, { time: 1000,shade: 0.3 })
+                            }
+                        } else {
+                            if (index == null) {
+                                alert('添加成功' + result)
+                            }
+                            else {
+                                parent.layer.msg('添加成功' + result, { time: 1000, shade: 0.3 })
+                            }
+                            
+                           // window.location.replace(&quot;AddPage&quot;);
+                            //同步更新表格和缓存对应的值 
+                        };
+                    },
+                    error: function (error) {
+                        if (index == null) {
+                            alert('请稍后再试')
+                        }
+                        else {
+                            parent.layer.msg('请稍后再试', { time: 1000, shade: 0.3 })
+                        }                
+                        return false;
+                    }
+                });
+</code></pre>
+<p>后台：</p>
+<pre><code class="language-c#">/// &lt;summary&gt;
+        /// 添加
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public string Add()
+        {
+            string bug = null;
+            try  //一定要加这个
+            {
+                string json = Request.Form[&quot;json&quot;];
+           Newtonsoft.Json.Linq.JObject jobject =//这里解析出问题也会报错，可以建个新页面测试功能，查找bug
+                   (Newtonsoft.Json.Linq.JObject)Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+
+                string name = jobject[&quot;username&quot;].ToString();
+                string sex = jobject[&quot;sex&quot;].ToString();
+                string Province = jobject[&quot;Province&quot;].ToString();
+                string City = jobject[&quot;City&quot;].ToString();
+                string Counties = jobject[&quot;Counties&quot;].ToString();//就像我这里出了问题一直报错
+                string Sign = jobject[&quot;Sign&quot;].ToString();
+                int Experience = Convert.ToInt32(jobject[&quot;Experience&quot;]);
+                int Score = Convert.ToInt32(jobject[&quot;Score&quot;]); ;
+                int Classify = Convert.ToInt32(jobject[&quot;Classify&quot;]);
+             
+                if (SQL.Add(name, sex, Province, City, Counties, Sign, Experience, Score, Classify, out bug))
+                {
+                    return bug;
+                }
+                else
+                {
+                    return bug;
+                }
+            }
+            catch (Exception)
+            {
+
+                return &quot;检查表单格式&quot;;
+            }
+           
+        }
+</code></pre>
+<!-- more -->
 
             </div>
             <div class="post-footer">
@@ -342,7 +473,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://kdt-g.github.io/svn-jie-chu-ban-ben-kong-zhi/" title="svn解除版本控制">https://kdt-g.github.io/svn-jie-chu-ban-ben-kong-zhi/</a>
+      <a href="https://kdt-g.github.io/-sBSOb8Xu/" title="JSON序列化和JSON反序列化和ajax一直返回error的解决方案">https://kdt-g.github.io/-sBSOb8Xu/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -351,21 +482,29 @@
   </ul>
   <div class="tags">
     
-      <a href="https://kdt-g.github.io/ceX2b77GjA/"># svn</a>
+      <a href="https://kdt-g.github.io/MtaHtVrj0/"># javascript</a>
+    
+      <a href="https://kdt-g.github.io/hYgNFTBzV/"># html</a>
+    
+      <a href="https://kdt-g.github.io/czKZ5CEsW/"># Json</a>
+    
+      <a href="https://kdt-g.github.io/T7mykyUdq/"># 有趣的编程知识</a>
+    
+      <a href="https://kdt-g.github.io/nI-E4R45lf/"># c#</a>
+    
+      <a href="https://kdt-g.github.io/eUm3DzwKG9/"># mvc</a>
+    
+      <a href="https://kdt-g.github.io/E_OFTC58Mr/"># 前端</a>
     
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="JavaScript的window.onload事件和jQuery的ready函数有何不同 " href="https://kdt-g.github.io/javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong/">JavaScript的window.onload事件和jQuery的ready函数有何不同 </a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="JavaScript的window.onload事件和jQuery的ready函数有何不同 " href="https://kdt-g.github.io/javascript-de-windowonload-shi-jian-he-jquery-de-ready-han-shu-you-he-bu-tong/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="实现前端点击按钮自动复制剪贴板功能" href="https://kdt-g.github.io/shi-xian-qian-duan-dian-ji-an-niu-zi-dong-fu-zhi-jian-tie-ban-gong-neng/">实现前端点击按钮自动复制剪贴板功能</a>
-        <a class="nav-mobile-next" title="实现前端点击按钮自动复制剪贴板功能" href="https://kdt-g.github.io/shi-xian-qian-duan-dian-ji-an-niu-zi-dong-fu-zhi-jian-tie-ban-gong-neng/">下一篇</a>
+        <a class="nav-pc-next" title="c#压缩图片" href="https://kdt-g.github.io/FkjvP9E8C/">c#压缩图片</a>
+        <a class="nav-mobile-next" title="c#压缩图片" href="https://kdt-g.github.io/FkjvP9E8C/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
