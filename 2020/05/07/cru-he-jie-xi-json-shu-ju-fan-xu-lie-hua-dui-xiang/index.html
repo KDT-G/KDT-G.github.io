@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/RookieRoom/images/favicon.png">
+  <link rel="mask-icon" href="/RookieRoom/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/RookieRoom/css/main.css">
+
+
+<link rel="stylesheet" href="/RookieRoom/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kdt-g.github.io","root":"/RookieRoom/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。先看效果：这个大家最喜欢。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#如何解析JSON数据（反序列化对象）">
+<meta property="og:url" content="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/index.html">
+<meta property="og:site_name" content="小菜鸟的温暖小窝">
+<meta property="og:description" content="在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。先看效果：这个大家最喜欢。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/932266/201709/932266-20170922194837571-1732646875.gif">
+<meta property="article:published_time" content="2020-05-07T12:54:40.000Z">
+<meta property="article:modified_time" content="2022-03-26T16:36:19.109Z">
+<meta property="article:author" content="小菜鸟">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="Json">
+<meta property="article:tag" content="winfrom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/932266/201709/932266-20170922194837571-1732646875.gif">
+
+<link rel="canonical" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#如何解析JSON数据（反序列化对象） | 小菜鸟的温暖小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  
+    <script src="/js/cursor/text.js"></script>
+  
+
+<link rel="alternate" href="/RookieRoom/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/RookieRoom/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小菜鸟的温暖小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/RookieRoom/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/RookieRoom/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/RookieRoom/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/RookieRoom/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/RookieRoom/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KDT-G" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#如何解析JSON数据（反序列化对象）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 20:54:40" itemprop="dateCreated datePublished" datetime="2020-05-07T20:54:40+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:36:19" itemprop="dateModified" datetime="2022-03-27T00:36:19+08:00">2022-03-27</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。"><a href="#在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。" class="headerlink" title="在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。"></a>在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。</h3><p>先看效果：这个大家最喜欢。</p>
+<p><img src="https://images2017.cnblogs.com/blog/932266/201709/932266-20170922194837571-1732646875.gif" alt="img"></p>
+<span id="more"></span>
+
+<p>我们先看一下上一篇文章中返回的字符串。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">&quot;message&quot;</span>:<span class="string">&quot;ok&quot;</span>,<span class="string">&quot;nu&quot;</span>:<span class="string">&quot;367847964498&quot;</span>,<span class="string">&quot;ischeck&quot;</span>:<span class="string">&quot;1&quot;</span>,<span class="string">&quot;condition&quot;</span>:<span class="string">&quot;F00&quot;</span>,<span class="string">&quot;com&quot;</span>:<span class="string">&quot;shunfeng&quot;</span>,<span class="string">&quot;status&quot;</span>:<span class="string">&quot;200&quot;</span>,<span class="string">&quot;state&quot;</span>:<span class="string">&quot;3&quot;</span>,<span class="string">&quot;data&quot;</span>:[&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-21 09:33:09&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-21 09:33:09&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;已签收,感谢使用顺丰,期待再次为您服务&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-21 09:09:48&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-21 09:09:48&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件交给巩向涛，正在派送途中（联系电话：18806439871）&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-21 07:02:41&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-21 07:02:41&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件到达 【淄博市桓台田庄速运营业点 】&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-20 15:32:00&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-20 15:32:00&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件在【淄博市桓台县工业街营业点】已装车，准备发往下一站&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-20 13:37:08&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-20 13:37:08&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件到达 【淄博市桓台县工业街营业点】&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-20 10:47:07&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-20 10:47:07&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件在【淄博高新集散中心】已装车，准备发往下一站&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-20 10:15:47&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-20 10:15:47&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件到达 【淄博高新集散中心】&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-19 23:20:18&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-19 23:20:18&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件在【深圳总集散中心】已装车，准备发往下一站&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-19 22:39:27&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-19 22:39:27&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件到达 【深圳总集散中心】&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-19 18:57:33&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-19 18:57:33&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;快件在【深圳龙华新区华联社区营业部】已装车，准备发往下一站&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;,&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;2017-09-19 16:12:21&quot;</span>,<span class="string">&quot;ftime&quot;</span>:<span class="string">&quot;2017-09-19 16:12:21&quot;</span>,<span class="string">&quot;context&quot;</span>:<span class="string">&quot;顺丰速运 已收取快件&quot;</span>,<span class="string">&quot;location&quot;</span>:<span class="string">&quot;&quot;</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面是我们在上一篇文章中请求返回来的JSON字符串，那么我们现在要解析他。第一步就是要根据这个JSON来写出对应的实体类。用来存放数据。这个实体类如何写的？其实非常简单。因为一般</p>
+<p>不需要手动自己写，当然，你要是喜欢也可以自己写。不过我一般使用网站直接转换。自己百度 查一下，JSON转C#实体类，就会有很多网站给你转。</p>
+<p>我使用的是这个网站：<a target="_blank" rel="noopener" href="http://www.bejson.com/convert/json2csharp/">http://www.bejson.com/convert/json2csharp/</a></p>
+<p>使用很简单，把JSON放进去，点击生成就可以自动生成一个实体类。其实是两个类，不过一般我们写在一个文件里。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApplication1</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> JSON数据的实体类</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Root</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> message &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> nu &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> ischeck &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> condition &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> com &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> status &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> state &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> List&lt;DataItem&gt; data &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">DataItem</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> time &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> ftime &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> 已签收,感谢使用顺丰,期待再次为您服务</span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> context &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> </span></span><br><span class="line">        <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> location &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实体类创建好后，我们还需要一个DLL文件，Newtonsoft.Json.DLL,这个文件哪里来呢？很简单，百度一下不就来了。。。。这个DLL的官方网站是：<a target="_blank" rel="noopener" href="https://www.newtonsoft.com/json">https://www.newtonsoft.com/json</a></p>
+<p>下载下来后，引入，引用（这两个步骤就不需要我教了吧<del>不懂就百度</del>）</p>
+<p>做完这准备工作后，就进入大家最喜欢的写代码环节了。非常简单，一句代码搞定。自己看吧！</p>
+<p>PS，我们接着使用上一篇文章用到的项目，添加一个按钮，在按钮里面写事件。代码如下：</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.ComponentModel;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Windows.Forms;</span><br><span class="line"><span class="keyword">using</span> Newtonsoft.Json;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WindowsFormsApplication1</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">Form1</span> : <span class="title">Form</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Form1</span>()</span></span><br><span class="line">        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">button1_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//我们的接口</span></span><br><span class="line">            <span class="built_in">string</span> url = <span class="string">&quot;http://www.kuaidi100.com/query?type=shunfeng&amp;postid=367847964498&quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//将接口传入，这个HttpUitls的类，有兴趣可以研究下，也可以直接用就可以，不用管如何实现。</span></span><br><span class="line">            <span class="built_in">string</span> getJson = HttpUitls.Get(url);</span><br><span class="line"></span><br><span class="line">            MessageBox.Show(getJson);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">button2_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//我们的接口</span></span><br><span class="line">            <span class="built_in">string</span> url = <span class="string">&quot;http://www.kuaidi100.com/query?type=shunfeng&amp;postid=367847964498&quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//将接口传入，这个HttpUitls的类，有兴趣可以研究下，也可以直接用就可以，不用管如何实现。</span></span><br><span class="line">            <span class="built_in">string</span> getJson = HttpUitls.Get(url);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//这个需要引入Newtonsoft.Json这个DLL并using</span></span><br><span class="line">            <span class="comment">//传入我们的实体类还有需要解析的JSON字符串这样就OK了。然后就可以通过实体类使用数据了。</span></span><br><span class="line">            Root rt = JsonConvert.DeserializeObject&lt;Root&gt;(getJson);</span><br><span class="line">            <span class="comment">//这样就可以取出json数据里面的值</span></span><br><span class="line">            MessageBox.Show(<span class="string">&quot;com=&quot;</span> + rt.com + <span class="string">&quot;\r\n&quot;</span> + <span class="string">&quot;condition=&quot;</span> + rt.condition + <span class="string">&quot;\r\n&quot;</span> + <span class="string">&quot;ischeck=&quot;</span> + rt.ischeck + <span class="string">&quot;\r\n&quot;</span> + <span class="string">&quot;state=&quot;</span> + rt.state + <span class="string">&quot;\r\n&quot;</span> + <span class="string">&quot;status=&quot;</span> + rt.status);</span><br><span class="line">            <span class="comment">//由于这个JSON字符串的 public List&lt;DataItem&gt; data 是一个集合，所以我们需要遍历集合里面的所有数据</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; rt.data.Count; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                MessageBox.Show(<span class="string">&quot;Data=&quot;</span> + rt.data[i].context + <span class="string">&quot;\r\n&quot;</span> + rt.data[i].location + <span class="string">&quot;\r\n&quot;</span> + rt.data[i].time + <span class="string">&quot;\r\n&quot;</span> + rt.data[i].ftime);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 转自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zoujinhua/p/10330066.html">https://www.cnblogs.com/zoujinhua/p/10330066.html<a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小菜鸟
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/" title="C#如何解析JSON数据（反序列化对象）">https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/RookieRoom/tags/c/" rel="tag"># c#</a>
+              <a href="/RookieRoom/tags/Json/" rel="tag"># Json</a>
+              <a href="/RookieRoom/tags/winfrom/" rel="tag"># winfrom</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/cru-he-na-dao-cong-http-shang-fan-hui-json-shu-ju/" rel="prev" title="C#如何拿到从http上返回JSON数据?">
+      <i class="fa fa-chevron-left"></i> C#如何拿到从http上返回JSON数据?
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/cru-he-sheng-cheng-json-zi-fu-chuan-xu-lie-hua-dui-xiang/" rel="next" title="C#如何生成JSON字符串?（序列化对象）">
+      C#如何生成JSON字符串?（序列化对象） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E4%B8%8A%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E8%AE%B2%E8%A7%A3%E4%BA%86%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87API%E6%8E%A5%E5%8F%A3%E8%8E%B7%E5%8F%96%E8%BF%94%E5%9B%9E%E7%9A%84JSON%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E9%82%A3%E4%B9%88%EF%BC%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E6%88%91%E4%BB%AC%E6%9D%A5%E8%AE%B2%E8%A7%A3%E6%8B%BF%E5%88%B0%E4%BA%86%E8%BF%94%E5%9B%9E%E7%9A%84JSON%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%90%8E%EF%BC%8C%E6%88%91%E4%BB%AC%E8%A6%81%E5%A6%82%E4%BD%95%E5%8F%96%E5%88%B0%E9%87%8C%E9%9D%A2%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E7%9A%84%E6%95%B0%E6%8D%AE%E5%91%A2%EF%BC%9F%E8%BF%99%E6%93%8D%E4%BD%9C%E5%8F%ABJSON%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C%E3%80%82%E6%8E%A5%E4%B8%8B%E9%87%8C%E6%88%91%E4%BB%AC%E5%B0%86%E4%B8%80%E4%B8%80%E8%A7%A3%E9%87%8A%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小菜鸟"
+      src="/RookieRoom/images/favicon.png">
+  <p class="site-author-name" itemprop="name">小菜鸟</p>
+  <div class="site-description" itemprop="description">小菜鸟终会飞起，只是需要一点点时间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/RookieRoom/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/RookieRoom/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/RookieRoom/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/RookieRoom/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小菜鸟</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='200' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/RookieRoom/lib/anime.min.js"></script>
+  <script src="/RookieRoom/lib/pjax/pjax.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/RookieRoom/js/utils.js"></script>
+
+<script src="/RookieRoom/js/motion.js"></script>
+
+
+<script src="/RookieRoom/js/schemes/pisces.js"></script>
+
+
+<script src="/RookieRoom/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/RookieRoom/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/RookieRoom/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '128px',
+  right: '32px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+<script src="/RookieRoom/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/RookieRoom/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

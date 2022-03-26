@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/RookieRoom/images/favicon.png">
+  <link rel="mask-icon" href="/RookieRoom/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/RookieRoom/css/main.css">
+
+
+<link rel="stylesheet" href="/RookieRoom/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kdt-g.github.io","root":"/RookieRoom/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="程序简介 本聊天程序支持局域网内部客户端与服务端之间的互相通信.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于C# Winform的简易聊天程序[第一篇-两端通信]">
+<meta property="og:url" content="https://kdt-g.github.io/RookieRoom/2020/05/07/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-yi-pian-liang-duan-tong-xin/index.html">
+<meta property="og:site_name" content="小菜鸟的温暖小窝">
+<meta property="og:description" content="程序简介 本聊天程序支持局域网内部客户端与服务端之间的互相通信.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101820503331.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101820510538.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011082618345951.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011082618353233.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011082618360842.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101821194739.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011102305374618.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011102305392044.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101821050618.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101821051929.jpg">
+<meta property="article:published_time" content="2020-05-07T12:40:30.000Z">
+<meta property="article:modified_time" content="2022-03-26T16:49:31.396Z">
+<meta property="article:author" content="小菜鸟">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="winfrom">
+<meta property="article:tag" content="socket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101820503331.jpg">
+
+<link rel="canonical" href="https://kdt-g.github.io/RookieRoom/2020/05/07/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-yi-pian-liang-duan-tong-xin/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基于C# Winform的简易聊天程序[第一篇-两端通信] | 小菜鸟的温暖小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  
+    <script src="/js/cursor/text.js"></script>
+  
+
+<link rel="alternate" href="/RookieRoom/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/RookieRoom/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小菜鸟的温暖小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/RookieRoom/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/RookieRoom/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/RookieRoom/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/RookieRoom/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/RookieRoom/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KDT-G" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-yi-pian-liang-duan-tong-xin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于C# Winform的简易聊天程序[第一篇-两端通信]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 20:40:30" itemprop="dateCreated datePublished" datetime="2020-05-07T20:40:30+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:49:31" itemprop="dateModified" datetime="2022-03-27T00:49:31+08:00">2022-03-27</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>程序简介</strong></p>
+<p>本聊天程序支持局域网内部客户端与服务端之间的互相通信.</p>
+ <span id="more"></span>
+
+<p><strong>原理</strong></p>
+<p>启动服务端后,服务端通过持续监听客户端发来的请求,一旦监听到客户端传来的信息后,两端便可以互发信息了.服务端需要绑定一个IP,用于客户端在网络中寻找并建立连接.信息发送原理:将手动输入字符串信息转换成机器可以识别的字节数组,然后调用套接字的Send()方法将字节数组发送出去.信息接收原理:调用套接字的Receive()方法,获取对端传来的字节数组,然后将其转换成人可以读懂的字符串信息.</p>
+<p><strong>界面设计 - *<em>服务端*</em></strong></p>
+<p>IP文本框 name: txtIP  port(端口号)文本框 name: txtPORT  聊天内容文本框 name: txtMsg  发送信息文本框 name:txtSendMsg</p>
+<p>启动服务按钮 name: btnServerConn    发送信息按钮name: btnSendMsg</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101820503331.jpg" alt="img"></p>
+<p>服务端代码:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">FServer</span> : <span class="title">Form</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FServer</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        InitializeComponent();</span><br><span class="line">        <span class="comment">//关闭对文本框的非法线程操作检查</span></span><br><span class="line">        TextBox.CheckForIllegalCrossThreadCalls = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Thread threadWatch = <span class="literal">null</span>; <span class="comment">//负责监听客户端的线程</span></span><br><span class="line">    Socket socketWatch = <span class="literal">null</span>; <span class="comment">//负责监听客户端的套接字</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnServerConn_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//定义一个套接字用于监听客户端发来的信息  包含3个参数(IP4寻址协议,流式连接,TCP协议)</span></span><br><span class="line">        socketWatch = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        <span class="comment">//服务端发送信息 需要1个IP地址和端口号</span></span><br><span class="line">        IPAddress ipaddress = IPAddress.Parse(txtIP.Text.Trim()); <span class="comment">//获取文本框输入的IP地址</span></span><br><span class="line">        <span class="comment">//将IP地址和端口号绑定到网络节点endpoint上 </span></span><br><span class="line">        IPEndPoint endpoint = <span class="keyword">new</span> IPEndPoint(ipaddress, <span class="built_in">int</span>.Parse(txtPORT.Text.Trim())); <span class="comment">//获取文本框上输入的端口号</span></span><br><span class="line">        <span class="comment">//监听绑定的网络节点</span></span><br><span class="line">        socketWatch.Bind(endpoint);</span><br><span class="line">        <span class="comment">//将套接字的监听队列长度限制为20</span></span><br><span class="line">        socketWatch.Listen(<span class="number">20</span>);</span><br><span class="line">        <span class="comment">//创建一个监听线程 </span></span><br><span class="line">        threadWatch = <span class="keyword">new</span> Thread(WatchConnecting);</span><br><span class="line">        <span class="comment">//将窗体线程设置为与后台同步</span></span><br><span class="line">        threadWatch.IsBackground = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//启动线程</span></span><br><span class="line">        threadWatch.Start();</span><br><span class="line">        <span class="comment">//启动线程后 txtMsg文本框显示相应提示</span></span><br><span class="line">        txtMsg.AppendText(<span class="string">&quot;开始监听客户端传来的信息!&quot;</span> + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建一个负责和客户端通信的套接字 </span></span><br><span class="line">    Socket socConnection = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 监听客户端发来的请求</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">WatchConnecting</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)  <span class="comment">//持续不断监听客户端发来的请求</span></span><br><span class="line">        &#123;</span><br><span class="line">            socConnection = socketWatch.Accept();</span><br><span class="line">            txtMsg.AppendText(<span class="string">&quot;客户端连接成功&quot;</span> + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">            <span class="comment">//创建一个通信线程 </span></span><br><span class="line">            ParameterizedThreadStart pts = <span class="keyword">new</span> ParameterizedThreadStart(ServerRecMsg);</span><br><span class="line">            Thread thr = <span class="keyword">new</span> Thread(pts);</span><br><span class="line">            thr.IsBackground = <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">//启动线程</span></span><br><span class="line">            thr.Start(socConnection);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 发送信息到客户端的方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;sendMsg&quot;&gt;</span>发送的字符串信息<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ServerSendMsg</span>(<span class="params"><span class="built_in">string</span> sendMsg</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//将输入的字符串转换成 机器可以识别的字节数组</span></span><br><span class="line">        <span class="built_in">byte</span>[] arrSendMsg = Encoding.UTF8.GetBytes(sendMsg);</span><br><span class="line">        <span class="comment">//向客户端发送字节数组信息</span></span><br><span class="line">        socConnection.Send(arrSendMsg);</span><br><span class="line">        <span class="comment">//将发送的字符串信息附加到文本框txtMsg上</span></span><br><span class="line">        txtMsg.AppendText(<span class="string">&quot;So-flash:&quot;</span> + GetCurrentTime() + <span class="string">&quot;\r\n&quot;</span> + sendMsg + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 接收客户端发来的信息 </span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;socketClientPara&quot;&gt;</span>客户端套接字对象<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ServerRecMsg</span>(<span class="params"><span class="built_in">object</span> socketClientPara</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Socket socketServer = socketClientPara <span class="keyword">as</span> Socket;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//创建一个内存缓冲区 其大小为1024*1024字节  即1M</span></span><br><span class="line">            <span class="built_in">byte</span>[] arrServerRecMsg = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">1024</span> * <span class="number">1024</span>];</span><br><span class="line">            <span class="comment">//将接收到的信息存入到内存缓冲区,并返回其字节数组的长度</span></span><br><span class="line">            <span class="built_in">int</span> length = socketServer.Receive(arrServerRecMsg);</span><br><span class="line">            <span class="comment">//将机器接受到的字节数组转换为人可以读懂的字符串</span></span><br><span class="line">            <span class="built_in">string</span> strSRecMsg = Encoding.UTF8.GetString(arrServerRecMsg, <span class="number">0</span>, length);</span><br><span class="line">            <span class="comment">//将发送的字符串信息附加到文本框txtMsg上  </span></span><br><span class="line">            txtMsg.AppendText(<span class="string">&quot;天之涯:&quot;</span> + GetCurrentTime() + <span class="string">&quot;\r\n&quot;</span> + strSRecMsg + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//发送信息到客户端</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnSendMsg_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//调用 ServerSendMsg方法  发送信息到客户端</span></span><br><span class="line">        ServerSendMsg(txtSendMsg.Text.Trim());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//快捷键 Enter 发送信息</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">txtSendMsg_KeyDown</span>(<span class="params"><span class="built_in">object</span> sender, KeyEventArgs e</span>)</span>  </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果用户按下了Enter键</span></span><br><span class="line">        <span class="keyword">if</span> (e.KeyCode == Keys.Enter)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//则调用 服务器向客户端发送信息的方法</span></span><br><span class="line">            ServerSendMsg(txtSendMsg.Text.Trim());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 获取当前系统时间的方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>当前时间<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> DateTime <span class="title">GetCurrentTime</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        DateTime currentTime = <span class="keyword">new</span> DateTime();</span><br><span class="line">        currentTime = DateTime.Now;</span><br><span class="line">        <span class="keyword">return</span> currentTime;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>界面设计 - 客户端</strong></p>
+<p>IP文本框 name: txtIP  Port文本框 name: txtPort  聊天内容文本框 name:txtMsg  发送信息文本框 name: txtCMsg</p>
+<p>连接到服务端按钮 name: btnBeginListen  发送消息按钮 name: btnSend</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101820510538.jpg" alt="img"></p>
+<p>客户端代码:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">FClient</span> : <span class="title">Form</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FClient</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        InitializeComponent();</span><br><span class="line">        <span class="comment">//关闭对文本框的非法线程操作检查</span></span><br><span class="line">        TextBox.CheckForIllegalCrossThreadCalls = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//创建 1个客户端套接字 和1个负责监听服务端请求的线程  </span></span><br><span class="line">    Socket socketClient = <span class="literal">null</span>; </span><br><span class="line">    Thread threadClient = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnBeginListen_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//定义一个套字节监听  包含3个参数(IP4寻址协议,流式连接,TCP协议)</span></span><br><span class="line">        socketClient = <span class="keyword">new</span> Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);</span><br><span class="line">        <span class="comment">//需要获取文本框中的IP地址</span></span><br><span class="line">        IPAddress ipaddress = IPAddress.Parse(txtIP.Text.Trim());</span><br><span class="line">        <span class="comment">//将获取的ip地址和端口号绑定到网络节点endpoint上</span></span><br><span class="line">        IPEndPoint endpoint = <span class="keyword">new</span> IPEndPoint(ipaddress, <span class="built_in">int</span>.Parse(txtPort.Text.Trim()));</span><br><span class="line">        <span class="comment">//这里客户端套接字连接到网络节点(服务端)用的方法是Connect 而不是Bind</span></span><br><span class="line">        socketClient.Connect(endpoint);</span><br><span class="line">        <span class="comment">//创建一个线程 用于监听服务端发来的消息</span></span><br><span class="line">        threadClient = <span class="keyword">new</span> Thread(RecMsg);</span><br><span class="line">        <span class="comment">//将窗体线程设置为与后台同步</span></span><br><span class="line">        threadClient.IsBackground = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//启动线程</span></span><br><span class="line">        threadClient.Start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 接收服务端发来信息的方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">RecMsg</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) <span class="comment">//持续监听服务端发来的消息</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//定义一个1M的内存缓冲区 用于临时性存储接收到的信息</span></span><br><span class="line">            <span class="built_in">byte</span>[] arrRecMsg = <span class="keyword">new</span> <span class="built_in">byte</span>[<span class="number">1024</span> * <span class="number">1024</span>];</span><br><span class="line">            <span class="comment">//将客户端套接字接收到的数据存入内存缓冲区, 并获取其长度</span></span><br><span class="line">            <span class="built_in">int</span> length = socketClient.Receive(arrRecMsg);</span><br><span class="line">            <span class="comment">//将套接字获取到的字节数组转换为人可以看懂的字符串</span></span><br><span class="line">            <span class="built_in">string</span> strRecMsg = Encoding.UTF8.GetString(arrRecMsg, <span class="number">0</span>, length);</span><br><span class="line">            <span class="comment">//将发送的信息追加到聊天内容文本框中</span></span><br><span class="line">            txtMsg.AppendText(<span class="string">&quot;So-flash:&quot;</span> + GetCurrentTime() + <span class="string">&quot;\r\n&quot;</span> + strRecMsg + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 发送字符串信息到服务端的方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;sendMsg&quot;&gt;</span>发送的字符串信息<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ClientSendMsg</span>(<span class="params"><span class="built_in">string</span> sendMsg</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//将输入的内容字符串转换为机器可以识别的字节数组</span></span><br><span class="line">        <span class="built_in">byte</span>[] arrClientSendMsg = Encoding.UTF8.GetBytes(sendMsg);</span><br><span class="line">        <span class="comment">//调用客户端套接字发送字节数组</span></span><br><span class="line">        socketClient.Send(arrClientSendMsg);</span><br><span class="line">        <span class="comment">//将发送的信息追加到聊天内容文本框中</span></span><br><span class="line">        txtMsg.AppendText(<span class="string">&quot;天之涯:&quot;</span> + GetCurrentTime() + <span class="string">&quot;\r\n&quot;</span> + sendMsg + <span class="string">&quot;\r\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点击按钮btnSend 向服务端发送信息</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">btnSend_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//调用ClientSendMsg方法 将文本框中输入的信息发送给服务端</span></span><br><span class="line">        ClientSendMsg(txtCMsg.Text.Trim());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//快捷键 Enter发送信息</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">txtCMsg_KeyDown</span>(<span class="params"><span class="built_in">object</span> sender, KeyEventArgs e</span>)</span> </span><br><span class="line">    &#123;  </span><br><span class="line">        <span class="comment">//当光标位于文本框时 如果用户按下了键盘上的Enter键 </span></span><br><span class="line">        <span class="keyword">if</span> (e.KeyCode == Keys.Enter)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//则调用客户端向服务端发送信息的方法</span></span><br><span class="line">            ClientSendMsg(txtCMsg.Text.Trim());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 获取当前系统时间的方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>当前时间<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> DateTime <span class="title">GetCurrentTime</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        DateTime currentTime = <span class="keyword">new</span> DateTime();</span><br><span class="line">        currentTime = DateTime.Now;</span><br><span class="line">        <span class="keyword">return</span> currentTime;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行方法</strong></p>
+<p>获取电脑本机IP的方法: 例如:本机IP:192.168.0.3(可能变动)  端口号port可以随便写:1-65535之间的任意整数都行</p>
+<p>1.打开程序 点击运行</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011082618345951.jpg" alt="img"></p>
+<p>2.在运行栏里输入cmd指令</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011082618353233.jpg" alt="img"></p>
+<p>3.输入查看IP指令: ipconfig</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011082618360842.jpg" alt="img"></p>
+<p>4.获取当前IP: 192.168.0.3. 当然不同的地方 本机IP有可能不一样</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101821194739.jpg" alt="img"></p>
+<p>程序运行展示:</p>
+<p>首先 点击服务端的 启动服务按钮 聊天内容出现”开始监听客户端传来的信息!”</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011102305374618.jpg" alt="img"></p>
+<p>然后 点击客户端上的”连接到服务端”按钮 可以看见服务端上又出现了一行字 “客户端连接成功”</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011102305392044.jpg" alt="img"></p>
+<p>之后 便可以 两端进行通信了</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101821050618.jpg" alt="img"></p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101821051929.jpg" alt="img"></p>
+<p>这样一个简单的聊天程序就完成了~~~~:)</p>
+<p> <strong>源代码下载</strong> </p>
+<p>客户端下载 <a target="_blank" rel="noopener" href="http://files.cnblogs.com/longwu/ChatClient.zip">ChatClient.zip</a> 服务端下载 <a target="_blank" rel="noopener" href="http://files.cnblogs.com/longwu/ChatServer.zip">ChatServer.zip</a> </p>
+<p>转自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/longwu/archive/2011/08/25/2153636.html">https://www.cnblogs.com/longwu/archive/2011/08/25/2153636.html<a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小菜鸟
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kdt-g.github.io/RookieRoom/2020/05/07/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-yi-pian-liang-duan-tong-xin/" title="基于C# Winform的简易聊天程序[第一篇-两端通信]">https://kdt-g.github.io/RookieRoom/2020/05/07/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-yi-pian-liang-duan-tong-xin/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/RookieRoom/tags/c/" rel="tag"># c#</a>
+              <a href="/RookieRoom/tags/winfrom/" rel="tag"># winfrom</a>
+              <a href="/RookieRoom/tags/socket/" rel="tag"># socket</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/c-du-xie-appconfig-pei-zhi-wen-jian-de-fang-fa/" rel="prev" title="C# 读写App.config配置文件的方法">
+      <i class="fa fa-chevron-left"></i> C# 读写App.config配置文件的方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/ji-yu-c-winform-de-jian-yi-liao-tian-cheng-xu-di-er-pian-wen-jian-fa-song/" rel="next" title="基于C# Winform的简易聊天程序[第二篇-文件发送]">
+      基于C# Winform的简易聊天程序[第二篇-文件发送] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小菜鸟"
+      src="/RookieRoom/images/favicon.png">
+  <p class="site-author-name" itemprop="name">小菜鸟</p>
+  <div class="site-description" itemprop="description">小菜鸟终会飞起，只是需要一点点时间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/RookieRoom/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/RookieRoom/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/RookieRoom/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/RookieRoom/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小菜鸟</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='200' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/RookieRoom/lib/anime.min.js"></script>
+  <script src="/RookieRoom/lib/pjax/pjax.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/RookieRoom/js/utils.js"></script>
+
+<script src="/RookieRoom/js/motion.js"></script>
+
+
+<script src="/RookieRoom/js/schemes/pisces.js"></script>
+
+
+<script src="/RookieRoom/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/RookieRoom/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/RookieRoom/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '128px',
+  right: '32px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+<script src="/RookieRoom/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/RookieRoom/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

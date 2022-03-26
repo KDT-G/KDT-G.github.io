@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/RookieRoom/images/favicon.png">
+  <link rel="mask-icon" href="/RookieRoom/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/RookieRoom/css/main.css">
+
+
+<link rel="stylesheet" href="/RookieRoom/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kdt-g.github.io","root":"/RookieRoom/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="简介 现实生活中,结账系统无处不在,屡见不鲜,各种结账系统 例如:订餐结账系统,超市购物结账系统,酒店客房结账系统等等. 其实结账原理都大同小异,即将所有购买项的价格都相加,当然,那些复杂的系统所考虑的方面和功能就很多了,我们这里不考虑. 那么,今天我们这里简单的写个基于 C# winform 平台的水果店结账系统.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C# Winform简单模拟水果店结账系统">
+<meta property="og:url" content="https://kdt-g.github.io/RookieRoom/2020/05/07/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/index.html">
+<meta property="og:site_name" content="小菜鸟的温暖小窝">
+<meta property="og:description" content="简介 现实生活中,结账系统无处不在,屡见不鲜,各种结账系统 例如:订餐结账系统,超市购物结账系统,酒店客房结账系统等等. 其实结账原理都大同小异,即将所有购买项的价格都相加,当然,那些复杂的系统所考虑的方面和功能就很多了,我们这里不考虑. 那么,今天我们这里简单的写个基于 C# winform 平台的水果店结账系统.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122010324453.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122012184947.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122011201345.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122011284749.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122011290327.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122011395745.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122011403357.jpg">
+<meta property="article:published_time" content="2020-05-07T13:38:06.000Z">
+<meta property="article:modified_time" content="2022-03-26T16:40:40.098Z">
+<meta property="article:author" content="小菜鸟">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="winfrom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic002.cnblogs.com/images/2011/326877/2011122010324453.jpg">
+
+<link rel="canonical" href="https://kdt-g.github.io/RookieRoom/2020/05/07/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C# Winform简单模拟水果店结账系统 | 小菜鸟的温暖小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  
+    <script src="/js/cursor/text.js"></script>
+  
+
+<link rel="alternate" href="/RookieRoom/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/RookieRoom/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小菜鸟的温暖小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/RookieRoom/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/RookieRoom/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/RookieRoom/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/RookieRoom/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/RookieRoom/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KDT-G" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C# Winform简单模拟水果店结账系统
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:38:06" itemprop="dateCreated datePublished" datetime="2020-05-07T21:38:06+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:40:40" itemprop="dateModified" datetime="2022-03-27T00:40:40+08:00">2022-03-27</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>简介</strong></p>
+<p>现实生活中,结账系统无处不在,屡见不鲜,各种结账系统 例如:订餐结账系统,超市购物结账系统,酒店客房结账系统等等.</p>
+<p>其实结账原理都大同小异,即将所有购买项的价格都相加,当然,那些复杂的系统所考虑的方面和功能就很多了,我们这里不考虑.</p>
+<p>那么,今天我们这里简单的写个基于 C# winform 平台的水果店结账系统.</p>
+ <span id="more"></span>
+
+<p><strong>原理</strong></p>
+<p>这里用到了一个主窗体类和一个构造函数类(用于存取物品的属性) 以及一个写有物品属性的文本文件(目的是方便后期更改物品的价格,折扣等属性).</p>
+<p>首先,通过FileStream的OpenRead方法来打开并读取文本文件, 然后调用StreamReader类来读取FileStream的字符并将里面的字节转换成字符串.</p>
+<p>具体FileStream和StreamReader的用法,可以参考<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_3d4c358f0100ncbp.html">这里</a>. 从文本里获取到物品的属性之后,将其存到一个具有物品属性的数据结构的泛型list里.</p>
+<p>然后在各个物品按钮下调用不同物品,每个物品在泛型list里的索引也是不一样的.之后再用一个整型数组来存储每个物品按钮的点击次数,即为每个物品的购买次数.</p>
+<p>还用到一个泛型list来装载每个物品的价格,在计算总价的时候遍历并相加, 得到一个总价.</p>
+<p>这里还用到了一个优惠价,即每个物品都有不同的打折方式(代码里有详细注释), 用到了一些简单的算法,并且在结账的时候自动计算每项物品最终优惠了多少.</p>
+<p>然后用 总价-优惠价&#x3D;最终我们应该支付的价格,当然这里也实现了物品清空的功能.</p>
+<p><strong>界面设计</strong></p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122010324453.jpg" alt="img"></p>
+<p>fruits.txt文本内容</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122012184947.jpg" alt="img"></p>
+<p>代码如下</p>
+<p>ProductAttribute.cs 类里的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">class ProductAttribute</span><br><span class="line">&#123;</span><br><span class="line">    //初始化各值</span><br><span class="line">    string name = &quot;&quot;;</span><br><span class="line">    float price = 0;</span><br><span class="line">    int code1 = 0;</span><br><span class="line">    int code2 = 0;</span><br><span class="line">    //构造方法</span><br><span class="line">    public ProductAttribute(string n, float p, int c1, int c2)</span><br><span class="line">    &#123;</span><br><span class="line">        //实现ProductAttribute的数据结构 </span><br><span class="line">        //里面可以传入如下参数</span><br><span class="line">        name = n;</span><br><span class="line">        price = p;</span><br><span class="line">        code1 = c1;</span><br><span class="line">        code2 = c2;</span><br><span class="line">    &#125;</span><br><span class="line">    //可以读取ProductAttribute里的Name 属性</span><br><span class="line">    public string Name</span><br><span class="line">    &#123;</span><br><span class="line">        get &#123; return name; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //可以读取ProductAttribute里的Price 属性</span><br><span class="line">    public float Price</span><br><span class="line">    &#123;</span><br><span class="line">        get &#123; return price; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 一个save方法 用于判断 不同的折扣方式 并返回一个减去的钱数</span><br><span class="line">    public float save(int n)</span><br><span class="line">    &#123;</span><br><span class="line">        float m = 0;  //m用于获取 打折后的 价格 符合的物品数量</span><br><span class="line">        switch (code1)</span><br><span class="line">        &#123;</span><br><span class="line">            case 0: //code1为0 的时候 </span><br><span class="line">                m = n;  //买多少斤 最终价格还是 按多少斤算</span><br><span class="line">                break;</span><br><span class="line">            case 1: //code1为1的时候 有2种情况 </span><br><span class="line">                if (code2 == 0)  //code2为0  买1斤 第2斤免费 即买一送一 </span><br><span class="line">                    m = (float)((n / 2) + (n % 2));  //买1斤 第2斤免费  但买3斤 还是1斤免费 </span><br><span class="line">                else if (code2 == 1) //code2为1  这里是买1斤 第2斤半价 即买2斤 1斤半的钱  买4斤 3斤的钱</span><br><span class="line">                    m = (float)(1.5 * (n / 2) + (n % 2));</span><br><span class="line">                break;</span><br><span class="line">            case 2:   //code1 为2的时候 也有2种方法</span><br><span class="line">                if (code2 == 0)  //code1为2 code2 为0 买2斤 第3斤免费</span><br><span class="line">                    m = (float)(n - (n / 3));</span><br><span class="line">                else if (code2 == 1) //code1为2  code2为1 即买2斤 第3斤半价</span><br><span class="line">                    m = (float)(n - 0.5 * (n / 3));</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        float save = (n - m) * price; //计算出一个最终的价格</span><br><span class="line">        return save;  //返回省去的钱数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主窗体类代码 frmFruitShopping.cs</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">public partial class frmFruitShopping : Form</span><br><span class="line">&#123;        </span><br><span class="line">    public frmFruitShopping()</span><br><span class="line">    &#123;</span><br><span class="line">        InitializeComponent();</span><br><span class="line"></span><br><span class="line">        this.Load += (s, e) =&gt; &#123; ReadFruitsData();  FruitClick(); &#125;;</span><br><span class="line">        btnTotal.Click += (s, e) =&gt; &#123; GetTotalCost(); &#125;;</span><br><span class="line">        btnEmpty.Click += (s, e) =&gt; &#123; EmptyShoppingBox(); &#125;;</span><br><span class="line">        btnDeleteOne.Click += (s, e) =&gt; &#123; DeleteOneShoppingItem(); &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    List&lt;ProductAttribute&gt; productList;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 读取txt文本数据</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private void ReadFruitsData()</span><br><span class="line">    &#123;</span><br><span class="line">        //创建一个水果属性的集合</span><br><span class="line">        productList = new List&lt;ProductAttribute&gt;();</span><br><span class="line">        string strRead; //创建一个字符串 用来接受读取的数据</span><br><span class="line">        // 创建FileStream文件流 可以用来读取任何文件 其内部读取格式是 最原始的字节</span><br><span class="line">        FileStream fs = File.OpenRead(&quot;fruits.txt&quot;);</span><br><span class="line">        //通过流读取来读取fs文件里的东西,并将 文字格式设置为默认的ANSI编码</span><br><span class="line">        using (StreamReader sr = new StreamReader(fs, Encoding.Default))</span><br><span class="line">        &#123;</span><br><span class="line">            //用while循环来 一行行读取  如果读到的内容不为空 则进入循环 否则不读</span><br><span class="line">            while ((strRead = sr.ReadLine()) != null)</span><br><span class="line">            &#123;</span><br><span class="line">                //这里用到了个字符串分割 每行都有几个参数 通过&#x27;-&#x27; 隔开 分割后存到一个数组里</span><br><span class="line">                string[] part = strRead.Split(&#x27;-&#x27;);</span><br><span class="line">                //new一个 构造方法来装载 这些参数</span><br><span class="line">                ProductAttribute pa = new ProductAttribute(part[0], (float)Convert.ToDouble(part[1]), Convert.ToInt32(part[2]), Convert.ToInt32(part[3]));</span><br><span class="line">                //将 装载的参数 存到水果属性的list集合中</span><br><span class="line">                productList.Add(pa);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //创建一个TotalCost集合 来装载 所有的开销</span><br><span class="line">    List&lt;float&gt; TotalCost = new List&lt;float&gt;();</span><br><span class="line">    //定义一个 可以容纳12个整数的整型数组 用于装载 每样产品的点击数</span><br><span class="line">    int[] intQuantity = new int[12];</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 记录并打印每项水果的花费</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;i&quot;&gt;物品的索引&lt;/param&gt;</span><br><span class="line">    public void printCost(int i)</span><br><span class="line">    &#123;</span><br><span class="line">        intQuantity[i]++;</span><br><span class="line">        lstMenu.Items.Add(&quot;您购买了\t&quot; + productList[i].Name + &quot;\t &quot; + productList[i].Price + &quot;元/斤&quot;);</span><br><span class="line">        TotalCost.Add(productList[i].Price);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 实现所有水果按钮单击事件下触发的打印花费的方法</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private void FruitClick()</span><br><span class="line">    &#123;</span><br><span class="line">        //每个按钮下 都调用了一个 printCost();方法 </span><br><span class="line">        //传入的整型参数 是购物品在TotalCost集合里的位置 同时也是intQuantity的索引位置</span><br><span class="line">        btnApple.Click += (s, e) =&gt; &#123; printCost(0); &#125;;</span><br><span class="line">        btnOrange.Click += (s, e) =&gt; &#123; printCost(1); &#125;;</span><br><span class="line">        btnPear.Click += (s, e) =&gt; &#123; printCost(2); &#125;;</span><br><span class="line">        btnbanana.Click += (s, e) =&gt; &#123; printCost(3); &#125;;</span><br><span class="line">        btnHawthorn.Click += (s, e) =&gt; &#123; printCost(4); &#125;;</span><br><span class="line">        btnHoneyPeach.Click += (s, e) =&gt; &#123; printCost(5); &#125;;</span><br><span class="line">        btnCoconut.Click += (s, e) =&gt; &#123; printCost(6); &#125;;</span><br><span class="line">        btnFig.Click += (s, e) =&gt; &#123; printCost(7); &#125;;</span><br><span class="line">        btnGrape.Click += (s, e) =&gt; &#123; printCost(8); &#125;;</span><br><span class="line">        btnLitchi.Click += (s, e) =&gt; &#123; printCost(9); &#125;;</span><br><span class="line">        btnPlum.Click += (s, e) =&gt; &#123; printCost(10); &#125;;</span><br><span class="line">        btnPomelo.Click += (s, e) =&gt; &#123; printCost(11); &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 计算总共花费</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private void GetTotalCost()</span><br><span class="line">    &#123;</span><br><span class="line">        //遍历 TotalCost里所有的值 全部加起来</span><br><span class="line">        float tCost = 0;</span><br><span class="line">        foreach (float cost in TotalCost)</span><br><span class="line">        &#123;</span><br><span class="line">            tCost += cost;</span><br><span class="line">        &#125;</span><br><span class="line">        lstMenu.Items.Add(&quot;------------------------&quot;);</span><br><span class="line">        lstMenu.Items.Add(&quot;优惠前总价为:\t\t &quot; + Math.Round(tCost, 1) + &quot;元&quot;); //打印出总价(打折前的价格)</span><br><span class="line">        //调用Saving()方法 计算 总共节省的钱数 </span><br><span class="line">        float totalSaving = Saving();</span><br><span class="line">        lstMenu.Items.Add(&quot;打折后最终您需要付款为\t &quot; + Math.Round((tCost - totalSaving), 1) + &quot;元&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    float tSaving = 0;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 计算优惠额</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;returns&gt;优惠额&lt;/returns&gt;</span><br><span class="line">    public float Saving()</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i = 0; i &lt;= intQuantity.Length - 1; i++)</span><br><span class="line">        &#123;   //当物品 购买数 &gt;= 2的时候 才有优惠  </span><br><span class="line">            if (intQuantity[i] &gt;= 2)</span><br><span class="line">            &#123;   //这里 苹果和无花果 是不存在优惠的</span><br><span class="line">                if (productList[i].Name == &quot;苹果&quot; || productList[i].Name == &quot;无花果&quot;)</span><br><span class="line">                    lstMenu.Items.Add(&quot;您购买了&quot; + productList[i].Name + &quot; 一共&quot; + intQuantity[i] + &quot;斤&quot; + &quot; 最近&quot; + productList[i].Name + &quot;无优惠&quot;);</span><br><span class="line">                else //否则其他水果 都有优惠</span><br><span class="line">                &#123;</span><br><span class="line">                    lstMenu.Items.Add(&quot;您购买了&quot; + productList[i].Name + &quot; 一共&quot; + intQuantity[i] + &quot;斤&quot; + &quot; 优惠&quot; + Math.Round(productList[i].save(intQuantity[i]), 1) + &quot;元&quot;);</span><br><span class="line">                    tSaving += productList[i].save(intQuantity[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            //当购买单项 水果 小于2斤的时候 是没有优惠享受的 </span><br><span class="line">            else if (1 &lt;= intQuantity[i] &amp;&amp; intQuantity[i] &lt; 2)</span><br><span class="line">            &#123; </span><br><span class="line">                lstMenu.Items.Add(&quot;您购买了&quot; + productList[i].Name + &quot; 只有&quot; + intQuantity[i] + &quot;斤&quot; + &quot; 没有优惠!&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //最终 打印出 所有物品节约的 总价</span><br><span class="line">        lstMenu.Items.Add(&quot;--------------------------------------&quot;);</span><br><span class="line">        lstMenu.Items.Add(&quot;所有水果一共优惠了\t &quot; + tSaving + &quot;元&quot;);</span><br><span class="line"></span><br><span class="line">        return tSaving;//返回优惠额</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 清空购物车</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private void EmptyShoppingBox()</span><br><span class="line">    &#123;</span><br><span class="line">        lstMenu.Items.Clear();  //清空listMenu控件里面的所有项(表面清除) </span><br><span class="line">        TotalCost.Clear();      //清空TotalCost里的所有项(从系统中移除)</span><br><span class="line">        tSaving = 0;  //把之前节省的钱 全部清空  </span><br><span class="line">        //清空的时候 要将打折省去的钱数 也清掉</span><br><span class="line">        //这里用的是 清空所有购买水果的数量 当水果数为0的时候 就没有打折省去的钱数了</span><br><span class="line">        for (int i = 0; i &lt; intQuantity.Length; i++)</span><br><span class="line">            intQuantity[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// 删除已购买的单项物品</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    private void DeleteOneShoppingItem()</span><br><span class="line">    &#123;</span><br><span class="line">        //从listbox 里移除 购买项 (表面移除, 实际值需要从装载值的TotalCost集合里移除)</span><br><span class="line">        lstMenu.Items.Remove(lstMenu.SelectedItem);</span><br><span class="line">        //SelectedIndex 是从0开始的索引 但实际你删除项的索引是大于0的整数</span><br><span class="line">        //从TotalCost里移除购买项</span><br><span class="line">        TotalCost.RemoveAt(lstMenu.SelectedIndex + 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行效果 如下</p>
+<p>1.结账</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122011201345.jpg" alt="img"></p>
+<p>2.清空购物车</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122011284749.jpg" alt="img"></p>
+<p>3.再点结账 看下 确实所有值 都被清空了 (清空购物车功能 没问题) </p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122011290327.jpg" alt="img"></p>
+<p>\4. 但是删除单项 这里出问题了 请看下面</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122011395745.jpg" alt="img"></p>
+<p>5 删除2项 山楂后 总价虽然正常减少了 而且原先买了3斤山楂 现在删除了2斤山楂 剩1斤</p>
+<p>应该是没有优惠了 但这里还是保持原先 买3斤时候的优惠 </p>
+<p>而且总优惠价格 也是不但没减少 还把之前的再次相加了一次 导致最终价格不正常 (可能还有一些问题没有发现)</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011122011403357.jpg" alt="img"></p>
+<p>这里思路是有 就是 根据删除项在listbox里的索引 相对应的也是在用来装载所有购买物品价格的泛型list(TotalCost)的索引</p>
+<p>但是 <strong>怎样判断这个索引是哪个物品</strong>呢 这里是关键.</p>
+<p>由于这里涉及到的判断比较多 个人能力有限 还请 对该程序感兴趣的大牛们 帮忙解决下</p>
+<p>谢了!  :)</p>
+<p>这里附上源代码 <a target="_blank" rel="noopener" href="http://files.cnblogs.com/longwu/%E6%B0%B4%E6%9E%9C%E5%BA%97%E7%BB%93%E8%B4%A6%E7%B3%BB%E7%BB%9F.zip">水果店结账系统</a> 点击下载</p>
+<p>转自：<a herf="https://www.cnblogs.com/longwu/archive/2011/12/20/2294297.html">https://www.cnblogs.com/longwu/archive/2011/12/20/2294297.html<a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小菜鸟
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kdt-g.github.io/RookieRoom/2020/05/07/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/" title="C# Winform简单模拟水果店结账系统">https://kdt-g.github.io/RookieRoom/2020/05/07/c-winform-jian-dan-mo-ni-shui-guo-dian-jie-zhang-xi-tong/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/RookieRoom/tags/c/" rel="tag"># c#</a>
+              <a href="/RookieRoom/tags/winfrom/" rel="tag"># winfrom</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-wan-jie-pian-quan-xian-fen-pei/" rel="prev" title="C#简易电影记录管理系统:完结篇[权限分配]">
+      <i class="fa fa-chevron-left"></i> C#简易电影记录管理系统:完结篇[权限分配]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/silverlight-sheng-dan-xia-xue-dong-hua-ji-qi-kuo-zhan-ying-yong-de-shi-xian/" rel="next" title="Silverlight圣诞下雪动画及其扩展应用的实现">
+      Silverlight圣诞下雪动画及其扩展应用的实现 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小菜鸟"
+      src="/RookieRoom/images/favicon.png">
+  <p class="site-author-name" itemprop="name">小菜鸟</p>
+  <div class="site-description" itemprop="description">小菜鸟终会飞起，只是需要一点点时间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/RookieRoom/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/RookieRoom/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/RookieRoom/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/RookieRoom/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小菜鸟</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='200' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/RookieRoom/lib/anime.min.js"></script>
+  <script src="/RookieRoom/lib/pjax/pjax.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/RookieRoom/js/utils.js"></script>
+
+<script src="/RookieRoom/js/motion.js"></script>
+
+
+<script src="/RookieRoom/js/schemes/pisces.js"></script>
+
+
+<script src="/RookieRoom/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/RookieRoom/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/RookieRoom/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '128px',
+  right: '32px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+<script src="/RookieRoom/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/RookieRoom/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

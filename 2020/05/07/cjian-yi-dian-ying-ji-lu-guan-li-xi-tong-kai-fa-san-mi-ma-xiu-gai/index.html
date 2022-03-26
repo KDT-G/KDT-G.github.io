@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/RookieRoom/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/RookieRoom/images/favicon.png">
+  <link rel="mask-icon" href="/RookieRoom/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/RookieRoom/css/main.css">
+
+
+<link rel="stylesheet" href="/RookieRoom/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kdt-g.github.io","root":"/RookieRoom/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+  </script>
+
+  <meta name="description" content="本期概述 上一期我们实现了对电影记录的数据操作(增删改查).这一期,我们一起来实现下针对用户的密码修改功能.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#简易电影记录管理系统:开发三[密码修改]">
+<meta property="og:url" content="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/index.html">
+<meta property="og:site_name" content="小菜鸟的温暖小窝">
+<meta property="og:description" content="本期概述 上一期我们实现了对电影记录的数据操作(增删改查).这一期,我们一起来实现下针对用户的密码修改功能.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411393331.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411395613.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411401516.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411402834.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411500037.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101700265695.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011101700272610.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411462043.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012011823022413.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012011823044278.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2012/326877/2012011823033637.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100304135821.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100304141276.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100304143317.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100304144886.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100304150361.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100304154381.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100308322347.jpg">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/326877/2011100308324917.jpg">
+<meta property="article:published_time" content="2020-05-07T13:27:44.000Z">
+<meta property="article:modified_time" content="2022-03-26T16:34:41.922Z">
+<meta property="article:author" content="小菜鸟">
+<meta property="article:tag" content="c#">
+<meta property="article:tag" content="winfrom">
+<meta property="article:tag" content="vs2008">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030411393331.jpg">
+
+<link rel="canonical" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#简易电影记录管理系统:开发三[密码修改] | 小菜鸟的温暖小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+  
+  
+    <script src="/js/cursor/text.js"></script>
+  
+
+<link rel="alternate" href="/RookieRoom/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/RookieRoom/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小菜鸟的温暖小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/RookieRoom/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/RookieRoom/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/RookieRoom/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/RookieRoom/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/RookieRoom/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/KDT-G" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#简易电影记录管理系统:开发三[密码修改]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:27:44" itemprop="dateCreated datePublished" datetime="2020-05-07T21:27:44+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:41" itemprop="dateModified" datetime="2022-03-27T00:34:41+08:00">2022-03-27</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>本期概述</strong></p>
+<p>上一期我们实现了对电影记录的数据操作(增删改查).这一期,我们一起来实现下针对用户的密码修改功能.</p>
+ <span id="more"></span>
+
+<p><strong>原理简介</strong></p>
+<p>原理很简单,系统获取用户输入的用户名,执行select语句从数据库中获取该用户名下的密码,再与用户输入的旧密码进行匹配,若相同则允许输入新密码,然后执行Update语句将新密码保存到数据库.</p>
+<p>由于系统功能逐渐增多,我们需要创建一个主界面窗体,来方便使用各个功能. </p>
+<p>新建一个窗体 name:FrmMain</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012030411393331.jpg" alt="img"></p>
+<p>我们在主窗体创建一个ToolStrip工具栏,用于后期功能窗体的切换.</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012030411395613.jpg" alt="img"></p>
+<p>然后,右键在ToolStrip上添加 Button 按钮.</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012030411401516.jpg" alt="img"></p>
+<p>将Button按钮的显示模式改成Text 文本显示.</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012030411402834.jpg" alt="img"></p>
+<p>设置完管理界面按钮后,同理设置 密码修改 返回登陆界面 直接退出 功能按钮.</p>
+<p>ToolStrip按钮 管理界面name:tsbManager  密码修改name:tsbPwdChange  重新登录name:tsbLogin  退出系统name:tsbExit</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012030411500037.jpg" alt="img"></p>
+<p>主界面FrmMain.cs里的代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.ComponentModel;</span><br><span class="line">using System.Data;</span><br><span class="line">using System.Drawing;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Windows.Forms;</span><br><span class="line"></span><br><span class="line">/*******************************************************</span><br><span class="line"> </span><br><span class="line"> ** 作者: SoFlash - 博客园  http://www.cnblogs.com/longwu</span><br><span class="line"> </span><br><span class="line"> ** 描述: FrmMain.cs  主窗体 用于衔接各项功能窗体</span><br><span class="line"></span><br><span class="line"> ******************************************************/</span><br><span class="line"></span><br><span class="line">namespace 电影记录管理系统</span><br><span class="line">&#123;</span><br><span class="line">    public partial class FrmMain : Form</span><br><span class="line">    &#123;</span><br><span class="line">        public FrmMain()</span><br><span class="line">        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void tsbManager_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //new一个Manger窗体的对象</span><br><span class="line">            FrmManager manager = new FrmManager();</span><br><span class="line">            //转入FrmManager窗体</span><br><span class="line">            manager.Show();</span><br><span class="line">            //隐藏当前窗体</span><br><span class="line">            this.Hide();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void tsbPwdChange_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //同理</span><br><span class="line">            FrmPwdChange pwdChange = new FrmPwdChange();</span><br><span class="line">            pwdChange.Show();</span><br><span class="line">            this.Hide();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void tsbLogin_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //同理</span><br><span class="line">            FrmLogin login = new FrmLogin();</span><br><span class="line">            login.Show();</span><br><span class="line">            this.Hide();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        private void tsbExit_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //直接退出应用程序</span><br><span class="line">            Application.Exit();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样,由于登录成功后的跳转界面换了,所以我们需要修改下登录后跳转界面的代码.</p>
+<p>在登录窗体类FrmLogin.cs中修改(如下)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//如果 文本框中输入的密码 ==数据库中的密码</span><br><span class="line">if (pwd == txtPwd.Text)</span><br><span class="line">&#123;</span><br><span class="line">    //获取登陆成功后的用户ID</span><br><span class="line">    Uid = txtName.Text;</span><br><span class="line">    //说明在该账户下 密码正确, 系统登录成功</span><br><span class="line">    MessageBox.Show(&quot;系统登录成功,正在跳转主页面...&quot;);</span><br><span class="line">    //FrmManager manager = new FrmManager();</span><br><span class="line">    //manager.Show();</span><br><span class="line">    //this.Hide();</span><br><span class="line"></span><br><span class="line">    FrmMain main = new FrmMain();</span><br><span class="line">    main.Show();</span><br><span class="line">    this.Hide();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后,电影记录管理窗体也稍作修改, 添加一个 <strong>返回主界面</strong> 按钮.</p>
+<p>返回主界面name: btnBack</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101700265695.jpg" alt="img"></p>
+<p>代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void btnBack_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    //返回主界面</span><br><span class="line">    FrmMain main = new FrmMain();</span><br><span class="line">    main.Show();</span><br><span class="line">    this.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再增加一个直接 <strong>退出系统</strong> 按钮,  name:btnExit.</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011101700272610.jpg" alt="img"></p>
+<p>代码如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//直接退出系统</span><br><span class="line">private void btnExit_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">   //直接退出系统</span><br><span class="line">    Application.Exit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>之后 我们开始设计密码修改窗体(如下图) </p>
+<p>窗体name: FrmPwdChange</p>
+<p>文本框  用户名name:txtUsername  旧密码name:txtOldPwd  新密码name:txtNewPwd  再次输入新密码name:txtNewPwdConfirm</p>
+<p>按钮  修改name:btnOK  返回name:btnBack</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012030411462043.jpg" alt="img"></p>
+<p>窗体创建完成我们运行看下.</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012011823022413.jpg" alt="img"></p>
+<p>当用户成功登录系统的以后,我们需要获取成功登录后的用户名,并将其传入到密码修改界面的用户名文本框中,为此在登录窗体类FrmLogin.cs中我们需要做一点修改</p>
+<p>1.定义一个全局变量 Uid;  用于获取登录成功的用户名.</p>
+<p>public static string Uid; (添加到如下代码中)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//首先 设置 连接到配置文件组建 App.config </span><br><span class="line">//当然 这里的 ConfigurationManager 系统是默认不使用其命名空间的 因此需要解析</span><br><span class="line">string connStr = ConfigurationManager.ConnectionStrings[&quot;str&quot;].ConnectionString;</span><br><span class="line"></span><br><span class="line">//定义一个全局变量 Uid;</span><br><span class="line">//用于获取登录成功后的用户名</span><br><span class="line">public static string Uid;</span><br></pre></td></tr></table></figure>
+
+<p>2.在判断登录成功后,获取当前文本框中输入的用户名.</p>
+<p>Uid &#x3D; txtName.Text;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//如果 文本框中输入的密码 ==数据库中的密码</span><br><span class="line">if (pwd == txtPwd.Text)</span><br><span class="line">&#123;</span><br><span class="line">    //获取登陆成功后的用户ID</span><br><span class="line">    Uid = txtName.Text;</span><br><span class="line">    //说明在该账户下 密码正确, 系统登录成功</span><br><span class="line">    MessageBox.Show(&quot;系统登录成功,正在跳转主页面...&quot;);</span><br><span class="line">    //FrmManager manager = new FrmManager();</span><br><span class="line">    //manager.Show();</span><br><span class="line">    //this.Hide();</span><br><span class="line"></span><br><span class="line">    FrmMain main = new FrmMain();</span><br><span class="line">    main.Show();</span><br><span class="line">    this.Hide();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.在密码修改窗体FrmPwdChange加载时候,自动获取登录窗体FrmLogin的Uid属性,并赋给密码修改窗体FrmPwdChange的文本框txtUsername (代码如下)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//获取登录窗体的用户名</span><br><span class="line">private void FrmPwdChange_Load(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    //获取登录窗体登录成功后的公共变量 Uid</span><br><span class="line">    string currentUser = FrmLogin.Uid;</span><br><span class="line">    //将获取的字符串 currentUser 赋给txtUsername文本框</span><br><span class="line">    txtUsername.Text = currentUser;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样,每当我们登录成功后,跳转到密码修改窗体,用户名文本框就会直接显示我们当前登录的用户名了. :)</p>
+<p>运行看下, 我们使用admin1帐号登录.</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012011823044278.jpg" alt="img"></p>
+<p>来到密码修改窗体,此时,用户名admin1 已经自动出现到了用户名所在的文本框中.</p>
+<p><img src="https://pic002.cnblogs.com/images/2012/326877/2012011823033637.jpg" alt="img"></p>
+<p>接下来我们实施下密码修改窗体的完整代码 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">using System;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using System.ComponentModel;</span><br><span class="line">using System.Data;</span><br><span class="line">using System.Drawing;</span><br><span class="line">using System.Linq;</span><br><span class="line">using System.Text;</span><br><span class="line">using System.Windows.Forms;</span><br><span class="line">using System.Data.SqlClient;</span><br><span class="line">using System.Configuration;</span><br><span class="line"></span><br><span class="line">/*******************************************************</span><br><span class="line"> </span><br><span class="line"> ** 作者: SoFlash - 博客园  http://www.cnblogs.com/longwu</span><br><span class="line"> </span><br><span class="line"> ** 描述: FrmPwdChange.cs  密码修改窗体 用于管理员和普通用户修改个人密码</span><br><span class="line"></span><br><span class="line"> ******************************************************/</span><br><span class="line"></span><br><span class="line">namespace 电影记录管理系统</span><br><span class="line">&#123;</span><br><span class="line">    public partial class FrmPwdChange : Form</span><br><span class="line">    &#123;</span><br><span class="line">        public FrmPwdChange()</span><br><span class="line">        &#123;</span><br><span class="line">            InitializeComponent();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //连接字符串 获取配置文件里的连接路径</span><br><span class="line">        static string connStr = ConfigurationManager.ConnectionStrings[&quot;str&quot;].ConnectionString;</span><br><span class="line"></span><br><span class="line">        //修改密码</span><br><span class="line">        private void btnOK_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //使用Sql连接对象获取连接字符串</span><br><span class="line">            SqlConnection conn = new SqlConnection(connStr);</span><br><span class="line">            //使用sql语句获取当前用户名下的密码</span><br><span class="line">            string sql = &quot;select MUserPwd from MovieAccount where MUserName =&#x27;&quot; + txtUsername.Text + &quot;&#x27;&quot;;</span><br><span class="line">            //使用SQLcommand指令来装载SQL连接字符串和conn连接对象</span><br><span class="line">            SqlCommand cmd = new SqlCommand(sql, conn);</span><br><span class="line">            //打开conn连接</span><br><span class="line">            conn.Open();</span><br><span class="line">            //使用sql数据读取器来 获取cmd指令中的读到的数据</span><br><span class="line">            SqlDataReader sdr = cmd.ExecuteReader();</span><br><span class="line">            //如果sql数据读取器 读到了数据</span><br><span class="line">            if (sdr.Read())</span><br><span class="line">            &#123;</span><br><span class="line">                //将读到的用户名下的密码赋给字符串oldPwd</span><br><span class="line">                string oldPwd = sdr.GetString(0).Trim();</span><br><span class="line">                //如果文本框中输入的密码等于从数据库中读到的字符串oldPwd</span><br><span class="line">                if (oldPwd == txtOldPwd.Text)</span><br><span class="line">                &#123;</span><br><span class="line">                    //如果新密码为空</span><br><span class="line">                    if (txtNewPwd.Text.Trim()==&quot;&quot;||txtNewPwdConfirm.Text.Trim()==&quot;&quot;)</span><br><span class="line">                    &#123;</span><br><span class="line">                        //弹出提示</span><br><span class="line">                        MessageBox.Show(&quot;新密码确认不能为空!&quot;);</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line">                     //继续判断 如果2次新密码不相同</span><br><span class="line">                    else if(txtNewPwd.Text.Trim() != txtNewPwdConfirm.Text.Trim())</span><br><span class="line">                    &#123;</span><br><span class="line">                        //弹出提示 2次新密码不相同,请重新输入</span><br><span class="line">                        MessageBox.Show(&quot;2次输入的新密码不一样,请重新输入!&quot;);</span><br><span class="line">                        //新密码和再次证明密码提示框都清空</span><br><span class="line">                        txtNewPwd.Text = &quot;&quot;;</span><br><span class="line">                        txtNewPwdConfirm.Text = &quot;&quot;;</span><br><span class="line">                        return;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        //如果2次新密码相同,关闭SqlDataReader连接</span><br><span class="line">                        sdr.Close();</span><br><span class="line">                        //执行sql语句</span><br><span class="line">                        string sqlUpdate = &quot;update MovieAccount set MUserPwd =&#x27;&quot; + txtNewPwdConfirm.Text + </span><br><span class="line">                        &quot;&#x27; where MUserName =&#x27;&quot; + txtUsername.Text + &quot;&#x27;&quot;;</span><br><span class="line">                        //new一个数据库更新指令</span><br><span class="line">                        SqlCommand cmdUp = new SqlCommand(sqlUpdate,conn);</span><br><span class="line">                        // 如果cmdUp获取的行数为0 则说明系更新指令出现异常</span><br><span class="line">                        if (cmdUp.ExecuteNonQuery() == 0)</span><br><span class="line">                        &#123;</span><br><span class="line">                            //系统报错 </span><br><span class="line">                            MessageBox.Show(&quot;未知错误!&quot;);</span><br><span class="line">                            return;</span><br><span class="line">                        &#125;</span><br><span class="line">                        else</span><br><span class="line">                        &#123;</span><br><span class="line">                            //否则 更新成功</span><br><span class="line">                            MessageBox.Show(&quot;恭喜你!密码修改成功!&quot;);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    //弹出提示框 旧密码不能为空或错误</span><br><span class="line">                    MessageBox.Show(&quot;旧密码错误或者不能为空&quot;);</span><br><span class="line">                    //旧密码,新密码,新密码验证 同时清空</span><br><span class="line">                    txtOldPwd.Text = &quot;&quot;;</span><br><span class="line">                    txtNewPwd.Text = &quot;&quot;;</span><br><span class="line">                    txtNewPwdConfirm.Text = &quot;&quot;;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                //如果没读到用户名,提示用户名不存在!</span><br><span class="line">                MessageBox.Show(&quot;用户名不存在,请重新输入!&quot;);</span><br><span class="line">                //用用户名,旧密码,新密码,新密码验证 都清空  </span><br><span class="line">                txtUsername.Text = &quot;&quot;;</span><br><span class="line">                txtOldPwd.Text = &quot;&quot;;</span><br><span class="line">                txtNewPwd.Text = &quot;&quot;;</span><br><span class="line">                txtNewPwdConfirm.Text = &quot;&quot;;</span><br><span class="line">                return;</span><br><span class="line">              </span><br><span class="line">            &#125;</span><br><span class="line">            //关闭数据库连接</span><br><span class="line">            conn.Close();</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //返回主窗体</span><br><span class="line">        private void btnBack_Click(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //new 一个主框体的对象</span><br><span class="line">            FrmMain main = new FrmMain();</span><br><span class="line">            main.Show();</span><br><span class="line">            this.Close();</span><br><span class="line">        &#125;</span><br><span class="line">        //获取登录窗体的用户名</span><br><span class="line">        private void FrmPwdChange_Load(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            //获取登录窗体登录成功后的公共变量 Uid</span><br><span class="line">            string currentUser = FrmLogin.Uid;</span><br><span class="line">            //将获取的字符串 currentUser 赋给txtUsername文本框</span><br><span class="line">            txtUsername.Text = currentUser;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果测试:</p>
+<p>首先使用admin1账户来登录系统 密码为666666</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100304135821.jpg" alt="img"></p>
+<p>当我们输入错误的旧密码时,系统弹出提示”旧密码错误或者不能为空”.</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100304141276.jpg" alt="img"></p>
+<p>输入正确的密码,但新密码和新密码确认为空,弹出提示”新密码不能为空”.</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100304143317.jpg" alt="img"></p>
+<p>只在新密码框中输入密码, 再次输入新密码框为空,同样弹出”新密码不能为空”.</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100304144886.jpg" alt="img"></p>
+<p>输入的新密码和新密码确认不一样,弹出提示”2次新密码不一样”.</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100304150361.jpg" alt="img"></p>
+<p>当新密码和新密码确认相同的时候,点修改,弹出提示框”修改成功”. </p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100304154381.jpg" alt="img"></p>
+<p>如果需要把密码输入框设置为不可见 用*号代替</p>
+<p>可以通过 设置文本框的 PasswordChar属性 在里面添加*号 就行了</p>
+<p>如图</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100308322347.jpg" alt="img"></p>
+<p>效果展示</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/326877/2011100308324917.jpg" alt="img"></p>
+<p>这样电影记录管理系统的主界面和密码修改界面就完成了,下一期我们来一起学习下如何记录并查看用户的历史登录和退出情况(日志查看).</p>
+<p><strong>附上源代码</strong></p>
+<p><a target="_blank" rel="noopener" href="http://files.cnblogs.com/longwu/MovieRecordManagementSystem03.zip">MovieRecordManagementSystem03.zip</a></p>
+<p>转自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/longwu/archive/2011/10/03/2198276.html">https://www.cnblogs.com/longwu/archive/2011/10/03/2198276.html<a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小菜鸟
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/" title="C#简易电影记录管理系统:开发三[密码修改]">https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/RookieRoom/tags/c/" rel="tag"># c#</a>
+              <a href="/RookieRoom/tags/winfrom/" rel="tag"># winfrom</a>
+              <a href="/RookieRoom/tags/vs2008/" rel="tag"># vs2008</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/" rel="prev" title="C#简易电影记录管理系统:开发二[增删改查]">
+      <i class="fa fa-chevron-left"></i> C#简易电影记录管理系统:开发二[增删改查]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/" rel="next" title="C#简易电影记录管理系统:开发四[日志查看]">
+      C#简易电影记录管理系统:开发四[日志查看] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小菜鸟"
+      src="/RookieRoom/images/favicon.png">
+  <p class="site-author-name" itemprop="name">小菜鸟</p>
+  <div class="site-description" itemprop="description">小菜鸟终会飞起，只是需要一点点时间</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/RookieRoom/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/RookieRoom/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/RookieRoom/tags/">
+          
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/RookieRoom/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小菜鸟</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">273k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:08</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='200' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/RookieRoom/lib/anime.min.js"></script>
+  <script src="/RookieRoom/lib/pjax/pjax.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.min.js"></script>
+  <script src="/RookieRoom/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/RookieRoom/js/utils.js"></script>
+
+<script src="/RookieRoom/js/motion.js"></script>
+
+
+<script src="/RookieRoom/js/schemes/pisces.js"></script>
+
+
+<script src="/RookieRoom/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/RookieRoom/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/RookieRoom/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+    <div id="pjax">
+  
+
+  
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '128px',
+  right: '32px',
+  left: 'unset',
+  time: '0.5s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+<script src="/RookieRoom/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/RookieRoom/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
