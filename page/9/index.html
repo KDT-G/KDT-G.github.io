@@ -76,7 +76,7 @@
 
   
   
-    <script src="/js/cursor/text.js"></script>
+    <script src="/js/cursor/fireworks.js"></script>
   
 
 <link rel="alternate" href="/RookieRoom/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
@@ -196,6 +196,703 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发九[数据恢复]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:36:00" itemprop="dateCreated datePublished" datetime="2020-05-07T21:36:00+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:13" itemprop="dateModified" datetime="2022-03-27T00:34:13+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>上一期我们学习并实现了该系统的数据备份功能。这一期我们来一起实现下该系统的数据恢复功能.数据恢复是指当数据因外界条件影响而丢失后,我们需要使用先前的备份来恢复数据,从而避免照成不必要的损失.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发八[数据备份]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:34:49" itemprop="dateCreated datePublished" datetime="2020-05-07T21:34:49+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:31:15" itemprop="dateModified" datetime="2022-03-27T00:31:15+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>上一期我们学习了用户分类,通过给用户分配不同的功能权限(管理员具有所有功能的使用权限,普通用户只能限制性的使用部分功能)达到给用户分类的目的.那么这一期我们来一起学习下一个信息管理系统最为重要的功能之一数据备份.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发七[用户分类]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:33:48" itemprop="dateCreated datePublished" datetime="2020-05-07T21:33:48+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:33" itemprop="dateModified" datetime="2022-03-27T00:34:33+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>在绝大部分数据管理系统中,管理员和普通用户这2类用户通常是必不可少的,当然还有更细的分类.前几期,我们用到的系统用户只有普通用户一类.那么在这一期,我们将在系统中设置2类用户, 管理员Administrator 和普通用户NormalUser.</p>
+<p>我们在这里分类用户的目的是为了区分不同用户的功能权限,通常管理员拥有所有功能的使用权限,而普通用户只能限制性的使用部分功能(比如只能查看数据,而不修改数据). 当然，管理员可以赋予普通用户更多的功能权限,这个在后期随笔里面会继续说明.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发六[数据搜索]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:32:47" itemprop="dateCreated datePublished" datetime="2020-05-07T21:32:47+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:24" itemprop="dateModified" datetime="2022-03-27T00:34:24+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>前几期中,我们实现了用户对系统数据记录的基本操作-增删改查, 由于数据量不是很多,我们可以轻易的找到我们所需要操作的记录；但是一旦数据量多起来,是否还能方便的找到我们想要操作的数据呢?这一期我们一起来实现一个功能-数据搜索.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-wu-yong-hu-zhu-ce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-wu-yong-hu-zhu-ce/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发五[用户注册]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:31:27" itemprop="dateCreated datePublished" datetime="2020-05-07T21:31:27+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:55" itemprop="dateModified" datetime="2022-03-27T00:34:55+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>前几期为了方便登录系统,我们手动的在数据库里添加了用户名和密码,并没有实现在系统中进行用户注册.那么,这一期我们一起来实现下用户注册功能.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-wu-yong-hu-zhu-ce/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发四[日志查看]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:28:57" itemprop="dateCreated datePublished" datetime="2020-05-07T21:28:57+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:48" itemprop="dateModified" datetime="2022-03-27T00:34:48+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>上一期,我们做了一个用户密码修改的功能. 这一期,我们来实现下日志查看功能(用于记录和查看用户的系统登录和退出历史).</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发三[密码修改]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:27:44" itemprop="dateCreated datePublished" datetime="2020-05-07T21:27:44+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:34:41" itemprop="dateModified" datetime="2022-03-27T00:34:41+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>上一期我们实现了对电影记录的数据操作(增删改查).这一期,我们一起来实现下针对用户的密码修改功能.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发二[增删改查]</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 21:25:41" itemprop="dateCreated datePublished" datetime="2020-05-07T21:25:41+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:31:23" itemprop="dateModified" datetime="2022-03-27T00:31:23+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>本期概述</strong></p>
+<p>上一期我们学习并实现了用户登录功能.这一期我们一起来学习下电影记录管理系统的的最主要功能(对数据的增删改查).</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -369,708 +1066,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/c-socket-tong-xin-shi-xian/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/c-socket-tong-xin-shi-xian/" class="post-title-link" itemprop="url">C# — SOCKET通信实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:16:18" itemprop="dateCreated datePublished" datetime="2020-05-07T21:16:18+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:37:40" itemprop="dateModified" datetime="2022-03-27T00:37:40+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>376</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>昨天晚上在网上查找资料，简单实现了C#开发的Socket通信，以下是具体的开发流程，我使用的是VS2017进行开发的：</strong></p>
-<p><strong>一、服务器端：</strong></p>
-<p><strong>1.新建一个项目，Windows控制台程序</strong></p>
-<p><strong><img src="https://img2018.cnblogs.com/blog/1505274/201904/1505274-20190404101859448-985418555.png" alt="img"></strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/RookieRoom/2020/05/07/c-socket-tong-xin-shi-xian/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/aspnet-shi-xian-er-wei-ma/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/aspnet-shi-xian-er-wei-ma/" class="post-title-link" itemprop="url">ASP.NET实现二维码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:13:01" itemprop="dateCreated datePublished" datetime="2020-05-07T21:13:01+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:30:17" itemprop="dateModified" datetime="2022-03-27T00:30:17+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Drawing;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Text;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls;</span><br><span class="line"><span class="keyword">using</span> ThoughtWorks.QRCode.Codec;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">WeChat</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">WebForm2</span> : <span class="title">System.Web.UI.Page</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">btnCRC_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//创建时间</span></span><br><span class="line">DateTime currentTime = <span class="keyword">new</span> System.DateTime();</span><br><span class="line"><span class="comment">//取当前年月日时分秒</span></span><br><span class="line">currentTime = System.DateTime.Now;</span><br><span class="line"><span class="comment">//取当前年</span></span><br><span class="line"><span class="built_in">int</span> Year = currentTime.Year;</span><br><span class="line"><span class="comment">//取当前月</span></span><br><span class="line"><span class="built_in">int</span> Month = currentTime.Month;</span><br><span class="line"><span class="comment">//取当前日</span></span><br><span class="line"><span class="built_in">int</span> Day = currentTime.Day;</span><br><span class="line"><span class="keyword">if</span> (Day &lt; <span class="number">10</span>)</span><br><span class="line">&#123;</span><br><span class="line">Day = <span class="number">0</span> + Day;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//取当前时</span></span><br><span class="line"><span class="built_in">int</span> Hour = currentTime.Hour;</span><br><span class="line"><span class="comment">//取当前分</span></span><br><span class="line"><span class="built_in">int</span> Minute = currentTime.Minute;</span><br><span class="line"><span class="built_in">int</span> Minute1 = currentTime.Minute + <span class="number">10</span>;</span><br><span class="line"><span class="comment">//取当前秒</span></span><br><span class="line"><span class="built_in">int</span> Second = currentTime.Second;</span><br><span class="line"><span class="comment">//取当前毫秒</span></span><br><span class="line"><span class="built_in">int</span> Millisecond = currentTime.Millisecond;</span><br><span class="line"><span class="keyword">this</span>.txtCRC.Text = Second.ToString();</span><br><span class="line">ThoughtWorksQRCode(<span class="string">&quot;您好欢迎使用二维码查看！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ThoughtWorksQRCode</span>(<span class="params"><span class="built_in">string</span> strtxt</span>)</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">Bitmap bt;</span><br><span class="line"><span class="built_in">string</span> enCodeString = strtxt;</span><br><span class="line">QRCodeEncoder qrCodeEncoder = <span class="keyword">new</span> QRCodeEncoder();</span><br><span class="line">bt = qrCodeEncoder.Encode(enCodeString, Encoding.UTF8);</span><br><span class="line"><span class="built_in">string</span> filename = DateTime.Now.ToString(<span class="string">&quot;yyyymmddhhmmss&quot;</span>);</span><br><span class="line">filename = filename.Replace(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">filename = filename.Replace(<span class="string">&quot;:&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">filename = filename.Replace(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">filename = filename.Replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">bt.Save(Server.MapPath(<span class="string">&quot;~/images/&quot;</span>) + filename + <span class="string">&quot;.jpg&quot;</span>);</span><br><span class="line"><span class="keyword">this</span>.Image1.ImageUrl = <span class="string">&quot;~/images/&quot;</span> + filename + <span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">throw</span> e;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//public void GenerateQRCode(string content)</span></span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">// try</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">// // _fileLog.Info(&quot;GenerateQRCode|开始生成二维码&quot;);</span></span><br><span class="line"><span class="comment">// if (null != content)</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">// //初始化二维码生成工具</span></span><br><span class="line"><span class="comment">// var qrCodeEncoder = new QRCodeEncoder</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">// QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE,</span></span><br><span class="line"><span class="comment">// QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.M,</span></span><br><span class="line"><span class="comment">// QRCodeVersion = 0,</span></span><br><span class="line"><span class="comment">// QRCodeScale = 4</span></span><br><span class="line"><span class="comment">// &#125;;</span></span><br><span class="line"><span class="comment">// //将字符串生成二维码图片</span></span><br><span class="line"><span class="comment">// var image = qrCodeEncoder.Encode(content);</span></span><br><span class="line"><span class="comment">// var ms = new MemoryStream();</span></span><br><span class="line"><span class="comment">// image.Save(ms, ImageFormat.Png);</span></span><br><span class="line"><span class="comment">// Response.BinaryWrite(ms.GetBuffer());</span></span><br><span class="line"><span class="comment">// Response.End();</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// //_fileLog.Info(&quot;CloudCardController|GenerateQRCode|成功生成二维码&quot;);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// catch (Exception ex)</span></span><br><span class="line"><span class="comment">// &#123;</span></span><br><span class="line"><span class="comment">// //_fileLog.Error(&quot;GenerateQRCode|生成二维码出现异常,异常信息：&quot; + ex.Message);</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//private void CreateCode_Simple(string nr)</span></span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">// QRCodeEncoder qrCodeEncoder = new QRCodeEncoder();</span></span><br><span class="line"><span class="comment">// qrCodeEncoder.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;</span></span><br><span class="line"><span class="comment">// qrCodeEncoder.QRCodeScale = 4;</span></span><br><span class="line"><span class="comment">// qrCodeEncoder.QRCodeVersion = 8;</span></span><br><span class="line"><span class="comment">// qrCodeEncoder.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.M;</span></span><br><span class="line"><span class="comment">// //System.Drawing.Image image = qrCodeEncoder.Encode(&quot;4408810820 深圳－广州 小江&quot;);</span></span><br><span class="line"><span class="comment">// System.Drawing.Image image = qrCodeEncoder.Encode(nr);</span></span><br><span class="line"><span class="comment">// string filename = DateTime.Now.ToString(&quot;yyyymmddhhmmssfff&quot;).ToString() + &quot;.jpg&quot;;</span></span><br><span class="line"><span class="comment">// string filepath = Server.MapPath(@&quot;~\Upload&quot;) + &quot;\\&quot; + filename;</span></span><br><span class="line"><span class="comment">// System.IO.FileStream fs = new System.IO.FileStream(filepath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Write);</span></span><br><span class="line"><span class="comment">// image.Save(fs, System.Drawing.Imaging.ImageFormat.Jpeg);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// fs.Close();</span></span><br><span class="line"><span class="comment">// image.Dispose();</span></span><br><span class="line"><span class="comment">// //二维码解码</span></span><br><span class="line"><span class="comment">// var codeDecoder = CodeDecoder(filepath);</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span>// <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span>// 二维码解码</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span>// <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span>// <span class="doctag">&lt;param name=&quot;filePath&quot;&gt;</span>图片路径<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span>// <span class="doctag">&lt;returns&gt;</span><span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="comment">//public string CodeDecoder(string filePath)</span></span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">// if (!System.IO.File.Exists(filePath))</span></span><br><span class="line"><span class="comment">// return null;</span></span><br><span class="line"><span class="comment">// Bitmap myBitmap = new Bitmap(Image.FromFile(filePath));</span></span><br><span class="line"><span class="comment">// QRCodeDecoder decoder = new QRCodeDecoder();</span></span><br><span class="line"><span class="comment">// string decodedString = decoder.decode(new QRCodeBitmapImage(myBitmap));</span></span><br><span class="line"><span class="comment">// return decodedString;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>转自：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zoujinhua/p/10308661.html">https://www.cnblogs.com/zoujinhua/p/10308661.html<a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/htmlcss-rang-wang-ye-zi-dong-gua-ying-dian-nao-shou-ji-ping-mu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/htmlcss-rang-wang-ye-zi-dong-gua-ying-dian-nao-shou-ji-ping-mu/" class="post-title-link" itemprop="url">HTML+Css让网页自动适应电脑手机屏幕</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:07:46" itemprop="dateCreated datePublished" datetime="2020-05-07T21:07:46+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:48:08" itemprop="dateModified" datetime="2022-03-27T00:48:08+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>在网页的中增加以上这句话，可以让网页的宽度自动适应手机屏幕的宽度</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/RookieRoom/2020/05/07/htmlcss-rang-wang-ye-zi-dong-gua-ying-dian-nao-shou-ji-ping-mu/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/c-jin-jie-zhi-webapi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/c-jin-jie-zhi-webapi/" class="post-title-link" itemprop="url">c# 进阶之 WebAPI</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:05:09" itemprop="dateCreated datePublished" datetime="2020-05-07T21:05:09+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:35:56" itemprop="dateModified" datetime="2022-03-27T00:35:56+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>REST是设计风格而不是标准。</p>
-<p>webapi有自己的路由。</p>
-<p>webservice和wcf的协议都是soap协议，数据的序列化和反序列化都是soap的格式。而webapi是Json的数据传递</p>
-<p>webapi的优点有哪些？</p>
-<p>(1)非常适合做http的请求，前端与webapi交互特别方便</p>
-<p>(2)webapi更轻量因为使用的json数据来传递。</p>
-<p>(3)webapi很多时候是给前端提供数据的，因为webapi跟控制器关联的没那么紧密（若是没webapi，用mvc的模式，那么页面直接从对应的控制器获取数据）,这样传递数据webapi对，手机，app，页面都可以通过同一个数据源提供数据，会比较灵活一些。（会跨域）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/RookieRoom/2020/05/07/c-jin-jie-zhi-webapi/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-sheng-cheng-json-zi-fu-chuan-ti-jiao-gei-jie-kou-fu-wu-qi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/cru-he-sheng-cheng-json-zi-fu-chuan-ti-jiao-gei-jie-kou-fu-wu-qi/" class="post-title-link" itemprop="url">C#如何生成JSON字符串提交给接口（服务器）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:01:01" itemprop="dateCreated datePublished" datetime="2020-05-07T21:01:01+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:36:54" itemprop="dateModified" datetime="2022-03-27T00:36:54+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>322</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>上一篇文章中我们写的C#生成JSON字符串，那么我们生成的字符串要干嘛呢？当然是将数据提交给服务器啦。一般用过接口来接受这个JSON。</p>
-<p>这里我们会用到第一章中的一个 类。HttpUitls里面的Post方法。</p>
-<p>非常简单：</p>
-  <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Post</span>(<span class="params"><span class="built_in">string</span> Url, <span class="built_in">string</span> Data, <span class="built_in">string</span> Referer</span>)；</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"> <span class="comment">//参数说明：URL提交的接口地址</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"> <span class="comment">//Data：就是要提交的JSON字符串</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">//Referer ：文件头 ，给个空字符串就可以。</span></span></span><br></pre></td></tr></table></figure>
-<p>  OK，来到这里，C#操作JSON的日常使用就已经结束了，是不是非常简单！</p>
-<p>  转自:<a herf="https://www.cnblogs.com/zoujinhua/p/10330084.html">https://www.cnblogs.com/zoujinhua/p/10330084.html<a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-sheng-cheng-json-zi-fu-chuan-xu-lie-hua-dui-xiang/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/cru-he-sheng-cheng-json-zi-fu-chuan-xu-lie-hua-dui-xiang/" class="post-title-link" itemprop="url">C#如何生成JSON字符串?（序列化对象）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 20:57:10" itemprop="dateCreated datePublished" datetime="2020-05-07T20:57:10+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:37:09" itemprop="dateModified" datetime="2022-03-27T00:37:09+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>上一篇文章中我们讲解了序列号JSON数据，这篇文章我们来讲解一下反序列化JSON数据，也就是将实体类转化成JSON数据，其实也非常简单，说白了，就是将实体初始化。</p>
-<p>一样，我们跟着前两篇的代码，在添加 一个按钮，在按钮事件里面写代码。先看效果吧。</p>
-<p><img src="https://images2017.cnblogs.com/blog/932266/201709/932266-20170922210151790-449942228.gif" alt="img"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/RookieRoom/2020/05/07/cru-he-sheng-cheng-json-zi-fu-chuan-xu-lie-hua-dui-xiang/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/" class="post-title-link" itemprop="url">C#如何解析JSON数据（反序列化对象）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 20:54:40" itemprop="dateCreated datePublished" datetime="2020-05-07T20:54:40+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:36:19" itemprop="dateModified" datetime="2022-03-27T00:36:19+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。"><a href="#在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。" class="headerlink" title="在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。"></a>在上一篇文章中，我们讲解了如何通过API接口获取返回的JSON字符串，那么，这篇文章我们来讲解拿到了返回的JSON字符串后，我们要如何取到里面我们需要的数据呢？这操作叫JSON的反序列化操作。接下里我们将一一解释。</h3><p>先看效果：这个大家最喜欢。</p>
-<p><img src="https://images2017.cnblogs.com/blog/932266/201709/932266-20170922194837571-1732646875.gif" alt="img"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/RookieRoom/2020/05/07/cru-he-jie-xi-json-shu-ju-fan-xu-lie-hua-dui-xiang/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cru-he-na-dao-cong-http-shang-fan-hui-json-shu-ju/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/RookieRoom/2020/05/07/cru-he-na-dao-cong-http-shang-fan-hui-json-shu-ju/" class="post-title-link" itemprop="url">C#如何拿到从http上返回JSON数据?</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 20:49:57" itemprop="dateCreated datePublished" datetime="2020-05-07T20:49:57+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:36:33" itemprop="dateModified" datetime="2022-03-27T00:36:33+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在实际开发中，我们经常会使用到API，所谓API一般就是一个地址，我们称之为接口。然后我们通过用C#对这地址发送请求，请求后，服务器就会给我们返回数据，一般是XML或者JSON，这里我们主要讲述的是JSON。</p>
-<p>为了演示，我们这里准备了一个接口，这是一个查询物流的接口。（读者读到这篇文章的时候，接口可能有效，也可能失效，因为接口是网上找的，不是笔者自己写的，但是原理是一样的。）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/RookieRoom/2020/05/07/cru-he-na-dao-cong-http-shang-fan-hui-json-shu-ju/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/RookieRoom/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/RookieRoom/">1</a><span class="space">&hellip;</span><a class="page-number" href="/RookieRoom/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/RookieRoom/page/10/">10</a><a class="page-number" href="/RookieRoom/page/11/">11</a><a class="extend next" rel="next" href="/RookieRoom/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/RookieRoom/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/RookieRoom/">1</a><span class="space">&hellip;</span><a class="page-number" href="/RookieRoom/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/RookieRoom/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/RookieRoom/page/12/">12</a><a class="extend next" rel="next" href="/RookieRoom/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1138,7 +1137,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/RookieRoom/archives/">
         
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1151,14 +1150,11 @@
       <div class="site-state-item site-state-tags">
             <a href="/RookieRoom/tags/">
           
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/RookieRoom/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
 
 
 
@@ -1191,13 +1187,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">273k</span>
+    <span title="站点总字数">290k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:08</span>
+    <span title="站点阅读时长">4:23</span>
 </div>
 
         
@@ -1235,7 +1231,7 @@
 
   
   
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='200' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='100' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/RookieRoom/lib/anime.min.js"></script>
   <script src="/RookieRoom/lib/pjax/pjax.min.js"></script>
   <script src="/RookieRoom/lib/velocity/velocity.min.js"></script>
