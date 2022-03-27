@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.1.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/RookieRoom/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/RookieRoom/images/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/RookieRoom/images/favicon.png">
-  <link rel="mask-icon" href="/RookieRoom/images/favicon.png" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
 
-<link rel="stylesheet" href="/RookieRoom/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/RookieRoom/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"kdt-g.github.io","root":"/RookieRoom/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
+    var CONFIG = {"hostname":"kdt-g.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"./public/search.xml"};
   </script>
 
   <meta name="description" content="本期概述 上一期我们学习了用户分类,通过给用户分配不同的功能权限(管理员具有所有功能的使用权限,普通用户只能限制性的使用部分功能)达到给用户分类的目的.那么这一期我们来一起学习下一个信息管理系统最为重要的功能之一数据备份.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#简易电影记录管理系统:开发八[数据备份]">
-<meta property="og:url" content="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/index.html">
+<meta property="og:url" content="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/index.html">
 <meta property="og:site_name" content="小菜鸟的温暖小窝">
 <meta property="og:description" content="本期概述 上一期我们学习了用户分类,通过给用户分配不同的功能权限(管理员具有所有功能的使用权限,普通用户只能限制性的使用部分功能)达到给用户分类的目的.那么这一期我们来一起学习下一个信息管理系统最为重要的功能之一数据备份.">
 <meta property="og:locale" content="zh_CN">
@@ -45,7 +45,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pic002.cnblogs.com/images/2012/326877/2012030902343114.png">
 
-<link rel="canonical" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
+<link rel="canonical" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
 
 
 <script id="page-configurations">
@@ -94,7 +94,7 @@
     <script src="/js/cursor/fireworks.js"></script>
   
 
-<link rel="alternate" href="/RookieRoom/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="小菜鸟的温暖小窝" type="application/atom+xml">
 <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -115,7 +115,7 @@
 
   <div class="site-meta">
 
-    <a href="/RookieRoom/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">小菜鸟的温暖小窝</h1>
       <span class="logo-line-after"><i></i></span>
@@ -136,27 +136,27 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/RookieRoom/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/RookieRoom/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/RookieRoom/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/RookieRoom/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/RookieRoom/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -216,10 +216,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/RookieRoom/images/favicon.png">
+      <meta itemprop="image" content="/images/favicon.png">
       <meta itemprop="name" content="小菜鸟">
       <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
     </span>
@@ -333,7 +333,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/" title="C#简易电影记录管理系统:开发八[数据备份]">https://kdt-g.github.io/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/</a>
+    <a href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/" title="C#简易电影记录管理系统:开发八[数据备份]">https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh_CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -344,9 +344,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/RookieRoom/tags/c/" rel="tag"># c#</a>
-              <a href="/RookieRoom/tags/winfrom/" rel="tag"># winfrom</a>
-              <a href="/RookieRoom/tags/vs2008/" rel="tag"># vs2008</a>
+              <a href="/tags/c/" rel="tag"># c#</a>
+              <a href="/tags/winfrom/" rel="tag"># winfrom</a>
+              <a href="/tags/vs2008/" rel="tag"># vs2008</a>
           </div>
 
         
@@ -355,11 +355,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/" rel="prev" title="C#简易电影记录管理系统:开发七[用户分类]">
+    <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/" rel="prev" title="C#简易电影记录管理系统:开发七[用户分类]">
       <i class="fa fa-chevron-left"></i> C#简易电影记录管理系统:开发七[用户分类]
     </a></div>
       <div class="post-nav-item">
-    <a href="/RookieRoom/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/" rel="next" title="C#简易电影记录管理系统:开发九[数据恢复]">
+    <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/" rel="next" title="C#简易电影记录管理系统:开发九[数据恢复]">
       C#简易电影记录管理系统:开发九[数据恢复] <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -426,27 +426,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="小菜鸟"
-      src="/RookieRoom/images/favicon.png">
+      src="/images/favicon.png">
   <p class="site-author-name" itemprop="name">小菜鸟</p>
   <div class="site-description" itemprop="description">小菜鸟终会飞起，只是需要一点点时间</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/RookieRoom/archives/">
+          <a href="/archives/">
         
           <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-            <a href="/RookieRoom/categories/">
+            <a href="/categories/">
           
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-            <a href="/RookieRoom/tags/">
+            <a href="/tags/">
           
         <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
@@ -529,21 +529,21 @@
 
   
   
-  <script color='0,0,0' opacity='0.5' zIndex='-1' count='100' src="/RookieRoom/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/RookieRoom/lib/anime.min.js"></script>
-  <script src="/RookieRoom/lib/pjax/pjax.min.js"></script>
-  <script src="/RookieRoom/lib/velocity/velocity.min.js"></script>
-  <script src="/RookieRoom/lib/velocity/velocity.ui.min.js"></script>
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/RookieRoom/js/utils.js"></script>
+<script src="/js/utils.js"></script>
 
-<script src="/RookieRoom/js/motion.js"></script>
-
-
-<script src="/RookieRoom/js/schemes/pisces.js"></script>
+<script src="/js/motion.js"></script>
 
 
-<script src="/RookieRoom/js/next-boot.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
   <script>
 var pjax = new Pjax({
@@ -613,7 +613,7 @@ window.addEventListener('pjax:success', () => {
 
 
   
-<script src="/RookieRoom/js/local-search.js"></script>
+<script src="/js/local-search.js"></script>
 
 
 
@@ -634,7 +634,7 @@ document.querySelectorAll('.pdfobject-container').forEach(element => {
     view     : 'FitH'
   };
   let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
-  let fullURL = `/RookieRoom/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
 
   if (NexT.utils.supportsPDFs()) {
     element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
@@ -673,5 +673,5 @@ darkmode.showWidget();
 </script>
 
     </div>
-<script src="/RookieRoom/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/RookieRoom/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
 </html>
