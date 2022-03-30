@@ -200,7 +200,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/sheng-cheng-duo-ge-xin-ye-mian-li-zi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -214,7 +214,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发九[数据恢复]</a>
+            <a href="/2020/05/19/sheng-cheng-duo-ge-xin-ye-mian-li-zi/" class="post-title-link" itemprop="url">生成多个新页面例子</a>
         </h2>
 
         <div class="post-meta">
@@ -224,14 +224,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-07 21:36:00" itemprop="dateCreated datePublished" datetime="2020-05-07T21:36:00+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:42:24" itemprop="dateCreated datePublished" datetime="2020-05-19T14:42:24+08:00">2020-05-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:34:13" itemprop="dateModified" datetime="2022-03-27T00:34:13+08:00">2022-03-27</time>
+                <time title="修改时间：2022-03-27 00:53:54" itemprop="dateModified" datetime="2022-03-27T00:53:54+08:00">2022-03-27</time>
               </span>
 
           <br>
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
+              <span>10k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -259,11 +259,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>上一期我们学习并实现了该系统的数据备份功能。这一期我们来一起实现下该系统的数据恢复功能.数据恢复是指当数据因外界条件影响而丢失后,我们需要使用先前的备份来恢复数据,从而避免照成不必要的损失.</p>
+          <h2 id="第一步：aspx界面搭建"><a href="#第一步：aspx界面搭建" class="headerlink" title="第一步：aspx界面搭建"></a>第一步：aspx界面搭建</h2><p>界面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=utf-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;form1&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            &lt;%-- 添加数据表单 --%&gt;</span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;生成静态页面&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-jiu-shu-ju-hui-fu/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/sheng-cheng-duo-ge-xin-ye-mian-li-zi/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -287,7 +287,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/huo-qu-jie-kou-de-quan-bu-shi-xian-lei/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -301,7 +301,79 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发八[数据备份]</a>
+            <a href="/2020/05/19/huo-qu-jie-kou-de-quan-bu-shi-xian-lei/" class="post-title-link" itemprop="url">获取接口的全部实现类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-19 14:39:33 / 修改时间：14:41:11" itemprop="dateCreated datePublished" datetime="2020-05-19T14:39:33+08:00">2020-05-19</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>446</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line"></span><br><span class="line">          InterfaceType(<span class="keyword">typeof</span>(IInterface));</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">      <span class="comment"><span class="doctag">///</span> 获取接口的全部实现类</span></span><br><span class="line">      <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InterfaceType</span>(<span class="params">Type InterfaceTypeValue</span>)</span></span><br><span class="line">      &#123;</span><br><span class="line">          <span class="keyword">var</span> types = AppDomain.CurrentDomain.GetAssemblies().</span><br><span class="line">             SelectMany(a =&gt; a.GetTypes().</span><br><span class="line">             Where(t =&gt; t.GetInterfaces().Contains(InterfaceTypeValue))).ToArray();</span><br><span class="line"></span><br><span class="line">          <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; types.Length; i++)</span><br><span class="line">          &#123;</span><br><span class="line">              Console.WriteLine(types[i].Name);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/cs-jia-gou-he-bs-jia-gou-jie-shao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/19/cs-jia-gou-he-bs-jia-gou-jie-shao/" class="post-title-link" itemprop="url">C/S架构和B/S架构介绍</a>
         </h2>
 
         <div class="post-meta">
@@ -311,14 +383,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-07 21:34:49" itemprop="dateCreated datePublished" datetime="2020-05-07T21:34:49+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:35:41" itemprop="dateCreated datePublished" datetime="2020-05-19T14:35:41+08:00">2020-05-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:31:15" itemprop="dateModified" datetime="2022-03-27T00:31:15+08:00">2022-03-27</time>
+                <time title="修改时间：2022-03-27 00:37:23" itemprop="dateModified" datetime="2022-03-27T00:37:23+08:00">2022-03-27</time>
               </span>
 
           <br>
@@ -327,7 +399,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -346,11 +418,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>上一期我们学习了用户分类,通过给用户分配不同的功能权限(管理员具有所有功能的使用权限,普通用户只能限制性的使用部分功能)达到给用户分类的目的.那么这一期我们来一起学习下一个信息管理系统最为重要的功能之一数据备份.</p>
+          <p>一、C&#x2F;S架构</p>
+<ol>
+<li>C&#x2F;S架构及其背景</li>
+</ol>
+<p>C&#x2F;S架构是一种比较早的软件架构，主要应用于局域网内。在这之前经历了集中计算模式，随着计算机网络的进步与发展，尤其是可视化工具的应用，出现过两层C&#x2F;S和三层C&#x2F;S架构，不过一直很流行也比较经典的是我们所要研究的两层C&#x2F;S架构。</p>
+<p><img src="https://img-blog.csdn.net/20161106211353157?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>C&#x2F;S架构软件（即客户机&#x2F;服务器模式）分为客户机和服务器两层：第一层是在客户机系统上结合了表示与业务逻辑，第二层是通过网络结合了数据库服务器。简单的说就是第一层是用户表示层，第二层是数据库层。客户端和服务器直接相连，这两个组成部分都承担着重要的角色。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-ba-shu-ju-bei-fen/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/cs-jia-gou-he-bs-jia-gou-jie-shao/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -374,7 +451,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/json-yu-xml-de-qu-bie-bi-jiao/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -388,7 +465,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发七[用户分类]</a>
+            <a href="/2020/05/19/json-yu-xml-de-qu-bie-bi-jiao/" class="post-title-link" itemprop="url">JSON与XML的区别比较</a>
         </h2>
 
         <div class="post-meta">
@@ -398,14 +475,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-07 21:33:48" itemprop="dateCreated datePublished" datetime="2020-05-07T21:33:48+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:31:21" itemprop="dateCreated datePublished" datetime="2020-05-19T14:31:21+08:00">2020-05-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:34:33" itemprop="dateModified" datetime="2022-03-27T00:34:33+08:00">2022-03-27</time>
+                <time title="修改时间：2022-03-27 00:49:57" itemprop="dateModified" datetime="2022-03-27T00:49:57+08:00">2022-03-27</time>
               </span>
 
           <br>
@@ -414,14 +491,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.9k</span>
+              <span>710</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -433,12 +510,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>在绝大部分数据管理系统中,管理员和普通用户这2类用户通常是必不可少的,当然还有更细的分类.前几期,我们用到的系统用户只有普通用户一类.那么在这一期,我们将在系统中设置2类用户, 管理员Administrator 和普通用户NormalUser.</p>
-<p>我们在这里分类用户的目的是为了区分不同用户的功能权限,通常管理员拥有所有功能的使用权限,而普通用户只能限制性的使用部分功能(比如只能查看数据,而不修改数据). 当然，管理员可以赋予普通用户更多的功能权限,这个在后期随笔里面会继续说明.</p>
+          <p>2.XML和JSON优缺点</p>
+<p>(1).XML的优缺点<br>&lt;1&gt;.XML的优点<br>　　A.格式统一，符合标准；<br>　　B.容易与其他系统进行远程交互，数据共享比较方便。<br>&lt;2&gt;.XML的缺点<br>　　A.XML文件庞大，文件格式复杂，传输占带宽；<br>　　B.服务器端和客户端都需要花费大量代码来解析XML，导致服务器端和客户端代码变得异常复杂且不易维护；<br>　　C.客户端不同浏览器之间解析XML的方式不一致，需要重复编写很多代码；<br>　　D.服务器端和客户端解析XML花费较多的资源和时间。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-qi-yong-hu-fen-lei/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/json-yu-xml-de-qu-bie-bi-jiao/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -462,7 +538,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/ashx-he-aspx-de-qu-bie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -476,7 +552,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发六[数据搜索]</a>
+            <a href="/2020/05/19/ashx-he-aspx-de-qu-bie/" class="post-title-link" itemprop="url">ashx和aspx的区别</a>
         </h2>
 
         <div class="post-meta">
@@ -486,14 +562,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-07 21:32:47" itemprop="dateCreated datePublished" datetime="2020-05-07T21:32:47+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:30:03" itemprop="dateCreated datePublished" datetime="2020-05-19T14:30:03+08:00">2020-05-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:34:24" itemprop="dateModified" datetime="2022-03-27T00:34:24+08:00">2022-03-27</time>
+                <time title="修改时间：2022-03-27 00:25:29" itemprop="dateModified" datetime="2022-03-27T00:25:29+08:00">2022-03-27</time>
               </span>
 
           <br>
@@ -502,14 +578,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.1k</span>
+              <span>388</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -521,11 +597,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>前几期中,我们实现了用户对系统数据记录的基本操作-增删改查, 由于数据量不是很多,我们可以轻易的找到我们所需要操作的记录；但是一旦数据量多起来,是否还能方便的找到我们想要操作的数据呢?这一期我们一起来实现一个功能-数据搜索.</p>
+          <p>ashx是什么文件?</p>
+<p>.ashx 文件用于写web handler的。.ashx文件与.aspx文件类似，可以通过它来调用HttpHandler类，它免去了普通.aspx页面的控件解析以及页面处理的过程。其实就是带HTML和C#的混合文件。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-liu-shu-ju-sou-suo/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/ashx-he-aspx-de-qu-bie/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -549,7 +625,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-wu-yong-hu-zhu-ce/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/ru-he-yong-aspnet-shi-xian-dan-chu-tian-jia-cheng-gong-dui-hua-kuang-ran-hou-ye-mian-tiao-zhuan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -563,7 +639,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-wu-yong-hu-zhu-ce/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发五[用户注册]</a>
+            <a href="/2020/05/19/ru-he-yong-aspnet-shi-xian-dan-chu-tian-jia-cheng-gong-dui-hua-kuang-ran-hou-ye-mian-tiao-zhuan/" class="post-title-link" itemprop="url">如何用ASP.NET实现弹出添加成功对话框，然后页面跳转</a>
         </h2>
 
         <div class="post-meta">
@@ -573,14 +649,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-07 21:31:27" itemprop="dateCreated datePublished" datetime="2020-05-07T21:31:27+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:27:49" itemprop="dateCreated datePublished" datetime="2020-05-19T14:27:49+08:00">2020-05-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:34:55" itemprop="dateModified" datetime="2022-03-27T00:34:55+08:00">2022-03-27</time>
+                <time title="修改时间：2022-03-27 01:32:37" itemprop="dateModified" datetime="2022-03-27T01:32:37+08:00">2022-03-27</time>
               </span>
 
           <br>
@@ -589,14 +665,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.3k</span>
+              <span>195</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -608,11 +684,92 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>前几期为了方便登录系统,我们手动的在数据库里添加了用户名和密码,并没有实现在系统中进行用户注册.那么,这一期我们一起来实现下用户注册功能.</p>
+          <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Response.Write(<span class="string">&quot; &lt;script&gt;alert(&#x27;添加成功&#x27;);location=&#x27;carMan.aspx&#x27;&lt;/script&gt;&quot;</span>); </span><br></pre></td></tr></table></figure>
+
+<p>资料地址：<a target="_blank" rel="noopener" href="https://www.itdaan.com/blog/2009/02/10/cd829e88709590f4ea44866258fa2ed.html">https://www.itdaan.com/blog/2009/02/10/cd829e88709590f4ea44866258fa2ed.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/input-shu-ru-kuang-shi-shi-jian-ting-shu-ru-nei-rong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.png">
+      <meta itemprop="name" content="小菜鸟">
+      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小菜鸟的温暖小窝">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/19/input-shu-ru-kuang-shi-shi-jian-ting-shu-ru-nei-rong/" class="post-title-link" itemprop="url">input 输入框实时监听输入内容</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-19 14:25:41" itemprop="dateCreated datePublished" datetime="2020-05-19T14:25:41+08:00">2020-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 00:48:41" itemprop="dateModified" datetime="2022-03-27T00:48:41+08:00">2022-03-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>931</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>JQ版本：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery-1.11.3.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;input&quot;</span> &gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     $(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="string">&#x27;input&#x27;</span>).<span class="title function_">bind</span>(<span class="string">&#x27;input porpertychange&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">console</span>.<span class="title function_">log</span>($(<span class="variable language_">this</span>).<span class="title function_">val</span>());</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">   </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-wu-yong-hu-zhu-ce/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/input-shu-ru-kuang-shi-shi-jian-ting-shu-ru-nei-rong/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -636,7 +793,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/sqlserver-jin-jin-shan-chu-biao-ge-zhong-de-shu-ju/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -650,7 +807,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发四[日志查看]</a>
+            <a href="/2020/05/19/sqlserver-jin-jin-shan-chu-biao-ge-zhong-de-shu-ju/" class="post-title-link" itemprop="url">SqlServer仅仅删除表格中的数据</a>
         </h2>
 
         <div class="post-meta">
@@ -659,16 +816,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-05-07 21:28:57" itemprop="dateCreated datePublished" datetime="2020-05-07T21:28:57+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:24:35 / 修改时间：14:25:12" itemprop="dateCreated datePublished" datetime="2020-05-19T14:24:35+08:00">2020-05-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:34:48" itemprop="dateModified" datetime="2022-03-27T00:34:48+08:00">2022-03-27</time>
-              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -676,14 +827,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.3k</span>
+              <span>17</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -695,16 +846,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>上一期,我们做了一个用户密码修改的功能. 这一期,我们来实现下日志查看功能(用于记录和查看用户的系统登录和退出历史).</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-si-ri-zhi-cha-kan/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> 表名称</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -723,7 +865,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/sql-chong-zhi-biao-shi-fu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -737,7 +879,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发三[密码修改]</a>
+            <a href="/2020/05/19/sql-chong-zhi-biao-shi-fu/" class="post-title-link" itemprop="url">sqlserver 重置标识符</a>
         </h2>
 
         <div class="post-meta">
@@ -746,16 +888,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-05-07 21:27:44" itemprop="dateCreated datePublished" datetime="2020-05-07T21:27:44+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:23:34 / 修改时间：14:24:18" itemprop="dateCreated datePublished" datetime="2020-05-19T14:23:34+08:00">2020-05-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:34:41" itemprop="dateModified" datetime="2022-03-27T00:34:41+08:00">2022-03-27</time>
-              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -763,14 +899,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>7.1k</span>
+              <span>48</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -782,16 +918,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>上一期我们实现了对电影记录的数据操作(增删改查).这一期,我们一起来实现下针对用户的密码修改功能.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-san-mi-ma-xiu-gai/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DBCC CHECKIDENT (<span class="string">&#x27;table_name&#x27;</span>, RESEED, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -810,7 +937,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/">
+    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/19/bian-yi-xing-yu-yan-jie-shi-xing-yu-yan-jiao-ben-yu-yan-de-qu-bie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/favicon.png">
@@ -824,7 +951,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发二[增删改查]</a>
+            <a href="/2020/05/19/bian-yi-xing-yu-yan-jie-shi-xing-yu-yan-jiao-ben-yu-yan-de-qu-bie/" class="post-title-link" itemprop="url">编译型语言、解释型语言、脚本语言的区别</a>
         </h2>
 
         <div class="post-meta">
@@ -834,14 +961,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-07 21:25:41" itemprop="dateCreated datePublished" datetime="2020-05-07T21:25:41+08:00">2020-05-07</time>
+              <time title="创建时间：2020-05-19 14:20:17" itemprop="dateCreated datePublished" datetime="2020-05-19T14:20:17+08:00">2020-05-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:31:23" itemprop="dateModified" datetime="2022-03-27T00:31:23+08:00">2022-03-27</time>
+                <time title="修改时间：2022-03-27 00:30:40" itemprop="dateModified" datetime="2022-03-27T00:30:40+08:00">2022-03-27</time>
               </span>
 
           <br>
@@ -850,14 +977,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.6k</span>
+              <span>1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -869,184 +996,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>本期概述</strong></p>
-<p>上一期我们学习并实现了用户登录功能.这一期我们一起来学习下电影记录管理系统的的最主要功能(对数据的增删改查).</p>
+          <h2 id="编译型语言、解释型语言、脚本语言的区别"><a href="#编译型语言、解释型语言、脚本语言的区别" class="headerlink" title="编译型语言、解释型语言、脚本语言的区别"></a>编译型语言、解释型语言、脚本语言的区别</h2><blockquote>
+<p>​        计算机不能直接理解高级语言，只能直接理解机器语言，所以必须要把高级语言翻译成机器语言，计算机才能执行高级语言编写的程序。</p>
+<p>​         把高级语言翻译成机器语言的两种方式：一种是编译，一种是解释。两种方式只是翻译的时间不通。</p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-er-zeng-shan-gai-cha/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-yi-yong-hu-deng-lu/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-yi-yong-hu-deng-lu/" class="post-title-link" itemprop="url">C#简易电影记录管理系统:开发一[用户登录]</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:23:47" itemprop="dateCreated datePublished" datetime="2020-05-07T21:23:47+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:35:05" itemprop="dateModified" datetime="2022-03-27T00:35:05+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>开篇</strong></p>
-<p>在现实程序开发中, 我们开发的最多,最广泛的还是一些各类型的数据管理系统,当然不同的系统有功能上的差异,数据库也不一样,但最主要,最常见的功能无外乎对数据的基本操作(增删改查).该系统开发系列记录了整个简易电影记录管理系统的开发过程,绝大部分功能模块设计与实现都附上了截图,大部分代码也都包含注释,十分适合C#新手学习和掌握.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/07/cjian-yi-dian-ying-ji-lu-guan-li-xi-tong-kai-fa-yi-yong-hu-deng-lu/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://kdt-g.github.io/2020/05/07/aspnet-de-yi-ge-jian-dan-jin-du-tiao-gong-neng/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/favicon.png">
-      <meta itemprop="name" content="小菜鸟">
-      <meta itemprop="description" content="小菜鸟终会飞起，只是需要一点点时间">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小菜鸟的温暖小窝">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/07/aspnet-de-yi-ge-jian-dan-jin-du-tiao-gong-neng/" class="post-title-link" itemprop="url">asp.net 的一个简单进度条功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-07 21:17:51" itemprop="dateCreated datePublished" datetime="2020-05-07T21:17:51+08:00">2020-05-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 00:29:01" itemprop="dateModified" datetime="2022-03-27T00:29:01+08:00">2022-03-27</time>
-              </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我们先看下效果</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/07/aspnet-de-yi-ge-jian-dan-jin-du-tiao-gong-neng/#more" rel="contents">
+              <a class="btn" href="/2020/05/19/bian-yi-xing-yu-yan-jie-shi-xing-yu-yan-jiao-ben-yu-yan-de-qu-bie/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1069,7 +1025,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1137,7 +1093,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">117</span>
+          <span class="site-state-item-count">136</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1187,13 +1143,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">290k</span>
+    <span title="站点总字数">312k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:23</span>
+    <span title="站点阅读时长">4:43</span>
 </div>
 
         
